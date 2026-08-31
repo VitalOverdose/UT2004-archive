@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: UnrealEngine2 Runtime</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=UnrealEngine2_Runtime; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=UnrealEngine2 Runtime">UnrealEngine2 Runtime</a></h1>
+	<div class="wiki"><p>The UnrealEngine2 Runtime is a free to download version of the <a href="unreal-engine.html">Unreal engine</a>. It is  exactly what you would get if you purchased a license from Epic, except of course you don't get the license to sell it and you also don't get the native source code. It comes with a very basic level showing off some of the things it can do. For a more complete list of what is included see the <a href="http://udn.epicgames.com/pub/Engine/UnrealEngine2Features/">[UnrealEngine2 Technology Features]</a> page on the UDN.</p>
+<h2><a name="0.1"></a>Version History</h2>
+<table class="paratable-border" border=0 cellspacing=0 cellpadding=0><tr valign=top><td><em class="em2">Version Number</em></td>
+<td><em class="em2">Date</em></td>
+</tr>
+<tr valign=top><td>2226.19.03</td>
+<td>16 Oct 2003</td>
+</tr>
+</table>
+<p>Versions are labeled as xxxx.yy.zz , where xxxx is the UnrealEngine2 version, yy is the patch level and zz is the Runtime version.</p>
+<h2><a name="0.2"></a>What can and can't you do with it</h2>
+<p>quoting Vito from BU forum: (24 oct.)</p>
+<blockquote><p>In general, it's preferred that rather than making "mods" for the runtime in the traditional UT2003/etc. sense, that you instead rebuild and repackage the runtime as a standalone product. It's called the "runtime" because it's meant to work like it would if you were writing applications and including the Visual Basic or Visual C++ runtime DLLs. We can work with you on this if you'd like.</p>
+<p>Additionally, using "Unreal" in your project name would probably be frowned upon, at the very least.</p>
+</blockquote><p>Also as aways it's not allowed to use any of the UT2003 or any other contents from any unreal engine game in your Runtime Project. This goes for textures and models but also code!</p>
+<p>quoting Mark Rein from an IRC chat (24 oct.)</p>
+<blockquote><p>&lt;Candyman13&gt; yes i know but can u use it for games / simulations though ?</p>
+<p>&lt;MarkRein[Epic]&gt; No you can't. We'll clarify that soon. If you want to make a game based it as a mod on UT2003 or UT2004. </p>
+</blockquote><p><em class="em2">Daid303:</em> I'm really getting sick of this.... <img alt=":(" src="emoticons/sad.gif" align="middle"></p>
+<p><em class="em2">GRAF1K:</em> You beat me to posting that, Daid303. <img alt=";)" src="emoticons/wink.gif" align="middle"> If we can't use it for games, what can we use it for? <img alt=":confused:" src="emoticons/confused.gif" align="middle"> Building little museums of 3D art? <img alt="o_O" src="emoticons/ohoh.gif" align="middle"></p>
+<p><em class="em2">Daid303:</em> And what are the specs of 'a game'... maybe they mean you can't build an FPS with it, or only something non profit, or maybe you're not allowed to build something that makes people smilie, or relax....</p>
+<p><em class="em2">Foxpaw:</em> Hmm, this seems a bit conflicting. I thought the official word was, you can use it to make a game, but that it would be piles and piles of work because you don't have anything to work from. On the upside, however, if it works in the runtime, it will work as a TC for UT2003.</p>
+<p><em class="em2">Daid303:</em> True, only code on the runtime compiles about 10 times as fast as in UT2003... and I don't see the point in coding in UT2003 if you don't use any of the stuff that came with it... but then again I do see epics point, they do want to sell games. Why don't they start selling mods? <img alt=":)" src="emoticons/smile.gif" align="middle"> (another crasy idea by me)</p>
+<p><em class="em2">Wormbo:</em> Mark says you can't, but the EULA doesn't say anything about this problem. I guess that means Epic can't do anything if you still make a game.<br>BTW Daid, if you don't need a particular UT2003 package, just remove it from the EditPackages in your project INI file.</p>
+<p><em class="em2">Daid303:</em> Wormbo, I know, but default it depents on so much stuff <img alt=":(" src="emoticons/sad.gif" align="middle"> anyway, i'm pretty happy about this runtime engine, I found out that RTInterface.u isn't even needed if you build yourself a new mainmenu and some other menus. (another editpackage gone <img alt=":P" src="emoticons/tongue.gif" align="middle">) anyway, I just released Version 2 of Ultimate Droids (previus know was Unreal Droids) details on my <a href="daid303.html">personal page</a> <img alt=":)" src="emoticons/smile.gif" align="middle"></p>
+<h2><a name="0.3"></a>External Links</h2>
+<ul><li><a href="http://udn.epicgames.com/pub/Powered/UnrealEngine2Runtime/">http://udn.epicgames.com/pub/Powered/UnrealEngine2Runtime/</a> - UDN Runtime Page (with link to download).</li>
+<li><a href="http://forums.beyondunreal.com/forumdisplay.php?f=438">[BeyondUnreal Runtime forums]</a> - Discussion of all things Runtime.</li>
+</ul>
+<p><em class="em2">Foxpaw:</em> Yowza! This is very neat. Though in all honesty I suspect that the tendancy for mods to never get finished will hold doubly true with the UnrealEngine2 Runtime, what with having to write everything from scratch and all.</p>
+<p><em class="em2">Corran:</em> I would say the opposite is true. Not many people are going to download this just to play what come with it, cos that isn't much. I would think that the only people who bother trying anything with this would be the people who really know what they're doing, or kinda do and want to learn. Those sorts of people are more likely to be dedicated to finishing their work. After all if someone has a briliant new idea to make a realistic shooter <img alt=":)" src="emoticons/smile.gif" align="middle">, they're much more likely to use UT2003 as their base.</p>
+<p><em class="em2">Foxpaw:</em> Well, what I mean is, the fact that it doesn't come with other stuff makes it appear like it has a lot more potential. (although it doesn't really, except where distribution is concerned) I think that this is going to cause a lot of people to take on overly ambitious projects.</p>
+<p><em class="em2">Corran:</em> Point taken. That's why I'm only going to be making a small billiards/pool type game.</p>
+<p><em class="em2">MythOpus:</em> Eh... So let me get this straight... with this RunTime gig... are they letting us build our own games for the Unreal Engine without needing a license ?</p>
+<p><em class="em2">inio:</em> Sorta like that.  The original Epic postings about it indicated it was for "non-commercial, non-game use" or something like that, but the <a href="http://udn.epicgames.com/pub/Powered/UnrealEngine2Runtime22261903EULA/">[license]</a> doesn't say anything about non-game, and recent Epic postings have been more to the effect of "well, yah, you <em class="em1">could</em> make a game with it, but it'd be a lot of work".  That said, the license as stated doesn't seem to allow redistributing the runtime (you can't (sub)license it to the end user), so as far as I can tell to release something with this version you would need to link to the runtime download and provide a umod.  There's also a clause that prohibits creating derivative works that's never explicitly voided for non-commercial use, so I really dunno.  It's not clear if they intended "You may [...] use the Runtime Software for non-commercial [...] purposes." to supersede the above restrictions.  If they did they should have said it.  The license is really rather ambiguous.  Cute, but ambiguous.  Personally though I'm more scared of the DMCA than an army of clones <img alt=";)" src="emoticons/wink.gif" align="middle">.</p>
+<p><em class="em2">Foxpaw:</em> I believe the license is the same as all the other Unreal Engine gaes. The Unreal Engine Runtime is what you get if you buy a license, except when you ;pay you get the right to charge money for it. So, it's definately possible to make a game using it, though for obvious reasons it would be easier to do it as a mod for any Unreal-Engine based game instead of the Runtime. The only advantage the runtie has is that it's free so anyone would be able to play your game even if they didn't own any Unreal-engine based games.</p>
+<p><em class="em2">Daid303:</em> How about a page where we compaire each engine with eachother, because I already found quite some diffrences between the runtime and the 2003 engine.</p>
+<p><em class="em2">Foxpaw:</em> Well, the Runtime engine is basically just a virgin copy of the Unreal engine without any modifications at all done to it, so anything that DE did for UT2003 wouldn't be included. I think that if we made a page comparing the different engines, however, it would swell to an enormous size, considering that there are differences between all Unreal-Engine based software and there are a lot of Unreal-Engine titles already.</p>
+<p><em class="em2">Solid Snake:</em> I'm also sick of the swaying backwards and forwards of this decision. If Epic as a while would just make up their minds, I mean we were talking about this issue on the forums and Vito pops in and says that it's the okay and then Mark comes in and says that it isn't? Does this indicate that Epic are a little divided on this issue? In any case, it would be a lot of work to even try to produce a game from this package, but in my case, I generally do a lot of work since my games aren't usually FPS's which means that I tend to have to create my own set of classes that work at the engine class level (subclassing actor, object and so forth) thus using the RunTime would be ideal for me, since the people I want to reach wouldn't generally own UT2003, such as those that are dedicated RTS or Diablo II players. Comparing engines would be a tough thing to do... I just hope that this decision made by Mark will be revoked. But something tells me that it won't be.</p>
+<p><em class="em2">Daid303:</em> Actualy, the only thing that I've seen is something Vito said, the EULA, and a IRC qoute from Mark. The EULA and Vito said no problem. Only mark said 'NO'. Is that 2 to 1? <img alt=";)" src="emoticons/wink.gif" align="middle"></p>
+<p><em class="em2">Wormbo:</em> Now make up <em class="em1">your</em> mind about it. Here's yesterday's #unrealscript log about this problem:</p>
+<p><tt>[21:22:20] &lt;Vito`&gt; I never said it's allowed.<br>[21:22:46] &lt;Vito`&gt; The runtime is not meant for games.  You should not make games with it.  We don't want you to make games with it.<br>[21:24:02] &lt;teed`gone&gt; Yeah vito, but is it forbidden<br>[21:24:48] &lt;@Wormbo&gt; &lt;Vito`&gt; The runtime is not meant for games.  You should not make games with it.  We don't want you to make games with it. &lt;&ndash; but the EULA doesn't express that...<br>[21:25:01] &lt;Vito`&gt; Wormbo...  that's between you and a lawyer.<br>[21:25:12] &lt;@Wormbo&gt; <img alt="o_O" src="emoticons/ohoh.gif" align="middle"><br>[21:29:24] &lt;Vito`&gt; ...<br>[21:29:58] * RuntimeIsNotForGames` has joined #UnrealScript<br>[21:29:58] * ChanServ sets mode: +o RuntimeIsNotForGames`<br>[21:30:02] * RuntimeIsNotForGames` sets mode: +o Vito`<br>[21:30:05] * @Vito` growls<br>[21:30:13] &lt;@Wormbo&gt; heh<br>[21:30:30] &lt;[A]Shrimp&gt; lol<br>[21:31:15] &lt;@Vito`&gt; Seriously, if you ask "can I use the runtime to make a game," you're only going to get "no" for an answer.<br>[21:31:29] &lt;@Vito`&gt; You already know you shouldn't.<br>[21:31:41] &lt;@Vito`&gt; Especially if you ask it in public.<br>[21:33:04] &lt;@Vito`&gt; If you emailed Mark or Jay directly and asked, "does the EULA prohibit me from making a game," that might get the answer you're looking for.<br>[21:33:45] &lt;@Vito`&gt; I mean, really, guys, use some common sense</tt></p>
+<p><em class="em2">Daid303:</em> Ah, that gives some light on the whole case. I better start using IRC <img alt=":)" src="emoticons/smile.gif" align="middle"></p>
+<p><em class="em2">Solid Snake:</em> I just wish I could get up to see all the people. Kinda sucks being in New Zealand with the massive time difference. I'm really confused by this whole thing. I'll probably convert my Karma'ed project to this actually and see what happens. It's a toy essentially ... and it would be better off a a standalone product. But I'll keep the code for UT2003 ... just in case. Well, I guess this has more to it than meets the eye ... but from the looks of things, I might just avoid this whole thing and not even bother with UE2RunTime. It looks like it is more trouble than its worth.</p>
+<p><em class="em2">DJPaul:</em> I've emailed Rein for a clarification regarding this; i've asked him to either reply here or to my email.  If I get a reply, I will post it here.</p>
+<p><em class="em2">Daid303:</em> Don't expect to get a reply <img alt=";)" src="emoticons/wink.gif" align="middle"> <a href="http://forums.beyondunreal.com/showthread.php?t=118932">http://forums.beyondunreal.com/showthread.php?t=118932</a></p>
+<p><em class="em2">DJPaul:</em> See that URL:</p>
+<p><tt>Vito: Epic's decided to simply update the EULA. Looks like we're just about done. I'm satisfied with what it says, personally, and I think the "commercial exploitation" licenses (or simply getting written approval from Epic, as the license states) will cover the corner cases.</tt></p>
+<p>and (Vito again):</p>
+<p><a href="http://udn.epicgames.com/pub/Powered/UnrealEngine2RuntimeEULA/">[New Runtime EULA]</a></p>
+<p><tt>This is the current, possibly final draft of the new EULA for the Runtime. Comments welcome, and UDN will be updated with a lot of new information tomorrow/Thursday/Friday, including an updated Runtime with this included.<br>Please don't post this to BU or PU or anyplace until the updates all go up.</tt></p>
+<p><em class="em2">DJPaul:</em> Specifically:</p>
+<blockquote><p>YOU MAY NOT USE THE RUNTIME SOFTWARE TO DEVELOP GAMES FOR RELEASE VIA ANY MEANS TO ANY FORM OF END-USER. YES, I KNOW THIS SOUNDS NASTY BUT LET'S FACE IT, EPIC'S PRIMARY MEANS OF INCOME COMES FROM GAME SALES AND ENGINE LICENSING. WE WOULD BE SHOOTING OURSELVES IN THE FOOT IF WE ALLOWED AN ENGINE WE GAVE AWAY FOR FREE TO TRAMPLE OUR PRIMARY MEANS OF INCOME. SORRY, BUT IF YOU WANT TO DEVELOP AND RELEASE A GAME PLEASE DEVELOP IT AS A MOD FOR ONE OF OUR EXISTING RETAIL GAME PRODUCTS OR CONTACT US REGARDING A PROPER ENGINE LICENSE. (More information on UnrealEngine2 licensing can be found at: <a href="http://udn.epicgames.com/pub/Engine/WebHome/">http://udn.epicgames.com/pub/Engine/WebHome/</a>.) THANKS FOR YOUR UNDERSTANDING AND SUPPORT.</p>
+</blockquote><p>So there goes everyone's plans <img alt=":(" src="emoticons/sad.gif" align="middle">, and Daid303's software.</p>
+<p><em class="em2">Wormbo:</em> Daid can still port it to UT2003 as a mod.</p>
+<p><em class="em2">RDGDanClark:</em> That's the most ridiculous thing I've seen in a long time. Epic is essentially teasing the community, saying "here's the engine, and you <em class="em2">could</em> make a great game on it, but we're not gonna let you, nyah-nyah-nyah". I understand there are other uses for the engine; real-time architecture demonstrations, etc., but come on.</p>
+<p><em class="em2">Daid303:</em> Actualy, you COULD produce a game with it, but you're not allowed to release it. You could however produce one, and then step to epic and say: "look what I made, we might be able to earn some money with it" And people who might want to preduce a game, now have the chance to check the engine out (and see how great it is) before they actualy have to buy a licence.</p>
+<p>As for my 'software' I wouldn't know yet, is it's a dev-tool or a game? or something else? As long as I don't at weapons then I don't see why it could be much of a game.... but weapons are fun.... DARN IT!</p>
+<p><em class="em2">DJPaul:</em> Game.  I doubt manufacturing types believe that the Karma has accurate enough physics to simulate mass and to balance a prototype model.</p>
+<p>You could do what Daid303 said, but if you showed it to anyone - like a publisher, to get a job - you'd be commerically exploiting it.  I suppose you could go to Epic and say "give me an engine license" but if you have enough cash to purchase an engine license, what really is the point of creating it (and you couldn't secure a contract with a publisher THEN get an Engine license as that'd be commerical exploitation, again) in the runtime?</p>
+<p><em class="em2">MeanFish:</em> You did miss option number three, which would be to produce something in the Runtime, show it to a publisher and try to get it published on the basis that htey help you cover the price of an engine license.  Nitpicky, but it voids out the "commercial exploitation" clause of the EULA.  Everyone benefits from this system...but then again you have to have a majorly amazing project finished for this to even apply, as I'm guessing that most publishers wont readily accept a deal with so many strings attached (cost of engine, chance at failure, etc.) unless the circumstances are of grand lucrative proportions.</p>
+<p><em class="em2">Daid303:</em> Uh... I think.... maybe?</p>
+<blockquote><p>You may not use this Runtime Software, or any content created with it, or use the tools provided with this Runtime Software for any commercial purposes without the prior written consent of Epic Games, Inc. ("Epic").</p>
+</blockquote><p>So when you make something and show it to epic it might be a commercial purpose, but epic would probly aprove it <img alt=":)" src="emoticons/smile.gif" align="middle"> because they could make some nice extra money <img alt=";)" src="emoticons/wink.gif" align="middle"></p>
+<p>Anyhow, maybe a little refactor is in it's place here? The 'create a game' discusion is closed.</p>
+<p>Oh, and wormbo (and any others interested) i'll update my person page with some info/plans for UltimateDroids.</p>
+<p><em class="em2">Foxpaw:</em> I believe idea behind the Runtime is, and always was, that Epic would allow you to download a "virgin" Unreal Engine, make a piece of software (potentially a game) for it, and then find a publisher when the game is completed. That gets around the obvious difficulty of finding a publisher to buy you a license when all you have is an idea and some art - this way the product is already done, and it's definately more attractive to a publisher if you already have a finished product ready to be stamped onto CDs and shipped out the door.</p>
+<p><em class="em2">RDGDanClark:</em> I'm not sure that's what they're saying. It seems to me that the snippet from the EULA up there is pretty clear when it says "YOU MAY NOT USE THE RUNTIME SOFTWARE TO DEVELOP GAMES FOR RELEASE VIA ANY MEANS TO ANY FORM OF END-USER.". That means that if you develop a game with the runtime, it can never be released. Period. I'm relatively certain this also negates the possibility of making a game with the intention of showing it to a publisher as a demo of your skills &ndash; since it says "<em class="em2">any form</em> of end-user". Basically what this EULA shakes down to is that if you make a game with the runtime, you can never make it public or show it to anyone.</p>
+<p><em class="em2">Mosquito:</em> I'm sure if you play them hundreds of thousands of dollars for the lisence they will let you release the game. Isn't the Runtime pretty much what lisencees get (but they get the source code and stuff, plus a demo game)</p>
+<p><em class="em2">Daid303:</em> How about solving this question and mail epic? I could ask, I still need to mail them anyway.</p>
+<p><em class="em2">GRAF1K:</em> Don't hold your breath. <img alt=":-(" src="emoticons/sad.gif" align="middle"> I've tried to e-mail Epic before.</p>
+<p><em class="em2">RDGDanClark:</em> Well I'm going to be at <a href="unreal-university.html">Unreal University</a> next weekend, and if they don't bring it up, I will ask the Epic folks about it directly. Also, I'm wondering who this Vito person is. Near as I can tell, he's only a moderator for one forum at the BUF, and he certainly doesn't work for Epic. Why are we taking his word for anything? Any information he has is second-hand.</p>
+<script type="text/javascript"><!--
+ menuItemAdd("Version History", "#0.1");
+menuItemAdd("What can and can't you do with it", "#0.2");
+menuItemAdd("External Links", "#0.3");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=UnrealEngine2_Runtime">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=UnrealEngine2_Runtime">View other revisions</a><br>Last edited October 31, 2003 20:35 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=UnrealEngine2_Runtime">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/UnrealEngine2_Runtime">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>I love the smell of UnrealEd crashing in the morning. (tarquin)</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

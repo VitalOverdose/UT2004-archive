@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Making Glass Break</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Making_Glass_Break; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Making Glass Break">Making Glass Break</a></h1>
+	<div class="wiki"><h2><a name="0.1"></a>Exploding Glass... What?</h2>
+<p>You can simulate real exploding glass in UnrealEd very easily. I will explain this step by step. It is a lot like exploding walls.</p>
+<p><em class="em2">Note:</em> The BreakingGlass actor used in this guide is only available in UT. In UT2003 <a href="emitter.html">Emitter</a>s can be used instead to create far better glass breaking effects. See the <a href="http://udn.epicgames.com/pub/Content/EmittersExamples/#Breaking_Glass">[Breaking Glass]</a> section of <span class="interwiki"><img 
+        alt="udncontent logo"
+        title="udncontent"
+        src="shared//InterWiki-udncontent.png">&nbsp;<a href="http://udn.epicgames.com/Two/EmitterExamples">EmitterExamples</a></span> for a (bad) tutorial about that. Or visit <a href="breaking-glass-ut2003.html">Breaking Glass UT2003</a></p>
+<h2><a name="0.2"></a>Show Me!</h2>
+<ol><li>Find a place you want your glass to go. (Hopefully a windowframe)</li>
+<li><a href="create-a-mover.html">Create a mover</a> that is 2 units thick and 2 units thinner than your area you wish to put it in. Set its key 1 to outside the level and key 0 in its normal position.</li>
+<li>Texture the mover with something glassish. There is good textures in the Coret package. Make sure you set it to translucent in the <a href="surface-flags-ut.html">Surface Flags (UT)</a>.</li>
+<li><a href="add-an-actor.html">Add an actor</a> of the class <a href="explodingwall.html">BreakingGlass</a> in the middle of your glass mover.</li>
+<li>Set the mover's <a href="event.html">event</a> to match the BreakingGlass actor's <a href="tag.html">tag</a>, e.g. 'glass'.</li>
+<li><a href="set-the-following-propertie.html">Set the following properties</a> of the mover: <ul><li>bDamageTriggered = true</li>
+<li>bTriggerOnlyOnce = true</li>
+<li>DamageThreshold = 1</li>
+<li>MoveTime = 0 </li>
+<li><a href="initialstate.html">InitialState</a> = TriggerToggle</li>
+</ul>
+</li>
+</ol>
+<p>Alright so you're done now. When you shoot the glass mover with anything that does over 1 damage (basically everything) then it will instantly move out of the level and trigger the actor to display glass shattering and making noise. The minus 2 units of glass is used to avoid <a href="bsp-hole.html">BSP hole</a>s when you can see through the edges of the glass. (A lot of mappers forget this and it shows up)</p>
+<p><em class="em2">Dark Pulse:</em> That's great if you want glass that only breaks once. But for those of you who want it to respawn, try this:</p>
+<ol><li><a href="set-the-following-propertie.html">Set the following properties</a> of the mover:<ul><li>StayOpenTime = 30-60 (whatever, actually. This is the number of seconds, so 225 = 3m45s)</li>
+<li><a href="initialstate.html">InitialState</a> = TriggerOpenedTime</li>
+</ul>
+</li>
+</ol>
+<p>On the <a href="explodingwall.html">BreakingGlass</a> Actor, set the following:</p>
+<ol><li>Inside the Effects menu of the <a href="explodingwall.html">BreakingGlass</a><ul><li>bOnlyTriggerable = TRUE</li>
+<li>bTranslucentGlass = TRUE</li>
+</ul>
+</li>
+</ol>
+<p>And there you have it. The Glass should respawn according to however long you set The StayOpenTime of the Mover.</p>
+<h3><a name="0.2.1"></a>Small Problem...</h3>
+<p><em class="em2">Flashpoint Black:</em> In A map I've been working on, I have three windows right next to each other that I want to be independently breakable... and it works fine when shooting them with a weapon without splash damage, but when the weapon has splash damamge, take the Rocketlauncher (Eightball), the window that was shot breaks, but the one next to it doesn't, even when shot again. </p>
+<p><em class="em2">Dark Pulse:</em> I had a similar problem. However, upon examination, I noticed something funny: Both windows would explode <em class="em3">WHEN I SHOT THEM FROM A CERTAIN SIDE</em>. As silly as it sounds, Try Rotating that window 180 degrees on the X Axis. It solved my problem.</p>
+<p><em class="em2">W0RF:</em> Another solution is to set a Damage Threshhold for triggering the breaking glass.  That is what I used to make breaking glass in UT; it should apply here as well.  That way, all your triggers won't go off at the drop of a hat.</p>
+<p><em class="em2">Aramor:</em> Somehow the BreakingGlass actor doesn't work the second time on my map. I set all the stuff exactly as shown on this page, but the pieces of glass only emerge the first time I shoot the glass, when the glass comes back and I shoot it again, it just disappears without the cool effect.</p>
+<hr class="thin"><p><a href="category-mapping.html">Category Mapping</a><br><a href="category-tutorial.html">Category Tutorial</a></p>
+<script type="text/javascript"><!--
+ menuItemAdd("Exploding Glass... What?", "#0.1");
+menuItemAdd("Show Me!", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Small Problem...", "#0.2.1");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Making_Glass_Break">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Making_Glass_Break">View other revisions</a><br>Last edited September 21, 2005 10:21 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Making_Glass_Break">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Making_Glass_Break">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>Cogito, ergo sum
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

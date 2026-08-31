@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: ONSWeapon</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=ONSWeapon; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=ONSWeapon">ONSWeapon</a></h1>
+	<div class="wiki"><div class="classpath"><img src="shared//gameicons/icon-ut2004.png"> <a href="ut2004.html">UT2004</a> :: <a href="actor.html">Actor</a> &gt;&gt; ONSWeapon<br></div>
+<h2><a name="0.1"></a>Summary</h2>
+<p>This is the base class of all of the vehicle and turret weapons found in the Onslaught Gametype.</p>
+<p>Something to note about all ONSWeapon sub-classes is that they only can fire when in one of the firing states. InstantFireMode or ProjectileFireMode. This takes place through the ONSWeapon property bInstantFire which is checked in ONSWeapon's PostNetBeginPlay() function to goto one of the two states.</p>
+<h2><a name="0.2"></a>Properties</h2>
+<h3><a name="0.2.1"></a>Weapon Bone Rotation System</h3>
+<dl><dt>var() name YawBone</dt><dd></dd><dt>var() float YawStartConstraint</dt><dd></dd><dt>var() float YawEndConstraint</dt><dd></dd><dt>var float YawConstraintDelta</dt><dd></dd><dt>var() name PitchBone</dt><dd></dd><dt>var() int PitchUpLimit</dt><dd></dd><dt>var() int PitchDownLimit</dt><dd></dd><dt>var rotator CurrentAim</dt><dd></dd><dt>var vector WeaponFireLocation</dt><dd></dd><dt>var rotator WeaponFireRotation</dt><dd></dd><dt>var() name WeaponFireAttachmentBone</dt><dd></dd><dt>var() name GunnerAttachmentBone</dt><dd></dd><dt>var() float WeaponFireOffset</dt><dd></dd><dt>var() float DualFireOffset</dt><dd>Used by Energy Turret / Raptor for second stream of projectiles</dd><dt>var() vector WeaponOffset</dt><dt>var() rotator LastRotation</dt><dd></dd><dt>var() float RotationsPerSecond</dt><dd></dd></dl>
+<h3><a name="0.2.2"></a>Bools</h3>
+<dl><dt>var bool bInstant Rotation</dt><dd>//NOTE: Gradual rotation via RotationsPerSecond still used for non-owning net clients to smooth rotation changes</dd><dt>var bool bActive</dt><dd></dd><dt>var() bool bInstantFire</dt><dd>As Noted Above specifies InstantFireState instead of ProjectileFireState for the generic weapon firing code to use.</dd><dt>var() bool bDualIndependantTargeting</dt><dd>// When using a DualFireOffset each shot will be independantly targeted at the crosshair</dd><dt>var bool bShowChargingBar</dt><dd>Bender Style?</dd><dt>var bool bCallInstigatorPostRender</dt><dd>//if Instigator exists, during this actor's native PostRender(), call Instigator&rarr;PostRender() (used when weapon is visible but owner is bHidden)</dd><dt>var     bool    bForceCenterAim</dt><dd>Not Used on The Goliath?</dd><dt>var()   bool    bAimable</dt><dd>Determines whether the weapon can be physically turned by the player (i.e. turret rotation or gun barrel pitch).</dd><dt>var bool bDoOffsetTrace</dt><dd>//trace from outside vehicle's collision back towards weapon to determine firing offset</dd></dl>
+<p>Probably Another Goliathy Type Feature</p>
+<dl><dt>var() bool bAmbientFireSound</dt><dd></dd><dt>var() bool bAmbientAltFireSound</dt><dd></dd><dt>var() bool bInheritVelocity</dt><dd></dd><dt>var bool bIsAltFire</dt><dd></dd><dt>var bool bIsRepeatingFF</dt><dd></dd><dt>var() bool bReflective</dt><dd>Can be reflected by shield gun shield?</dd><dt>var const bool bCorrectAim</dt><dd>// output variable - set natively - means gun can hit what controller is aiming at</dd></dl>
+<h3><a name="0.2.3"></a>Aiming</h3>
+<dl><dt>var() float FireIntervalAimLock</dt><dd>//fraction of FireInterval/AltFireInterval during which you can't move the gun</dd><dt>var float AimLockReleaseTime</dt><dd>//when this time is reached gun can move again</dd><dt>var vector CurrentHitLocation</dt><dd></dd><dt>var float Spread</dt><dd></dd><dt>var float AimTraceRange</dt><dd></dd></dl>
+<h3><a name="0.2.4"></a>Impact/Damage</h3>
+<dl><dt>var vector LastHitLocation</dt><dd></dd><dt>var byte FlashCount</dt><dd></dd><dt>var byte OldFlashCount</dt><dd></dd><dt>var byte HitCount</dt><dd></dd><dt>var byte OldHitCount</dt><dd></dd></dl>
+<h3><a name="0.2.5"></a>Team Skins</h3>
+<dl><dt>var byte Team</dt><dd></dd><dt>var() Material RedSkin</dt><dd></dd><dt>Var() Material BlueSkin</dt><dd></dd></dl>
+<h3><a name="0.2.6"></a>Timing</h3>
+<dl><dt>var() float FireInterval, AltFireInterval</dt><dd></dd><dt>var float FireCountDown</dt><dd></dd></dl>
+<h3><a name="0.2.7"></a>Effects</h3>
+<dl><dt>var() class&lt;Emitter&gt; FlashEmitterClass</dt><dd></dd><dt>var Emitter FlashEmitter</dt><dd></dd><dt>var() class&lt;Emitter&gt; EffectEmitterClass</dt><dd></dd><dt>var Emitter EffectEmitter</dt><dd></dd><dt>var() class&lt;ONSWeaponAmbientEmitter&gt; AmbientEffectEmitterClass</dt><dd></dd><dt>var ONSWeaponAmbientEmitter AmbientEffectEmitter</dt><dd></dd></dl>
+<h3><a name="0.2.8"></a>Sound</h3>
+<dl><dt>var() sound FireSoundClass</dt><dd></dd><dt>var() float FireSoundVolume</dt><dd></dd><dt>var() float FireSoundRadius</dt><dd></dd><dt>var() float FireSoundPitch</dt><dd></dd><dt>var() sound AltFireSoundClass</dt><dd></dd><dt>var() float AltFireSoundVolume</dt><dd></dd><dt>var() float AltFireSoundRadius</dt><dd></dd><dt>var() float AltFireSoundPitch</dt><dd>Why ISN'T this here? :0</dd><dt>var() float AmbientSoundScaling</dt><dd></dd></dl>
+<h3><a name="0.2.9"></a>Force Feedback</h3>
+<dl><dt>var() string FireForce</dt><dd></dd><dt>var() string AltFireForce</dt><dd></dd></dl>
+<h3><a name="0.2.10"></a>Instant Fire Stuff</h3>
+<dl><dt>var class&lt;DamageType&gt; DamageType</dt><dd></dd><dt>var int DamageMin, DamageMax</dt><dd>Instant Hits work by applying damage as RealDamage = DamageMin + Rand(DamageMax-DamageMin)</dd><dt>var float TraceRange</dt><dd></dd><dt>var float Momentum</dt><dd></dd></dl>
+<h3><a name="0.2.11"></a>Projectile Fire Stuff</h3>
+<dl><dt>var() class&lt;Projectile&gt; ProjectileClass</dt><dd></dd><dt>var() class&lt;Projectile&gt; AltFireProjectileClass</dt><dd></dd><dt>var array&lt;Projectile&gt; Projectiles</dt><dd>//ignore these when doing third person aiming trace (only necessary if projectiles fired have bProjTarget==true)</dd></dl>
+<h3><a name="0.2.12"></a>Camera Shakes</h3>
+<dl><dt>var() vector ShakeRotMag</dt><dd>// how far to rot view</dd><dt>var() vector            ShakeRotRate</dt><dd>// how fast to rot view</dd><dt>var() float             ShakeRotTime</dt><dd>// how much time to rot the instigator's view</dd><dt>var() vector            ShakeOffsetMag</dt><dd>// max view offset vertically</dd><dt>var() vector            ShakeOffsetRate</dt><dd>// how fast to offset view vertically</dd><dt>var() float             ShakeOffsetTime</dt><dd>// how much time to offset view</dd></dl>
+<h3><a name="0.2.13"></a>AI</h3>
+<p>ONSWeapon defines the struct <a href="onsweaponaiinfo.html">ONSWeaponAIInfo</a></p>
+<dl><dt>var ONSWeaponAIInfo AIInfo[2]</dt><dd></dd><dt>varFireProperties SavedFireProperties[2]</dt><dd></dd></dl>
+<h3><a name="0.2.14"></a>DEBUGGING</h3>
+<dl><dt>var string DebugInfo</dt><dd></dd></dl>
+<h2><a name="0.3"></a>Replication</h2>
+<p>I am still pretty lost when it comes to replication. An explanation of what this says would be nice though.</p>
+<pre class="uscript"><span class="uscript-keyword">replication</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">reliable</span> <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>bNetDirty <span class="uscript-operator">&amp;&amp;</span> <span class="uscript-operator">!</span>bNetOwner <span class="uscript-operator">&amp;&amp;</span> Role <span class="uscript-operator">==</span> ROLE_Authority<span class="uscript-operator">)</span>
+        CurrentHitLocation<span class="uscript-operator">,</span> FlashCount<span class="uscript-operator">;</span>
+    <span class="uscript-keyword">reliable</span> <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>bNetDirty <span class="uscript-operator">&amp;&amp;</span> Role <span class="uscript-operator">==</span> ROLE_Authority<span class="uscript-operator">)</span>
+        HitCount<span class="uscript-operator">,</span> LastHitLocation<span class="uscript-operator">,</span> bActive<span class="uscript-operator">,</span> bForceCenterAim<span class="uscript-operator">,</span> bCallInstigatorPostRender<span class="uscript-operator">,</span> Team<span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><h2><a name="0.4"></a>Functions</h2>
+<dl><dt>native function int LimitPitch(int Pitch, rotator ForwardRotation, optional int WeaponYaw)</dt><dd></dd><dt>simulated function DisplayDebug(Canvas Canvas, out float YL, out float YPos)</dt><dd>This will draw the state of bActive, bCorrectAim and the DebugInfo String :</dd><dt>simulated function PostBeginPlay()</dt><dd></dd></dl>
+<p class="indent3">Calculate YawConstraintDelta </p>
+<p class="indent3">Setup Drawing of the Charging Bar </p>
+<p class="indent3">Apply Berserk Fire Modifier If APplicable?</p>
+<dl><dt>simulated function PostNetBeginPlay()</dt><dd></dd></dl>
+<p class="indent3">Sets the weapon into a state, either InstantFireMode if bInstantFire == true or ProjectileFireMode</p>
+<p class="indent3">InitEffect </p>
+<p class="indent3">Super()</p>
+<dl><dt>simulated function InitEffects()</dt><dd>Attaches FlashEmitterClass and AmbientEffectEmitterClass to their locations based on WeaponFireAttachmentBone if they are != none</dd><dt>simulated function SetGRI(GameReplicationInfo GRI)</dt><dd></dd><dt>simulated function SetFireRateModifier(float Modifier)</dt><dd></dd><dt>function SpawnHitEffects(actor HitActor, vector HitLocation, vector HitNormal )</dt><dd>EMPTY</dd><dt>simulated event ClientSpawnHitEffects()</dt><dd></dd><dt>simulated function ShakeView()</dt><dd>If the person using our ONSWeapon is a player controller call WeaponShakeView(ShakeRotMag, ShakeRotRate, SHakeRotTime, ShakeOffsetMag, ShakeOffsetRate, ShakeOffsetTime)</dd><dt>simulated function ClientStartFire(Controller C, bool bAltFire)</dt><dd>//ClientStartFire() and ClientStopFire() are only called for the client that owns the weapon (and not at all for bots)</dd></dl>
+<p class="indent2">This is where force feedback is activated and OwnerEffects() is called</p>
+<dl><dt>simulated function ClientStopFire(Controller C, bool bWasAltFire)</dt><dd>Stops Force Feedback and our AmbientEffectEmitter if it exists </dd><dt>simulated function ClientPlayForceFeedback( String EffectName )</dt><dd>Verify It's a Valid PlayerController And Get TO IT</dd><dt>simulated function StopForceFeedback( String EffectName )</dt><dd>Verify It's a Valid PlayerController and Get TO IT</dd><dt>simulated event OwnerEffects()</dt><dd>//do effects (muzzle flash, force feedback, etc) immediately for the weapon's owner (don't wait for replication)</dd><dt>event bool AttemptFire(Controller C, bool bAltFire)</dt><dd>Fire if we can (This means FireCountdown is &lt;= 0) </dd></dl>
+<p class="indent3">If we can fire, we will call Fire() or AltFire()</p>
+<p class="indent3">If we can fire we will set FireCountdown to either FireInterval or AltFireInterval</p>
+<p class="indent3">If we can fire aimlock will be applied</p>
+<p class="indent3">If we can fire, we will return true</p>
+<p class="indent3">Aimlock is implemented here as AimLockReleaseTime = Level.TimeSeconds + FireCountDown*FireIntervalAimLock</p>
+<dl><dt>function rotator AdjustAim(bool bAltFire)</dt><dd>This tells a bot how to line up a shot</dd><dt>function byte BestMode()</dt><dd>//AI: return the best fire mode for the situation</dd><dt>function Fire( Controller C )</dt><dd>This Non-State Version just writes a friendly message to the logs</dd><dt>function AltFire( Controller C )</dt><dd>This Non-State Version just writes a friendly message to the logs</dd><dt>function bool CanAttack(Actor Other)</dt><dd>// return false if out of range, can't see target, etc.</dd><dt>simulated function float MaxRange()</dt><dd>Gives a max distance for bots to use when deciding how to use a weapon.</dd><dt>function Projectile SpawnProjectile(class&lt;Projectile&gt; ProjClass, bool bAltFire)</dt><dd></dd></dl>
+<p class="indent3">First thing this function does is determine the spawn location, this can either be WeaponFireLocation or is computed through a collision trace if bDoOffsetTrace == true</p>
+<p class="indent3">Next the projectile is spawned, if bInheritVelocity == true then the Projectile.Velocity = Instigator.Velocity</p>
+<p class="indent3">Firing Noises are played using FireClass/AltFireClass and FireSoundRadius/AltFireSoundRadius</p>
+<p class="indent3">As i look at the code here, i notice that AltFireSoundVolume is not used here but rather FireSoundVolume/255.0 is used in both the primary and secondary firing modes.</p>
+<p class="indent3">The projectile that was spawned is returned</p>
+<dl><dt>function CeaseFire(Controller C)</dt><dd>Stops ambient sounds being played and resets Flash/Hit Count</dd><dt>simulated event FlashMuzzleFlash()</dt><dd></dd><dt>simulated function Destroyed()</dt><dd>Cleans up Effects (DestroyEffects()) and calls SUper()</dd><dt>simulated function DestroyEffects()</dt><dd></dd><dt>simulated function SetTeam( byte T )</dt><dd>Sets the current Skin to the proper teams skin</dd><dt>simulated function SimulateTraceFire( out vector Start, out Rotator Dir, out vector HitLocation, out vector HitNormal )</dt><dd>Client Side Trace, does NOT apply damage, Does predict hit locations</dd><dt>function TraceFire( Vector Start, rotator dir )</dt><dd>Does a trace and applies damage</dd><dt>function SpawnBeamEffect(Vector Start, Rotator Dir, Vector HitLocation, Vector HitNormal, int ReflectNum)</dt><dd>EMPTY</dd><dt>simulated function CalcWeaponFire()</dt><dd>Calculates the exact spot the weapon is firing From based on rotation/coords/bDualIndependentTargeting</dd><dt>simulated function float ChargeBar()</dt><dd></dd><dt>static function StaticPrecache( LevelInfo L )</dt><dd></dd></dl>
+<h2><a name="0.5"></a>States</h2>
+<h3><a name="0.5.1"></a>InstantFireMode</h3>
+<dl><dt>function Fire(Controller C)</dt><dd>Apply Some Effects and Call TraceFire to do damage</dd><dt>function AltFire(Controller C)</dt><dd>EMPTY</dd><dt>simulated event ClientSpawnHitEffects()</dt><dd>Determines the Hit Location and Calls SpawnHitEffects()</dd><dt>simulated function SpawnHitEffects( actor HitActor, vector HitLocation, vector HitNormal )</dt><dd>Actually spawns hit effects on a client</dd></dl>
+<h3><a name="0.5.2"></a>ProjectileFireMode</h3>
+<dl><dt>function Fire(Controller C)</dt><dd><pre class="uscript">SpawnProjectile<span class="uscript-operator">(</span>ProjectileClass<span class="uscript-operator">,</span> <span class="uscript-keyword">false</span><span class="uscript-operator">)</span></pre></dd><dt>function AltFire( Controller C )</dt><dd><pre class="uscript"> <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>AltFireProjectileClass <span class="uscript-operator">==</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span>
+            Fire<span class="uscript-operator">(</span>C<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-keyword">else</span>
+            SpawnProjectile<span class="uscript-operator">(</span>AltFireProjectileClass<span class="uscript-operator">,</span> <span class="uscript-keyword">True</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre></dd></dl>
+<h2><a name="0.6"></a>Default Properties</h2>
+<pre class="uscript"><span class="uscript-keyword">defaultproperties</span>
+<span class="uscript-operator">{</span>
+     YawEndConstraint<span class="uscript-operator">=</span><span class="uscript-number">65535.000000</span>
+     PitchUpLimit<span class="uscript-operator">=</span><span class="uscript-number">5000</span>
+     PitchDownLimit<span class="uscript-operator">=</span><span class="uscript-number">60000</span>
+     RotationsPerSecond<span class="uscript-operator">=</span><span class="uscript-number">0.750000</span>
+     bAimable<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     bCorrectAim<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     FireInterval<span class="uscript-operator">=</span><span class="uscript-number">0.500000</span>
+     FireSoundVolume<span class="uscript-operator">=</span><span class="uscript-number">160.000000</span>
+     FireSoundRadius<span class="uscript-operator">=</span><span class="uscript-number">300.000000</span>
+     FireSoundPitch<span class="uscript-operator">=</span><span class="uscript-number">1.000000</span>
+     AltFireSoundVolume<span class="uscript-operator">=</span><span class="uscript-number">160.000000</span>
+     AltFireSoundRadius<span class="uscript-operator">=</span><span class="uscript-number">300.000000</span>
+     AmbientSoundScaling<span class="uscript-operator">=</span><span class="uscript-number">1.000000</span>
+     DamageType<span class="uscript-operator">=</span>XWeapons<span class="uscript-operator">.</span>DamTypeMinigunBullet
+     DamageMin<span class="uscript-operator">=</span><span class="uscript-number">6</span>
+     DamageMax<span class="uscript-operator">=</span><span class="uscript-number">6</span>
+     TraceRange<span class="uscript-operator">=</span><span class="uscript-number">10000.000000</span>
+     Momentum<span class="uscript-operator">=</span><span class="uscript-number">1.000000</span>
+     AIInfo<span class="uscript-operator">(</span><span class="uscript-number">0</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span><span class="uscript-operator">(</span>aimerror<span class="uscript-operator">=</span><span class="uscript-number">600.000000</span><span class="uscript-operator">,</span>RefireRate<span class="uscript-operator">=</span><span class="uscript-number">0.900000</span><span class="uscript-operator">)</span>
+     AIInfo<span class="uscript-operator">(</span><span class="uscript-number">1</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span><span class="uscript-operator">(</span>aimerror<span class="uscript-operator">=</span><span class="uscript-number">600.000000</span><span class="uscript-operator">,</span>RefireRate<span class="uscript-operator">=</span><span class="uscript-number">0.900000</span><span class="uscript-operator">)</span>
+     DrawType<span class="uscript-operator">=</span>DT_Mesh
+     bIgnoreEncroachers<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     bReplicateInstigator<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     RemoteRole<span class="uscript-operator">=</span>ROLE_SimulatedProxy
+     NetUpdateFrequency<span class="uscript-operator">=</span><span class="uscript-number">5.000000</span>
+     SoundVolume<span class="uscript-operator">=</span><span class="uscript-number">255</span>
+     SoundRadius<span class="uscript-operator">=</span><span class="uscript-number">100.000000</span>
+     bBlockZeroExtentTraces<span class="uscript-operator">=</span><span class="uscript-keyword">False</span>
+     bBlockNonZeroExtentTraces<span class="uscript-operator">=</span><span class="uscript-keyword">False</span>
+     bNoRepMesh<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+<span class="uscript-operator">}</span></pre><hr class="thin"><p><a href="category-class-ut2004.html">Category Class (UT2004)</a></p>
+<script type="text/javascript"><!--
+ menuItemAdd("Summary", "#0.1");
+menuItemAdd("Properties", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Weapon Bone Rotation System", "#0.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Bools", "#0.2.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Aiming", "#0.2.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Impact/Damage", "#0.2.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Team Skins", "#0.2.5");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Timing", "#0.2.6");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Effects", "#0.2.7");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Sound", "#0.2.8");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Force Feedback", "#0.2.9");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Instant Fire Stuff", "#0.2.10");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Projectile Fire Stuff", "#0.2.11");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Camera Shakes", "#0.2.12");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>AI", "#0.2.13");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>DEBUGGING", "#0.2.14");
+menuItemAdd("Replication", "#0.3");
+menuItemAdd("Functions", "#0.4");
+menuItemAdd("States", "#0.5");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>InstantFireMode", "#0.5.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>ProjectileFireMode", "#0.5.2");
+menuItemAdd("Default Properties", "#0.6");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSWeapon">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=ONSWeapon">View other revisions</a><br>Last edited August 23, 2005 13:13 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=ONSWeapon">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/ONSWeapon">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>Mostly Harmless
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

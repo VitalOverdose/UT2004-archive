@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Adding Alpha Channel To TGA Files</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Adding_Alpha_Channel_To_TGA_Files; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Adding Alpha Channel To TGA Files">Adding Alpha Channel To TGA Files</a></h1>
+	<div class="wiki"><h2><a name="0.1"></a>About the .TGA file format</h2>
+<ul><li>It is designed for high quality, 24-bit colour graphics.</li>
+<li>Unlike .JPGs, the file is not compressed.</li>
+<li>TGAs support greyscale transparency, and so store the mask within the .TGA.</li>
+<li>When you mask a pixel, the brighter the colour you mask with (remember, greyscale means from black to white), the more opague that part of the image is (opaque means that you can't see through it), and vice-versa.</li>
+<li>Therefore a pixel with a grey (halfway in the greyscale, 50% white and 50% black) colour is half as translucent as a white pixel; you will see 50% of what is behind the texture, and 50% of the texture itself.</li>
+<li>The transparency of a pixel does not affect the colour of the pixel.</li>
+</ul>
+<h2><a name="0.2"></a>How To</h2>
+<h3><a name="0.2.1"></a>Paint Shop Pro</h3>
+<ul><li>Load your image that you wish to make transparent.</li>
+<li>In the menu, click on 'Selections&rarr;Select All', and press CTRL-C to copy the image to the clipboard.</li>
+<li>Press CTRL-V to paste it as a new image (you will be working on the cloned image first).</li>
+<li>Pick a selection tool (the 'Wand' is normally a good choice) and click on the area you want to add transparency to.<ul><li>If you have multiple areas of the same image you wish to make transparent, hold down the shift key while clicking on the image.</li>
+</ul>
+</li>
+<li>Whatever you <em class="em1">do</em> want transparent will be selected.  Take your floodfill tool and select a dark colour (the darker the colour, the more transparent the pixel will be).<ul><li>Floodfill within the selected areas.</li>
+</ul>
+</li>
+<li>In the menu, click on 'Selections&rarr;Invert' - this will invert your selection.</li>
+<li>Whatever you <em class="em1">do not</em> want transparent will be selected.  Take your floodfill tool and select a light colour (the lighter the colour, the less transparent the pixel will be).<ul><li>Floodfill within the selected areas.</li>
+</ul>
+</li>
+<li>In the menu, click on 'Layers&rarr;Load/Save Mask&rarr;Save Mask to Disk'.  Type in a File Name and hit Save.</li>
+<li>In the menu, click on 'Selections&rarr;Select None' to deselect everything.</li>
+<li>Reopen your original texture.</li>
+<li>In the menu, click on 'Selections&rarr;Select All'.</li>
+<li>In the menu, click on 'Layers&rarr;Load/Save Mask&rarr;Load Mask from Disk'and look in the menu bar at the top of screen for Mask.  Select Mask&rarr;New&rarr;From Image.  In this dialogue box, for the source window, the pulldown box, 'blank' and select your masked texture's filename, and press ok.</li>
+</ul>
+<p>Now you should see the masking in effect; just two more steps left to do.</p>
+<p>Select Masks&rarr;Save to Alpha channel from the menu.  Just agree with the next two windows (hit 'OK'), and save your new masked image.  Ensure you choose .TGA file format (it will be listed as Truevision TARGA (.TGA)).</p>
+<hr class="thin"><p><em class="em2">Violator:</em> I've found a slightly quicker method of editing the mask texture using PSP 5 (saves having to select multiple areas with the Wand). Working with the image copy -</p>
+<ul><li>Select the Flood Fill tool.</li>
+<li>Set the Tolerance to something high (64 works well)</li>
+<li>Set the flood colour to pure white.</li>
+<li>On the cloned image, fill in the areas you DON'T want to be masked. They should fill to pure white (if some bits remain around the edges, up the tolerance setting).</li>
+<li>Set the flood colour to pure black</li>
+<li>Fill in the areas you DO want to be masked. They should fill to pure black.</li>
+</ul>
+<h3><a name="0.2.2"></a>Adobe Photoshop</h3>
+<p>OK doing this in Photoshop is very simple. Using the various laso tools, magic wand or pen tool select the areas that you wish to be opaque.</p>
+<p>If you dont already know how great the pen tool can be for making your selections try this : <a href="http://www.gurusnetwork.com/tutorials/photoshop/pen1intro.html">http://www.gurusnetwork.com/tutorials/photoshop/pen1intro.html</a></p>
+<p>Anyway after you made your slection go to the chanels tab (next where the layers tab is usualy). In the bottom right of the photoshop workspace click on the Channels tab (In the window with Layers by default). Find the small button at the bottom of this window that looks like a square with a circle inside. Click this to create the alpha channel. A chanel named Alpha1 should apear. Now check if what you want to be visible is WHITE. If it's the oposite click on the Alpha1 channel (should be under the blue)deselect (Ctrl+D) and invert (Ctrl+I). Save your file as targa, verify that the alpha checkbox is checked, and finally make sure you choose 32 bit in the popup after you save.</p>
+<ul><li>Note that in PS 7.0 there is a bug that makes it imposible to save alphas in Targas. To fix this either update to 7.01 or download a small fix for the adobe web site.</li>
+</ul>
+<p><a href="http://www.adobe.com/support/downloads/detail.jsp?ftpID=1544">http://www.adobe.com/support/downloads/detail.jsp?ftpID=1544</a></p>
+<p>Make sure you follow the instructions given there.</p>
+<hr class="thin"><p><em class="em2">DJPaul:</em> Did some more work on this.  Fell through when I released the Beta 8 of PSP menu-wise is much different from PSP7, so i'm stuck.  Plus my art sk1lls about suitable for MS Paint.  I will try find someone who knows to finish it.</p>
+<p><em class="em2">Foxpaw:</em> Is there a way to make a add a mask to a texture within UnrealEd? IE Set a texture as the alpha mask for another material?</p>
+<p><em class="em2">Wormbo:</em> I'm sure this is possible through extensive use of texture modifiers, e.g. you can use a <a href="combiner.html">Combiner</a> to combine the colors of one texture with the alpha map of a different texture. With a <a href="finalblend.html">FinalBlend</a> modifier you can create an alpha channel based on a texture's brightness (like the render style STY_Translucent in <a href="unreal-tournament.html">UT</a>) and use it in a Combiner to combine texture 1 and alpha channel of that FinalBlend. In both cases you have to apply another FinalBlend to the Combiner to make it actually use its alpha channel.</p>
+<p><em class="em2">Foxpaw:</em> I haven't been successful in using the finalblend to make an alpha channel like that, but that is basically what I was aiming for.. can you explain the process in greater detail, or maybe make a tutorial page on how to do it?</p>
+<p><em class="em2">LegalAssassin:</em> If you want an anti-aliased edge in PS you might experience (Geforce 2 GTS at least) that at distances this edge will turn white (!) in UEd. This is because of the the alpha color being white in PS. This looks bad when making, for instance, leaves on a branch. To fix this I use PSP 7 and open a .psd-version of the texture with the transparency as you want it. Now, make a new background layer, fill it with a more appropriate color (for leaves, some green would be nice) and save it as a .tga in PSP. The AA'd edge should now look good.</p>
+<p>I'm sure there's a better way, but I'm learning PS by trial-and-error.</p>
+<hr class="thin"><p><a href="category-to-do.html">Category To Do</a></p>
+<script type="text/javascript"><!--
+ menuItemAdd("About the .TGA file format", "#0.1");
+menuItemAdd("How To", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Paint Shop Pro", "#0.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Adobe Photoshop", "#0.2.2");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Adding_Alpha_Channel_To_TGA_Files">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Adding_Alpha_Channel_To_TGA_Files">View other revisions</a><br>Last edited May 8, 2004 20:29 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Adding_Alpha_Channel_To_TGA_Files">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Adding_Alpha_Channel_To_TGA_Files">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>Mostly Harmless
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

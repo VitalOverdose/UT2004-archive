@@ -1,0 +1,37 @@
+
+
+ Unreal skeletal exporter for 3ds Max - Model information for [D.psk] 
+
+ Skin faces:   2052
+ Skin vertices:   3008
+ Skin wedges (vertices with unique U,V):   4906
+ Total bone-to-vertex linkups:   3008
+ Reference bones:     15
+ Unique materials:      1
+
+ = materials =
+ * Index: [ 0]  name: M  
+   Original bitmap: Target_Arnold_diffuse_albedo_New_VWM_Packd_TGA.tga  Path: F:\Projects\UT2004_2026\DropShip\My_New_Model_2026\fuckup\Final\New Chamfers\Stable\Better_Pivot
+    - Skin Index:  0
+   - render mode flags:
+ 
+
+ BONE LIST        [15] total bones in reference skeleton. 
+  number     name                           (parent) 
+  [  0 ]    [root                           ]      (  0 ) 
+  [  1 ]    [bn_Left_Back_Engine            ]      (  0 ) 
+  [  2 ]    [bn_Right_Back_Engine           ]      (  0 ) 
+  [  3 ]    [Front_Cabin                    ]      (  0 ) 
+  [  4 ]    [bn_Middle_Front_Weapon         ]      (  0 ) 
+  [  5 ]    [bn_Right_Back_Thruster         ]      (  0 ) 
+  [  6 ]    [bn_Right_Front_Thruster        ]      (  0 ) 
+  [  7 ]    [bn_Left_Front_thruster         ]      (  0 ) 
+  [  8 ]    [bn_Left_Back_Thruster          ]      (  0 ) 
+  [  9 ]    [bn_Right_Miiddle_Weapon        ]      (  0 ) 
+  [ 10 ]    [bn_Right_Front_weapon          ]      (  0 ) 
+  [ 11 ]    [bn_Right_Back_Weapon           ]      (  0 ) 
+  [ 12 ]    [bn_Left_middle_weapon          ]      (  0 ) 
+  [ 13 ]    [bn_Left_Front_Weapon           ]      (  0 ) 
+  [ 14 ]    [bn_left_Back_Weapon            ]      (  0 ) 
+ 
+

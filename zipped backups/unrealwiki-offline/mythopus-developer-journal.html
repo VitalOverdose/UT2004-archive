@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: MythOpus/Developer Journal</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=MythOpus/Developer_Journal; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="mythopus.html">MythOpus</a>/<a href="http://wiki.beyondunreal.com/wiki?back=MythOpus/Developer+Journal">Developer Journal</a></h1>
+	<div class="wiki"><div class="classpath">Welcome To MythOpus' Developer Journal<br></div>
+<hr class="thin"><h2><a name="0.1"></a>General Progress (New Updates First)</h2>
+<div class="classpath">August 26th, 2004<br></div>
+<p>Okay.  New Journal: <a href="http://www.mythopus-developerjournal.blogspot.com/">[HERE]</a></p>
+<p>I will be updating my progress in there from now on.</p>
+<div class="classpath">August 24th, 2004<br></div>
+<p>LoL!  I knew this was going to happen.  I didn't get to far with my Lag Simulation idea.  Not very far at all.  But that's okay.  Why do you ask?  Because last night before I went to bed, I had a dream.  I'll share that dream with you right now.  A Virtual World.  That is my dream.  To create a cool virtual world game... a Massive Multi-Player Online Game if you will... but not -exactly-.  The only one's I've seen are the role-playing ones or fleet building ship combat etc ones.  That isn't exactly my dream.  I don't care much for those ones... and plus they're usually not free. (Which is really too bad)But.. ANYWAYS...  My 'Virtual World' (the only name I have for it, ATM)  will be based on the Unreal Engine.  I figure there a hundreds of servers that are for the most part, operational, so an ever changing world probably won't be that difficult... aside from lots of resources being used and need of fast connections, which usually isn't a problem anymore.  But... the concept... An ever changing (as long as the server is on) world featuring... well.  It'll have the basics of an ever changing world...  NPC's, Season's changing... etc.  As well as a few things I've thoguht up.  First and the best... is Ever changing 'buiding' designs.  This world will based in the future, and so... all this technology is available.  For example... buildings that change overtime.  In the real world... older buildings are constantly being torn down to make room for newer buildings etc.  While that is not entirely possible because if a structure is made with BSP, there's nothing you can do to change it in RealTime.  However, static meshe's are highly changeable.  And so... in my mod, if you want a building to change overtime and reconstruct itself (so to speak) You must make a SIMPLE bsp 'skeleton'.  This skeleton can include the Inside of a building if you wish, or just the outside if you're making a building to make the world appear to be everchanging.  Then, you would place 'Construction Points'  in places where you need a static mesh.  These 'Construction Point's have these configurable options.</p>
+<ol><li>A Max of <em class="em2">four</em> meshes.  (Will most likely change)<ol><li>the Initial Mesh</li>
+<li>The First Mesh</li>
+<li>The Second Mesh</li>
+<li>The Third Mesh</li>
+</ol>
+</li>
+</ol>
+<p>Each mesh also has a DrawScale, DrawScale3D, and a Rotation that is set to each mesh.</p>
+<p>I'm not going to explain how it will all work.  As time goes by, the first mesh will be set, then later, the second and etc...  With setting the meshes comes setting the appropriate DrawScale and Rotation settings.  I have nearly completed this part of the mod.  All I need to do is add a configurable rotation and make a few other things and Real-Time buildings is done.  Making a realtime building would take A LOT of patience... but the more work you put into it... the more realistic it will be in the end <img alt=";)" src="emoticons/wink.gif" align="middle">  That is the only feature I've fleshed out lastnight but I AM working on getting all the other ideas together and fleshing them out.  On thing on my mind is the ability to have gambling <img alt=":)" src="emoticons/smile.gif" align="middle">  There might be a credit system too.  But who knows.  I've got loads of work ahead of me.  The thing that makes this stand out among all my other Failed projects though is this.  It is now my goal.  I set a goal to finish Team Invasion last school year.  I set that sometime around the middle/end of it and I finished it.  My goal to reach before the end of THIS school year is to finish at least half of this mod.  This means... I <em class="em2">WILL</em> get the majority of it done.  Yay!.</p>
+<p>P.S.  I'm going to make a Blogger Developer Journal soon so I will move away from using the wiki as a Dev.  Journal Location.  No more waste of space on the wiki's Database.  w00t!.</p>
+<pre class="paraverbatim"> </pre><div class="classpath">August 22nd, 2004<br></div>
+<p>I'm halted progress on Classic Domination.  Mostly due to the fact that I don't have the drive to custom code Domination Points and I can't use the xDomPoint due to the fact that it was coded for the purposes of xDoubleDom.  Something I cannot, as it would seem, bypass or use to my advantage.  But a long time ago.. well not too long... I had an idea for a neat mutator.  This mutator probably won't be of any use to playing the actual game, but might be a fun thing to have for the 'Fun Servers' that seem to pop up everywhere I go.  (Unless there are no fun servers anymore.  I haven't actually played any UT for the longest of time. )  But, back to the mutator... this mutator will simulate Lag.  w00t!  Now, I might first of only simulate lag for players or weapons fire... but eventually (if first test go well) I will implement lag for both pawns and weapons.</p>
+<p>Here's my proposed way of doing it.  Simple really...  There will be two config variables for each player.  So... on most servers... with 16 max players, 32 variables in total.  Both variables will randomly and repeatedly save the player/weapon's location to a config file.  Then, randomly (to simulate lag even further :O), the first variable will be called upon to set the players/weapons fire 's location to itself.  Then, the second variable will set the location and the whol process will repeat itself.  Save... Save... Revert, Revert... all randomly of course so that it won't repeat the same process over and over again (ex- about to fall off a cliff, falling off a cliff | Oh look!  I'm about to fall off the same cliff AGAIN, oh and Here I go falling off it AGAIN!| Repeating.. etc..) No code yet... but of course I will start almost immediately.</p>
+<p>I'm also working on trying to get a custom Javascript clock to work.  When a person loads my site, the timer will start in the footer so they can see how long they've been on it.  Then after an hour or 2, an alert will pop-up saying they've been on for an x amount of time and ask them if they want to close the page or stay on the page.  Ya.  That's all. </p>
+<div class="classpath">August 5th, 2004<br></div>
+<p><em class="em2">Wow</em> Okay so.  An update.  After I completed Team Invasion (fileplanet has still not updated the damn zip file so go to my site link on my wiki page &ndash;&gt; <a href="mythopus.html">MythOpus</a>)  I learned a lot of stuff.  I wanted to put this new stuff to use.  So I started to develop a mod called Combat: Next Evolution.  The idea was a fps/strat game.  Player had to aquire resource nodes to get resources and they would use those resources to get better guns armor etc.  I got frustrated when I hit a rather big block in it though... but then I got a new idea.  Using the resource system I had, I could make a Domination gametype just like the orginal UT.  I rather hate Double Domination and hate the fact that they don't have the original in UT2k4.  There are probably a dozen new Classic Domination gametypes out there now.  I can't say mine will be any better... however it will be my take on how Domination should be played.  The basics:  players play on teams to capture Domination Points.  These Points will give there team a set amount of points per second (points are defined by mapper per each Domination Point).  Instead of having a max of 3 or 4 domination points.  There will be no max.  This will allow mappers to make HUGE Domination levels outside or in with as many Domination points as he/she deems necessary.  Vehicles will be available also for those extra HUGE maps <img alt=":)" src="emoticons/smile.gif" align="middle">  I'm not too sure how I'm going to go about the HUD concept.  I'm thinking the HUD will show how many points each team currently has and the hud will show which points belong to which team at the current point in the game.  I think I might borrow the ONS map idea for the esc menu because I don't want players to be annoyed with Flashing 'This Is A Domination Point' symbols like all GameObjectives have.  That really annoys me &gt;&lt;.  On the map, the Domination Point name and controlling team will be visible.  I have the basic domination gameplay done.  Bots don't work too well though.  They pick one point to go after and they stay there and not go after another domination point.  Rather annoying.  But anyways... Team Invasion I think should be out of beta... but it still is in beta.  Go to the link on my user page (<a href="mythopus.html">MythOpus</a>) And click on downloads &ndash;&gt;  Team Invasion.  The version on my site is the CORRECT version with no known bugs and works rather flawlessly (according to me).  If you find Team Invasion somewhere like Fileplanet or Downloads.net it is probably the wrong version.  Sigh.. Bye though.</p>
+<hr class="thin"><p><a href="category-journal.html">Category Journal</a></p>
+<script type="text/javascript"><!--
+ menuItemAdd("General Progress (New Updates First)", "#0.1");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="mythopus.html">MythOpus</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=MythOpus/Developer_Journal">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=MythOpus/Developer_Journal">View other revisions</a><br>Last edited August 26, 2004 20:21 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=MythOpus/Developer_Journal">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/MythOpus/Developer_Journal">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>I'm a doctor, not a mechanic
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

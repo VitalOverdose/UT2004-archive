@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: MinigunAttachment</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=MinigunAttachment; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=MinigunAttachment">MinigunAttachment</a></h1>
+	<div class="wiki"><p><em class="em3">UT2003, Build 2225</em></p>
+<pre class="uscript"><span class="uscript-keyword">class</span> MinigunAttachment <span class="uscript-keyword">extends</span> xWeaponAttachment<span class="uscript-operator">;</span> <span class="uscript-comment">//Says the attachment is a weapon attachment</span>
+
+<span class="uscript-keyword">var</span> <span class="uscript-keyword">class</span><span class="uscript-operator">&lt;</span>MinigunMuzFlash3rd<span class="uscript-operator">&gt;</span>     mMuzFlashClass<span class="uscript-operator">;</span> <span class="uscript-comment">//Muzzle flash for the primary fire</span>
+<span class="uscript-keyword">var</span> <span class="uscript-keyword">class</span><span class="uscript-operator">&lt;</span>MinigunMuzAltFlash3rd<span class="uscript-operator">&gt;</span>  mMuzAltFlashClass<span class="uscript-operator">;</span> <span class="uscript-comment">//Muzzle flash for the secondary fire</span>
+<span class="uscript-keyword">var</span> xEmitter            mMuzFlash3rd<span class="uscript-operator">;</span> <span class="uscript-comment">//The emitter variable</span>
+
+<span class="uscript-keyword">var</span> <span class="uscript-keyword">class</span><span class="uscript-operator">&lt;</span>xEmitter<span class="uscript-operator">&gt;</span>     mTracerClass<span class="uscript-operator">;</span> <span class="uscript-comment">//Class of the tracer emitter</span>
+<span class="uscript-keyword">var</span> xEmitter            mTracer<span class="uscript-operator">;</span> <span class="uscript-comment">//The Tracer emitter itself</span>
+<span class="uscript-keyword">var</span> <span class="uscript-type">float</span>               mTracerFreq<span class="uscript-operator">;</span> <span class="uscript-operator">/</span>The frequency of tracers
+<span class="uscript-keyword">var</span> <span class="uscript-type">float</span>               mTracerLen<span class="uscript-operator">;</span>
+<span class="uscript-keyword">var</span> <span class="uscript-type">float</span>               mLastTracerTime<span class="uscript-operator">;</span>
+<span class="uscript-keyword">var</span> <span class="uscript-type">bool</span>                mbGotHit<span class="uscript-operator">;</span>
+<span class="uscript-keyword">var</span> <span class="uscript-type">byte</span> OldSpawnHitCount<span class="uscript-operator">;</span>
+<span class="uscript-keyword">var</span> vector              mTracerLoc<span class="uscript-operator">;</span> <span class="uscript-comment">//Where the tracer hits</span>
+<span class="uscript-keyword">var</span> rotator             mHitRot<span class="uscript-operator">;</span> 
+<span class="uscript-keyword">var</span> <span class="uscript-type">float</span>               mTracerUpdateTime<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">var</span> <span class="uscript-type">float</span>               mCurrentRoll<span class="uscript-operator">;</span>
+<span class="uscript-keyword">var</span> <span class="uscript-type">float</span>               mRollInc<span class="uscript-operator">;</span>
+<span class="uscript-keyword">var</span> <span class="uscript-type">float</span>               mRollUpdateTime<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">var</span> <span class="uscript-keyword">class</span><span class="uscript-operator">&lt;</span>xEmitter<span class="uscript-operator">&gt;</span>     mShellCaseEmitterClass<span class="uscript-operator">;</span>
+<span class="uscript-keyword">var</span> xEmitter            mShellCaseEmitter<span class="uscript-operator">;</span>
+<span class="uscript-keyword">var</span><span class="uscript-operator">(</span><span class="uscript-operator">)</span> vector            mShellEmitterOffset<span class="uscript-operator">;</span>
+
+
+<span class="uscript-keyword">function</span> Destroyed<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mTracer <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span>
+        mTracer<span class="uscript-operator">.</span>Destroy<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mMuzFlash3rd <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span>
+        mMuzFlash3rd<span class="uscript-operator">.</span>Destroy<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mShellCaseEmitter <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span>
+        mShellCaseEmitter<span class="uscript-operator">.</span>Destroy<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">Super</span><span class="uscript-operator">.</span>Destroyed<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">simulated</span> <span class="uscript-keyword">function</span> UpdateRoll<span class="uscript-operator">(</span><span class="uscript-type">float</span> dt<span class="uscript-operator">)</span> <span class="uscript-comment">//Updated the roll for the flash emitter attachment</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> rotator r<span class="uscript-operator">;</span>
+
+    UpdateRollTime<span class="uscript-operator">(</span><span class="uscript-keyword">false</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mRollInc <span class="uscript-operator">&lt;=</span> <span class="uscript-number">0</span><span class="uscript-operator">.</span>f<span class="uscript-operator">)</span>
+        <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+
+    mCurrentRoll <span class="uscript-operator">+=</span> dt<span class="uscript-operator">*</span>mRollInc<span class="uscript-operator">;</span>
+    mCurrentRoll <span class="uscript-operator">=</span> mCurrentRoll <span class="uscript-operator">%</span> <span class="uscript-number">65536</span><span class="uscript-operator">.</span>f<span class="uscript-operator">;</span>
+    r<span class="uscript-operator">.</span>Roll <span class="uscript-operator">=</span> <span class="uscript-type">int</span><span class="uscript-operator">(</span>mCurrentRoll<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    SetBoneRotation<span class="uscript-operator">(</span><span class="uscript-name">'Bone Barrels'</span><span class="uscript-operator">,</span> r<span class="uscript-operator">,</span> <span class="uscript-number">0</span><span class="uscript-operator">,</span> <span class="uscript-number">1</span><span class="uscript-operator">.</span>f<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">simulated</span> <span class="uscript-keyword">function</span> UpdateRollTime<span class="uscript-operator">(</span><span class="uscript-type">bool</span> bUpdate<span class="uscript-operator">)</span> 
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> <span class="uscript-type">float</span> diff<span class="uscript-operator">;</span>
+
+    diff <span class="uscript-operator">=</span> Level<span class="uscript-operator">.</span>TimeSeconds <span class="uscript-operator">-</span> mRollUpdateTime<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>bUpdate<span class="uscript-operator">)</span>
+        mRollUpdateTime <span class="uscript-operator">=</span> Level<span class="uscript-operator">.</span>TimeSeconds<span class="uscript-operator">;</span>
+
+    <span class="uscript-comment">// TODO: clean up!</span>
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>diff <span class="uscript-operator">&gt;</span> <span class="uscript-number">0.2</span><span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        mbGotHit <span class="uscript-operator">=</span> <span class="uscript-keyword">false</span><span class="uscript-operator">;</span>
+        mRollInc <span class="uscript-operator">=</span> <span class="uscript-number">0</span><span class="uscript-operator">.</span>f<span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">simulated</span> <span class="uscript-keyword">function</span> vector GetTracerStart<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-comment">//Starts the tracer code</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> Pawn p<span class="uscript-operator">;</span>
+
+    p <span class="uscript-operator">=</span> Pawn<span class="uscript-operator">(</span>Owner<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> <span class="uscript-operator">(</span>p <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span> <span class="uscript-operator">&amp;&amp;</span> p<span class="uscript-operator">.</span>IsFirstPerson<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-operator">&amp;&amp;</span> p<span class="uscript-operator">.</span>Weapon <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        <span class="uscript-comment">// 1st person</span>
+        <span class="uscript-keyword">return</span> p<span class="uscript-operator">.</span>Weapon<span class="uscript-operator">.</span>GetEffectStart<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+
+    <span class="uscript-comment">// 3rd person</span>
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> mMuzFlash3rd <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span> <span class="uscript-operator">)</span>
+        <span class="uscript-keyword">return</span> mMuzFlash3rd<span class="uscript-operator">.</span>Location<span class="uscript-operator">;</span>
+    <span class="uscript-keyword">else</span>
+        <span class="uscript-keyword">return</span> Location<span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">simulated</span> <span class="uscript-keyword">function</span> UpdateTracer<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-comment">//Updates the position for the tracer emitter</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> <span class="uscript-type">float</span> len<span class="uscript-operator">;</span>
+    <span class="uscript-keyword">local</span> <span class="uscript-type">float</span> invSpeed<span class="uscript-operator">,</span> hitDist<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>Level<span class="uscript-operator">.</span>NetMode <span class="uscript-operator">==</span> NM_DedicatedServer<span class="uscript-operator">)</span>
+        <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mTracer <span class="uscript-operator">==</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        mTracer <span class="uscript-operator">=</span> Spawn<span class="uscript-operator">(</span>mTracerClass<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        AttachToBone<span class="uscript-operator">(</span>mTracer<span class="uscript-operator">,</span> <span class="uscript-name">'tip'</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> Level<span class="uscript-operator">.</span>bDropDetail <span class="uscript-operator">||</span> Level<span class="uscript-operator">.</span>DetailMode <span class="uscript-operator">==</span> DM_Low <span class="uscript-operator">)</span>
+        mTracerFreq <span class="uscript-operator">=</span> <span class="uscript-number">2</span> <span class="uscript-operator">*</span> <span class="uscript-keyword">Default</span><span class="uscript-operator">.</span>mTracerFreq<span class="uscript-operator">;</span>
+    <span class="uscript-keyword">else</span>
+        mTracerFreq <span class="uscript-operator">=</span> <span class="uscript-keyword">Default</span><span class="uscript-operator">.</span>mTracerFreq<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mTracer <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span> <span class="uscript-operator">&amp;&amp;</span> mbGotHit <span class="uscript-operator">&amp;&amp;</span> 
+        Level<span class="uscript-operator">.</span>TimeSeconds <span class="uscript-operator">&gt;</span> mLastTracerTime <span class="uscript-operator">+</span> mTracerFreq<span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        mTracer<span class="uscript-operator">.</span>SetLocation<span class="uscript-operator">(</span>mTracerLoc<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        mTracer<span class="uscript-operator">.</span>SetRotation<span class="uscript-operator">(</span>mHitRot<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+        hitDist <span class="uscript-operator">=</span> VSize<span class="uscript-operator">(</span>mHitLocation <span class="uscript-operator">-</span> mTracerLoc<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+        len <span class="uscript-operator">=</span> mTracerLen <span class="uscript-operator">*</span> hitDist<span class="uscript-operator">;</span>
+        invSpeed <span class="uscript-operator">=</span> <span class="uscript-number">1</span><span class="uscript-operator">.</span>f <span class="uscript-operator">/</span> mTracer<span class="uscript-operator">.</span>mSpeedRange<span class="uscript-operator">[</span><span class="uscript-number">1</span><span class="uscript-operator">]</span><span class="uscript-operator">;</span>
+
+        mTracer<span class="uscript-operator">.</span>mLifeRange<span class="uscript-operator">[</span><span class="uscript-number">0</span><span class="uscript-operator">]</span> <span class="uscript-operator">=</span> len <span class="uscript-operator">*</span> invSpeed<span class="uscript-operator">;</span>
+        mTracer<span class="uscript-operator">.</span>mLifeRange<span class="uscript-operator">[</span><span class="uscript-number">1</span><span class="uscript-operator">]</span> <span class="uscript-operator">=</span> mTracer<span class="uscript-operator">.</span>mLifeRange<span class="uscript-operator">[</span><span class="uscript-number">0</span><span class="uscript-operator">]</span><span class="uscript-operator">;</span>
+        mTracer<span class="uscript-operator">.</span>mSpawnVecB<span class="uscript-operator">.</span>Z <span class="uscript-operator">=</span> <span class="uscript-operator">-</span><span class="uscript-number">1</span><span class="uscript-operator">.</span>f <span class="uscript-operator">*</span> <span class="uscript-operator">(</span><span class="uscript-number">1.0</span><span class="uscript-operator">-</span>mTracerLen<span class="uscript-operator">)</span> <span class="uscript-operator">*</span> hitDist <span class="uscript-operator">*</span> invSpeed<span class="uscript-operator">;</span>
+        mTracer<span class="uscript-operator">.</span>mStartParticles <span class="uscript-operator">=</span> <span class="uscript-number">1</span><span class="uscript-operator">;</span>
+
+        mLastTracerTime <span class="uscript-operator">=</span> Level<span class="uscript-operator">.</span>TimeSeconds<span class="uscript-operator">;</span>
+
+        GotoState<span class="uscript-operator">(</span><span class="uscript-name">'TickTracer'</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+<span class="uscript-operator">}</span>
+
+
+<span class="uscript-keyword">function</span> UpdateHit<span class="uscript-operator">(</span>Actor HitActor<span class="uscript-operator">,</span> vector HitLocation<span class="uscript-operator">,</span> vector HitNormal<span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    SpawnHitCount<span class="uscript-operator">++</span><span class="uscript-operator">;</span>
+    mHitLocation <span class="uscript-operator">=</span> HitLocation<span class="uscript-operator">;</span>
+    mHitActor <span class="uscript-operator">=</span> HitActor<span class="uscript-operator">;</span>
+    mHitNormal <span class="uscript-operator">=</span> HitNormal<span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">simulated</span> <span class="uscript-keyword">event</span> ThirdPersonEffects<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-comment">//What someone else sees of the emitters</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> rotator r<span class="uscript-operator">;</span>
+    <span class="uscript-keyword">local</span> <span class="uscript-keyword">class</span><span class="uscript-operator">&lt;</span>MinigunMuzFlash3rd<span class="uscript-operator">&gt;</span> muzClass<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> <span class="uscript-operator">(</span>Level<span class="uscript-operator">.</span>NetMode <span class="uscript-operator">==</span> NM_DedicatedServer<span class="uscript-operator">)</span> <span class="uscript-operator">||</span> <span class="uscript-operator">(</span>Instigator <span class="uscript-operator">==</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span> 
+        <span class="uscript-operator">||</span> <span class="uscript-operator">(</span><span class="uscript-operator">(</span>Level<span class="uscript-operator">.</span>TimeSeconds <span class="uscript-operator">-</span> LastRenderTime <span class="uscript-operator">&gt;</span> <span class="uscript-number">0.2</span><span class="uscript-operator">)</span> <span class="uscript-operator">&amp;&amp;</span> <span class="uscript-operator">(</span>PlayerController<span class="uscript-operator">(</span>Instigator<span class="uscript-operator">.</span>Controller<span class="uscript-operator">)</span> <span class="uscript-operator">==</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span><span class="uscript-operator">)</span> <span class="uscript-operator">)</span>
+        <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+    WeaponLight<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> FlashCount <span class="uscript-operator">&gt;</span> <span class="uscript-number">0</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>FiringMode <span class="uscript-operator">==</span> <span class="uscript-number">0</span><span class="uscript-operator">)</span>
+        <span class="uscript-operator">{</span>
+            muzClass <span class="uscript-operator">=</span> mMuzFlashClass<span class="uscript-operator">;</span>
+            mTracerFreq <span class="uscript-operator">=</span> <span class="uscript-number">0</span><span class="uscript-operator">.</span>11f<span class="uscript-operator">;</span>
+            mRollInc <span class="uscript-operator">=</span> <span class="uscript-number">65536</span><span class="uscript-operator">.</span>f<span class="uscript-operator">*</span><span class="uscript-number">3</span><span class="uscript-operator">.</span>f<span class="uscript-operator">;</span>
+        <span class="uscript-operator">}</span>
+        <span class="uscript-keyword">else</span>
+        <span class="uscript-operator">{</span>
+            muzClass <span class="uscript-operator">=</span> mMuzAltFlashClass<span class="uscript-operator">;</span>
+            mTracerFreq <span class="uscript-operator">=</span> <span class="uscript-number">0</span><span class="uscript-operator">.</span>33f<span class="uscript-operator">;</span>
+            mRollInc <span class="uscript-operator">=</span> <span class="uscript-number">65536</span><span class="uscript-operator">.</span>f<span class="uscript-operator">;</span>
+        <span class="uscript-operator">}</span> 
+
+        UpdateRollTime<span class="uscript-operator">(</span><span class="uscript-keyword">true</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        mTracerLoc <span class="uscript-operator">=</span> GetTracerStart<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        
+        mHitRot <span class="uscript-operator">=</span> rotator<span class="uscript-operator">(</span>mHitLocation <span class="uscript-operator">-</span> Instigator<span class="uscript-operator">.</span>Location<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        mTracerUpdateTime <span class="uscript-operator">=</span> Level<span class="uscript-operator">.</span>TimeSeconds<span class="uscript-operator">;</span>
+        mbGotHit <span class="uscript-operator">=</span> <span class="uscript-keyword">true</span><span class="uscript-operator">;</span>
+        UpdateTracer<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> OldSpawnHitCount <span class="uscript-operator">!=</span> SpawnHitCount <span class="uscript-operator">)</span>
+        <span class="uscript-operator">{</span>
+            OldSpawnHitCount <span class="uscript-operator">=</span> SpawnHitCount<span class="uscript-operator">;</span>
+            GetHitInfo<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+            <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> FiringMode <span class="uscript-operator">==</span> <span class="uscript-number">0</span> <span class="uscript-operator">)</span>
+                Spawn<span class="uscript-operator">(</span><span class="uscript-keyword">class</span><span class="uscript-name">'HitEffect'</span><span class="uscript-operator">.</span><span class="uscript-keyword">static</span><span class="uscript-operator">.</span>GetHitEffect<span class="uscript-operator">(</span>mHitActor<span class="uscript-operator">,</span> mHitLocation<span class="uscript-operator">,</span> mHitNormal<span class="uscript-operator">)</span><span class="uscript-operator">,</span><span class="uscript-operator">,</span><span class="uscript-operator">,</span> mHitLocation<span class="uscript-operator">,</span> Rotator<span class="uscript-operator">(</span>mHitNormal<span class="uscript-operator">)</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+            <span class="uscript-keyword">else</span>
+                Spawn<span class="uscript-operator">(</span><span class="uscript-keyword">class</span><span class="uscript-name">'XEffects.ExploWallHit'</span><span class="uscript-operator">,</span><span class="uscript-operator">,</span><span class="uscript-operator">,</span> mHitLocation<span class="uscript-operator">,</span> Rotator<span class="uscript-operator">(</span>mHitNormal<span class="uscript-operator">)</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-operator">}</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mMuzFlash3rd <span class="uscript-operator">==</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span>
+        <span class="uscript-operator">{</span>
+            mMuzFlash3rd <span class="uscript-operator">=</span> Spawn<span class="uscript-operator">(</span>mMuzFlashClass<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+            AttachToBone<span class="uscript-operator">(</span>mMuzFlash3rd<span class="uscript-operator">,</span> <span class="uscript-name">'tip'</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-operator">}</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mMuzFlash3rd <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span>
+        <span class="uscript-operator">{</span>
+            mMuzFlash3rd<span class="uscript-operator">.</span>Trigger<span class="uscript-operator">(</span><span class="uscript-keyword">self</span><span class="uscript-operator">,</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+            r<span class="uscript-operator">.</span>Roll <span class="uscript-operator">=</span> Rand<span class="uscript-operator">(</span><span class="uscript-number">65536</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+            SetBoneRotation<span class="uscript-operator">(</span><span class="uscript-name">'Bone Flash'</span><span class="uscript-operator">,</span> r<span class="uscript-operator">,</span> <span class="uscript-number">0</span><span class="uscript-operator">,</span> <span class="uscript-number">1</span><span class="uscript-operator">.</span>f<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-operator">}</span>
+
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> <span class="uscript-operator">(</span>mShellCaseEmitter <span class="uscript-operator">==</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span> <span class="uscript-operator">&amp;&amp;</span> <span class="uscript-operator">(</span>Level<span class="uscript-operator">.</span>DetailMode <span class="uscript-operator">!=</span> DM_Low<span class="uscript-operator">)</span> <span class="uscript-operator">)</span>
+        <span class="uscript-operator">{</span>
+            mShellCaseEmitter <span class="uscript-operator">=</span> Spawn<span class="uscript-operator">(</span>mShellCaseEmitterClass<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+            <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> mShellCaseEmitter <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span> <span class="uscript-operator">)</span>
+                AttachToBone<span class="uscript-operator">(</span>mShellCaseEmitter<span class="uscript-operator">,</span> <span class="uscript-name">'shell'</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-operator">}</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>mShellCaseEmitter <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span><span class="uscript-operator">)</span>
+            mShellCaseEmitter<span class="uscript-operator">.</span>mStartParticles<span class="uscript-operator">++</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+    <span class="uscript-keyword">else</span>
+    <span class="uscript-operator">{</span>
+        GotoState<span class="uscript-operator">(</span><span class="uscript-name">''</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+
+    <span class="uscript-keyword">Super</span><span class="uscript-operator">.</span>ThirdPersonEffects<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">state</span> TickTracer
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">simulated</span> <span class="uscript-keyword">function</span> Tick<span class="uscript-operator">(</span><span class="uscript-type">float</span> deltaTime<span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        UpdateRoll<span class="uscript-operator">(</span>deltaTime<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">defaultproperties</span>
+<span class="uscript-operator">{</span>
+     mMuzFlashClass<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'XEffects.MinigunMuzFlash3rd'</span>
+     mMuzAltFlashClass<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'XEffects.MinigunMuzAltFlash3rd'</span>
+     mTracerClass<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'XEffects.Tracer'</span>
+     mTracerFreq<span class="uscript-operator">=</span><span class="uscript-number">0.150000</span>
+     mTracerLen<span class="uscript-operator">=</span><span class="uscript-number">0.800000</span>
+     mShellCaseEmitterClass<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'XEffects.ShellSpewer'</span> <span class="uscript-comment">//The class of the shell emitter</span>
+     bHeavy<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     bRapidFire<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     bAltRapidFire<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     LightType<span class="uscript-operator">=</span>LT_Pulse
+     LightEffect<span class="uscript-operator">=</span>LE_NonIncidence
+     LightBrightness<span class="uscript-operator">=</span><span class="uscript-number">150.000000</span>
+     LightRadius<span class="uscript-operator">=</span><span class="uscript-number">4.000000</span>
+     LightHue<span class="uscript-operator">=</span><span class="uscript-number">30</span>
+     LightSaturation<span class="uscript-operator">=</span><span class="uscript-number">150</span>
+     LightPeriod<span class="uscript-operator">=</span><span class="uscript-number">3</span>
+     Mesh<span class="uscript-operator">=</span>SkeletalMesh<span class="uscript-name">'Weapons.Minigun_3rd'</span> <span class="uscript-comment">//Mesh of the weapon</span>
+<span class="uscript-operator">}</span></pre><p>Adding to this is always appreciated</p>
+<h2><a name="0.1"></a>Related Topics</h2>
+<h2><a name="0.2"></a>Related Topics</h2>
+<p><a href="minigunammo.html">MinigunAmmo</a></p>
+<p><a href="minigunpickup.html">MinigunPickup</a></p>
+<p><a href="minigunammopickup.html">MinigunAmmoPickup</a></p>
+<p><a href="minigunfire.html">MinigunFire</a></p>
+<p><a href="instantfire.html">InstantFire</a></p>
+<p><a href="minigun.html">Minigun</a></p>
+<p><a href="minigunattachment.html">MinigunAttachment</a></p>
+<p><a href="code-references.html">Code References</a></p>
+<p><a href="category-class-ut2003.html">Category Class (UT2003)</a></p>
+<h2><a name="0.3"></a>Comments</h2>
+<script type="text/javascript"><!--
+ menuItemAdd("Related Topics", "#0.1");
+menuItemAdd("Related Topics", "#0.2");
+menuItemAdd("Comments", "#0.3");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=MinigunAttachment">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=MinigunAttachment">View other revisions</a><br>Last edited October 13, 2003 18:12 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=MinigunAttachment">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/MinigunAttachment">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>I don't need to test my programs. I have an error-correcting modem.
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Vector</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Vector; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Vector">Vector</a></h1>
+	<div class="wiki"><p>In order to represent physical quantities such as position and momentum in more than one dimension, we must describe them in a way to represent these properties.  This is called a <em class="em2">vector</em>.  </p>
+<h2><a name="0.1"></a>A Simple Illustration </h2>
+<p>To show what is a vector is, it is simplest to show examples of quantities that are not vectors. </p>
+<ul><li>The number of gallons of gasoline in the fuel tank of your car is a quantity that can be described by a single number; it makes no sense to talk about a "direction" associated with the amount of gasoline in a tank. </li>
+<li>temperature</li>
+<li>your mass</li>
+<li>population of a country</li>
+</ul>
+<p>Such quantities, which can be specified by giving a single number (in appropriate units), are called <em class="em2">scalars.</em>  When dealing with vectors, numbers are usually called scalars.</p>
+<h3><a name="0.1.1"></a>Introducing the Vector</h3>
+<p>Since familiar examples are easiest to understand, we will use one to describe a vector: velocity.  </p>
+<p>Velocity can be described with both a speed <em class="em1">and</em> a direction.  If we say that a car is going 70 km/hour, we have not completely described its motion because we have not specified the direction that it is going. However, we could describe:</p>
+<ul><li>the magnitude of the velocity (70km/hour)</li>
+<li>a compass heading to specify the direction (say 30 degrees from North)</li>
+<li>a number giving the vertical angle with respect to the Earth's surface (say 10 degrees)</li>
+</ul>
+<p>The combination of these quantities define a vector for the car.   Remember, a vector requires more than one quantity to specify it, but it may have more. </p>
+<h2><a name="0.2"></a>How does one Express a Vector?</h2>
+<p>Vectors are represented by a single symbol:</p>
+<ul><li>In longhand, this is underlined: <u>v</u></li>
+<li>In print bold: <b>v</b></li>
+<li>In coding, it's up to the coder to remember which is what type. <img alt=":)" src="emoticons/smile.gif" align="middle"></li>
+</ul>
+<p>Vectors in <a href="unrealscript.html">UnrealScript</a> always consist of three components, but in general a vector can also have two, four or even more components. Don't get confused by some of the pictures here, it's just easier to draw 2d vectors. <img alt=":)" src="emoticons/smile.gif" align="middle"></p>
+<h3><a name="0.2.1"></a>Coordinate Representation</h3>
+<p>On a two-dimensional plane, any point (x,y) is a vector. Graphically, we often represent such a vector by drawing an arrow from the origin to the point, with the tip of the arrow resting at the point. </p>
+<p>The situation for three-dimensional vectors is similar, with an ordered triplet (x,y,z) being represented by an arrow from the origin to the corresponding point in three-dimensional space.  In vector language, this is described as  (u<sub>x</sub> , u<sub>y</sub> , u<sub>z</sub>) to make it clear that the three numbers belong to the vector <b>u</b>. This looks exactly the same as the coordinates for a point. The only difference is the way we think about them.</p>
+<div class="floatimages"><table border=0 cellspacing=0 cellpadding=0 width="100%"><tr valign=top><td class="floatimages-text" width="100%"><p>You may also see vectors expressed in the form a<b>i</b> + b<b>j</b> + c<b>k</b>. <b>i</b>, <b>j</b>, and <b>k</b> are <em class="em1">unit vectors</em>: vectors of length 1 that point along the x,y,z coordinates axes respectively. In maths, { <b>i</b>, <b>j</b>, <b>k</b> } is a <em class="em1">basis</em> for the space because any vector can be written as a combination of them. They represent the unit vectors along three perpendicular axes, and a, b, and c are the "lengths" of the vector along the respective axis.</p>
+<p>Vectors are extremely powerful. they can represent:</p>
+<dl><dt>points</dt><dd>&ndash; as seen above. If P is a point in space, <u>OP</u> or in longhand with an arrow above, is the vector from O, the origin to P. Adding or subtracting these gives vectors between points. The real difference between free vectors and bound vectors is what they are relative to.</dd><dt>displacements</dt><dd>You could say "the pawn has moved 64 units", or you could say "the pawn has moved 64 units to the north-east", or you could use a vector of length 64 that points in that direction. A displacement is different from a <em class="em1">length</em> in that it has a direction as well as a magnitude.  See <em class="em1">length of a vector</em> below.</dd><dt>velocities and accelerations</dt><dd>like displacements, these have a direction. The magnitude of the vector now represents "how much" velocity there is; in other words, the speed. To return to the earlier car example, if you say "the car has a speed of 10 m/s", then you're giving the magnitude of the velocity, but not the direction.</dd><dt>forces</dt><dd>When specifying an impulse on a <a href="karma.html">Karma</a> simulated actor, you can use a vector to represent the direction and magnitude of the force to be applied to that actor.</dd></dl>
+<p><img alt="[Vector1]" src="images/vector1.gif" class="image-inline"></p>
+</td>
+<td class="floatimages-right" align=right width=1><div><img alt="[vector2d]" src="images/vector2d.gif"><p>The 2d vector <em class="em2">u</em> with its components <em class="em2">u<sub>x</sub></em> and <em class="em2">u<sub>y</sub></em></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<h3><a name="0.2.2"></a>Clarification</h3>
+<p>If you look at the above list of different types of vectors, you might think: How does Unreal know that I'm using a velocity vector, or a position vector, or any other? The answer is simple: it doesn't. All Unreal knows is that you have a collection of about three float values nicely grouped together in one variable. In fact, the only difference between a velocity vector (or a position vector, or a force vector...any vector!) and any other vector is what units the PROGRAMMER associates (in his mind, not in code) with them. Don't let this confuse you: it is exactly the same as using a float variable and having to remember whether this number represents a weight, a length of time, a quantity of ammo, a number of kills, or how many slices of cheese you ate for lunch <img alt=";)" src="emoticons/wink.gif" align="middle"></p>
+<p>For example, position vectors are specified in <a href="unreal-unit.html">Unreal unit</a>s (UU), while velocity is considered to be in m/sec, or UU/sec. The fact is, that both a velocity vector, and a position vector (or any other combination) could have the same float values, but <em class="em2">represent</em> different things, yet to the Engine its all the same. This is no different to a float value that could represent a player's height, ammo, or the number of hairs on his head: it's all down to what the programmer has chosen to represent with that number.</p>
+<p>The trick in using vectors is matching the units. Even if you don't it will work and compile, but it won't work the way you want it to. Matching the units means that an expression in code evaluates to the same units throughout. For example:</p>
+<p class="indent1">Position += Velocity * time is the same as m += m / sec * sec</p>
+<p>which evaluates to:</p>
+<p class="indent1">m += m</p>
+<p>Thus, this makes sense. Here is what <em class="em2">doesn't</em> make sense:</p>
+<p>Position += Velocity is the same as m += m / sec which evaluates to:</p>
+<p class="indent1">m += m /sec</p>
+<p>Units don't match, so it <em class="em2">doesn't</em> make sense.</p>
+<h2><a name="0.3"></a>Vector Length (magnitude)</h2>
+<p>The magnitude or length of a vector can be calculated easily.  Simply sum the square each component of the vector (however many you have) and then take a square root of the result.  Voila - one vector length.  e.g. If I have a 2 dimensional vector 3<b>i</b> + 4<b>j</b>, the length of that vector can be calculated as</p>
+<p class="indent1">&radic;( 3<sup>2</sup> + 4<sup>2</sup> ) = 5</p>
+<p>The magnitude of a vector is written ||<em class="em2">u</em>||. The corresponding UnrealScript function is <code>VSize(u)</code> (vector size).</p>
+<h2><a name="0.4"></a>Dot Product</h2>
+<p class="indent1">UnrealScript: <code>u dot v</code></p>
+<p class="indent1">Maths:  <em class="em2">u</em> <tt>&middot;</tt> <em class="em2">v</em></p>
+<p>The dot product of two vectors is a scalar, ie a number. This is given by one of the following formulae:</p>
+<ul><li>(u<sub>x</sub> * v<sub>x</sub>) + (u<sub>y</sub> * v<sub>y</sub>) + (u<sub>z</sub> * v<sub>z</sub>)</li>
+<li>||<em class="em2">u</em>|| * ||<em class="em2">v</em>|| * cos(theta) &ndash; where theta is the angle between the vectors (In UnrealScript this would be VSize(u) * VSize(v) * Cos(theta))</li>
+</ul>
+<p>If the dot product is zero, then the vectors are perpendicular (or at least one of them has zero length).</p>
+<p>Further reading: <span class="interwiki"><img 
+      alt="Wikipedia logo"
+      title="Wikipedia"
+      src="shared//InterWiki-Wikipedia.png">&nbsp;<a href="http://www.wikipedia.com/wiki/Dot product">Dot product</a></span></p>
+<h3><a name="0.4.1"></a>Still to cover:</h3>
+<ul><li>adding vectors</li>
+<li>multiplying a vector by a number/inverting vectors</li>
+<li>normalized vectors</li>
+<li>What can cross product and dot product be used for?</li>
+<li>How can vectors be used in UnrealScript? (maybe just a link)</li>
+</ul>
+<p><em class="em2">EntropicLqd:</em>  This page desperately needs some diagrams <img alt=":)" src="emoticons/smile.gif" align="middle"></p>
+<h2><a name="0.5"></a>Vector operators and functions</h2>
+<p>The <a href="operators.html">Operators</a> page details the operators than can be used with a Vector.  It should also be noted that some <a href="rotator.html">Rotator</a> operators (namely &lt;&lt; and &gt;&gt;) can be used to rotate a vector.</p>
+<p>The following vector related <a href="global-function.html">Global Function</a>s are defined in the <a href="object.html">Object</a> class:</p>
+<dl><dt>float  VSize (vector A) [static]</dt><dd>Returns the length of the vector, ||A||.</dd><dt>vector Normal (vector A) [static]</dt><dd>Returns a vector with the same direction and a length of 1.</dd><dt>Invert (out vector X, out vector Y, out vector Z)</dt><dd></dd><dt>vector VRand ( ) [static]</dt><dd>Returns a vector with random direction and a length of 1.</dd><dt>vector MirrorVectorByNormal (vector Vect, vector Normal) [static]</dt><dd>Mirrors a vector about a specified normal vector.<br>Think of a projectile <tt>p</tt> with a certain speed vector that hits a wall with a certain normal vector <tt>HitNormal</tt> and gets reflected without any damping. The projectile's new speed is what you get from <tt>MirrorVectorByNormal(p.Velocity, HitNormal)</tt>. This can also be calculated through:<br><tt>Vect - (Vect dot Normal(HitNormal)) * Normal(HitNormal)</tt> (this is used e.g. by the Ripper blades)</dd></dl>
+<p>See <a href="unrealscript-vector-maths.html">UnrealScript Vector Maths</a> for how to use these.</p>
+<p>Example on useage:</p>
+<pre class="uscript"><span class="uscript-keyword">event</span> SeePlayer<span class="uscript-operator">(</span>Pawn Seen<span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span><span class="uscript-comment">//Seeplayer seems to do wierd with FOV, always sees 180 DEG.</span>
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>Normal<span class="uscript-operator">(</span>Seen<span class="uscript-operator">.</span>Location <span class="uscript-operator">-</span> Pawn<span class="uscript-operator">.</span>Location<span class="uscript-operator">)</span> <span class="uscript-operator">DOT</span> Normal<span class="uscript-operator">(</span>Vector<span class="uscript-operator">(</span>Pawn<span class="uscript-operator">.</span>Rotation<span class="uscript-operator">)</span><span class="uscript-operator">)</span> <span class="uscript-operator">&gt;</span> <span class="uscript-number">0.7</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        SeenPlayer<span class="uscript-operator">(</span>Seen<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+<span class="uscript-operator">}</span>
+<span class="uscript-keyword">function</span> SeenPlayer<span class="uscript-operator">(</span>Pawn Seen<span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre><p>I created this in a Controller, because the normal SeePlayer had a to width FOV for some reason, the 0.7 is calculated by cos(45) 45 in degrees (or cos(PI/4) in radians)</p>
+<p>It's the only use of dot product that I have at the moment.</p>
+<p><em class="em2">Foxpaw:</em> The dot product can be used (and I think that is its primary use) to find the angle between them. When we learned above vectors in school we didn't use any symbols like the ones shown above... it might be helpful to relate this to more common mathematical expressions.</p>
+<p><em class="em2">Mychaeel:</em> More important than for determining an angle between two vectors is translating a given vector (location, direction, or whatever) to any given rotated coordinate system by simply multiplying the input vector with each of the normals pointing along the rotated axes to get the respective rotated coordinate values.  That means if you have a rotated system (like an <a href="actor.html">Actor</a>'s local coordinate system) and a whole batch of vectors to translate, you only have to perform the expensive coordinate rotation once on the normals and rotate any given vector into that system by evaluating three simple dot products.</p>
+<p><em class="em2">Daid303:</em> I finaly found a Dot product in some of the origional code. It's use in the <a href="playerpawn.html">PlayerPawn</a> code. In ServerMove().</p>
+<pre class="uscript">LocDiff <span class="uscript-operator">=</span> Location <span class="uscript-operator">-</span> ClientLoc<span class="uscript-operator">;</span>
+ClientErr <span class="uscript-operator">=</span> LocDiff <span class="uscript-operator">Dot</span> LocDiff<span class="uscript-operator">;</span></pre><p>But i'm kinda clueless what value the ClientErr will have....</p>
+<p><em class="em2">Wormbo:</em> Uhm, isn't (LocDiff Dot LocDiff) == Square(VSize(LocDiff)) ?</p>
+<p><em class="em2">Daid303:</em> So basicly they could have used VSize(LocDiff).... because they only compair it with a value afterwarts. To see if the new server location wouldn't be to far away from the previeus location. (if they are the server send a update to the client)</p>
+<h2><a name="0.6"></a>Cross Product</h2>
+<p class="indent1">UnrealScript: <code>u cross v</code></p>
+<p class="indent1">Maths:  <em class="em2">u</em> &times; <em class="em2">v</em></p>
+<p>The cross product of two vectors is another vector given by</p>
+<p class="indent1">||<em class="em2">u</em>|| * ||<em class="em2">v</em>|| * <em class="em2">e</em> * sin(theta) &ndash; where theta is the angle between the vectors</p>
+<p>where e is a unit vector that is perpendicular to both u and v. In mathematics, ( u , v, e ) are taken to form a right-hand set. Because the <a href="unreal-world.html">Unreal world</a> uses left-handed co-ordinates (see <span class="interwiki"><img 
+      alt="Wikipedia logo"
+      title="Wikipedia"
+      src="shared//InterWiki-Wikipedia.png">&nbsp;<a href="http://www.wikipedia.com/wiki/Handedness">Handedness</a></span> for definition and pictures), ( u , v, e ) is a left-handed set. This means that</p>
+<pre class="paraverbatim"> [1,0,0] cross [0,1,0] = [0,0,1]
+ </pre><p>The cross product is <em class="em1">not</em> commutative:</p>
+<pre class="paraverbatim">  u cross v !=   v cross u
+  u cross v == -(v cross u)</pre><p>Further/better reading: <span class="interwiki"><img 
+      alt="Wikipedia logo"
+      title="Wikipedia"
+      src="shared//InterWiki-Wikipedia.png">&nbsp;<a href="http://www.wikipedia.com/wiki/Cross product">Cross product</a></span></p>
+<p><img alt="[Vector3]" src="images/vector3.gif" class="image-inline"></p>
+<p><em class="em2">Foxpaw:</em> The short and the long of this is that the cross product of a pair of vectors is a vector perpindicular to both source vectors.. but not necessarily the <em class="em2">only</em> vector perpindicular to those two vectors. I think the above description is kind of confusing. </p>
+<p><em class="em2">Mychaeel:</em> Save for its length (positive or negative, and clearly defined for the cross product), there <em class="em1">is</em> only one single vector that's perpendicular to any two non-parallel vectors.</p>
+<p><em class="em2">Daid303:</em> I finaly start to understand the cross product, I think it's something like this:</p>
+<p>The u and v make togethere 1 plane, on that place you can 'place' a vector, that's the cross product. The <span class="interwiki"><img 
+      alt="Wikipedia logo"
+      title="Wikipedia"
+      src="shared//InterWiki-Wikipedia.png">&nbsp;<a href="http://www.wikipedia.com/wiki/Cross product">Cross product</a></span> explains it quite well.</p>
+<h2><a name="0.7"></a>Mathematical Properties of Vectors</h2>
+<p>The following is for the mathematically inclined.  Many of the following statements might seem obvious to the casual reader, but keep in mind that just the fact that you <em class="em1">know</em> something holds true for regular numbers (scalars) doesn't imply that it's also true for vectors.</p>
+<ul><li>they can be added to each other to give another vector:</li>
+</ul>
+<pre class="paraverbatim"> <b>u</b> + <b>v</b> </pre><ul><li>addition of vectors is <em class="em1">commutative</em> and <em class="em1">associative</em>:</li>
+</ul>
+<pre class="paraverbatim"> <b>u</b> + <b>v</b> = <b>u</b> + <b>v</b>
+ <b>u</b> + (<b>v</b> + <b>w</b>) = (<b>u</b> + <b>v</b>) + <b>w</b> </pre><ul><li>there is an additive identity, the zero vector:</li>
+</ul>
+<pre class="paraverbatim"> <b>u</b> + <b>0</b> = <b>u</b></pre><ul><li>every vector has an inverse vector written -<b>u</b> such that</li>
+</ul>
+<pre class="paraverbatim"> <b>u</b> + ( -<b>u</b> ) = <b>0</b> &ndash; or, for short:
+ <b>u</b> - <b>u</b> = <b>0</b></pre><ul><li>they can be multiplied by a scalar to give a new vector:</li>
+</ul>
+<pre class="paraverbatim"> &alpha; * <b>u</b></pre><ul><li>scalar multiplication is associative and doubly distributive.</li>
+<li>the usual scalar 1 leaves vectors unchanged:</li>
+</ul>
+<pre class="paraverbatim"> 1 * <b>u</b> = <b>u</b></pre><p>In abstract maths, many more sets of objects satisfy these properties (for example, real numbers are a vector space over themselves, the complexes are a vector space over the reals, real functions are a vector space over the reals, and so on).</p>
+<hr class="thin"><h4><a name="0.7.0.1"></a>Free &amp; Bound: A Needless Complication</h4>
+<p>Engineers and physicists work with <em class="em1">position vectors</em> and <em class="em1">free vectors</em>, pure mathematicians consider vectors to be elements of a <em class="em2">Vector Space</em> and don't worry about their different applications.</p>
+<p><em class="em2">Mychaeel:</em>  For that matter, physicists are very fond of Hilbert Spaces too.  <img alt=";-)" src="emoticons/wink.gif" align="middle"></p>
+<p><em class="em2">Tarquin:</em>  *scurries to his maths books* Didn't mean to offend engineers... I've read many textbooks aimed at applied disciplines that get VERY bogged down in the difference between "free" and "bound" vectors. As a pure mathematician, I can't really see any <img alt=";)" src="emoticons/wink.gif" align="middle"></p>
+<p><em class="em2">Mychaeel:</em>  That difference is new to me either... umm... what are "free" and "bound" vectors supposed to be?</p>
+<p><em class="em2">Tarquin:</em>  a position vector is "bound" because it's a position from O, a velocity is "free" because it moves. or something. For some reason all the English textbooks on vector calculus (curl... run!) are written for engineers, and they tend to get themselves tied in knots trying to define these two types. For that matter, I think the Wikipedia page on vectors is similarly confused, although the server is down so I can't check. Briefly: if you don't know the difference, you're better off. It's as daft as saying sometimes "4" is just 4, and sometimes it's "+4", added to something. (hm. good point, I'll go add that to Wikipedia later... <img alt=":)" src="emoticons/smile.gif" align="middle"> )</p>
+<p><em class="em2">Tarquin:</em>  it's here: <a href="http://www.wikipedia.com/wiki/talk%3AVector">http://www.wikipedia.com/wiki/talk%3AVector</a> bunch of physicists arguing over bound &amp; free vectors and whether position is or isn't a vector. One of these days I'll rewrite the entire page. </p>
+<p><em class="em2">Sobiwan:</em> Got ya covered.  You cover the end, complicated stuff, I'll get the front, easy stuff.  <img alt=":)" src="emoticons/smile.gif" align="middle"></p>
+<h2><a name="0.8"></a>Related Topics</h2>
+<ul><li><a href="variables-with-vectors.html">Variables with Vectors</a></li>
+<li><a href="rotator.html">Rotator</a></li>
+<li><a href="quaternion.html">Quaternion</a></li>
+<li><a href="unrealscript-vector-maths.html">UnrealScript Vector Maths</a></li>
+<li><span class="interwiki"><img 
+      alt="Wikipedia logo"
+      title="Wikipedia"
+      src="shared//InterWiki-Wikipedia.png">&nbsp;<a href="http://www.wikipedia.com/wiki/Vector">Vector</a></span></li>
+<li><span class="interwiki"><a href="http://chimeric.beyondunreal.com/tutorials/vectors.php">Chimeric's Vector Primer</a></span></li>
+<li><a href="http://www.planetdeusex.com/tack">[Vect's Vectors in UT]</a></li>
+</ul>
+<h2><a name="0.9"></a>Further Reading</h2>
+<ul><li><a href="http://flipcode.com/geometry">[Flipcode Vector Tutorial]</a></li>
+</ul>
+<script type="text/javascript"><!--
+ menuItemAdd("A Simple Illustration ", "#0.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Introducing the Vector", "#0.1.1");
+menuItemAdd("How does one Express a Vector?", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Coordinate Representation", "#0.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Clarification", "#0.2.2");
+menuItemAdd("Vector Length (magnitude)", "#0.3");
+menuItemAdd("Dot Product", "#0.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Still to cover:", "#0.4.1");
+menuItemAdd("Vector operators and functions", "#0.5");
+menuItemAdd("Cross Product", "#0.6");
+menuItemAdd("Mathematical Properties of Vectors", "#0.7");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Free &amp; Bound: A Needless Complication", "#0.7.0.1");
+menuItemAdd("Related Topics", "#0.8");
+menuItemAdd("Further Reading", "#0.9");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Vector">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Vector">View other revisions</a><br>Last edited April 11, 2005 0:04 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Vector">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Vector">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>I love the smell of UnrealEd crashing in the morning. (tarquin)</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

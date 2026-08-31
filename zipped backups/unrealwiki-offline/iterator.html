@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Iterator</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Iterator; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Iterator">Iterator</a></h1>
+	<div class="wiki"><h2><a name="0.1"></a>The Actor List</h2>
+<p>All actors in Unreal are connected though a gigantic list (well it is actually a dynamic array, but to make life easier think of it as a list) that exists only in the native C++ code. Without this list, actors would be just plain old objects. The base of this "list" is actually the native level object (the <code>XLevel</code> property of all actors). This list exists on both client and server. When a client "receives" an actor, it is added and when its connection is closed (except with <a href="replication.html">bNetTemporary</a>), it is removed.</p>
+<p>Spawning an actor automatically adds it at the end of the list. Note that <a href="levelinfo.html">LevelInfo</a> (accessed via the <code>Level</code> property of any actor) is always the first actor. Destroying an actor automatically removes it from the list.</p>
+<p>UnrealScript's <code>ForEach</code> command makes it easy to deal with large groups of actors, for example all of the actors in a level, or all of the actors within a certain distance of another actor. <code>ForEach</code> works in conjunction with a special kind of function called <em class="em1">iterator function</em> whose purpose is to iterate through a list of actors. Most of these iterator functions use the native actor list, so sometimes it's faster to use <code>For</code> to iterate through much smaller <a href="linked-list.html">linked list</a>s like the pawn list or one of the mutator lists.</p>
+<h2><a name="0.2"></a>Syntax</h2>
+<p>All iterator function use a similar syntax:</p>
+<pre class="uscript"><span class="uscript-keyword">local</span> aClassName aVariable<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">foreach</span> IteratorFunction<span class="uscript-operator">(</span><span class="uscript-keyword">class</span><span class="uscript-name">'aClassName'</span><span class="uscript-operator">,</span> aVariable<span class="uscript-operator">,</span> other parameters<span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-comment">// execute something here</span>
+<span class="uscript-operator">}</span></pre><p>The variable used as the second parameter must declared to hold an instance of the class used as the first parameter. The class must be <code>class'Actor'</code> or a subclass for all iterators except AllObjects and AllDataObjects which can use <code>class'Object'</code> or any other <a href="object.html">Object</a> subclass.</p>
+<p>Iterators can also be called for other objects:</p>
+<pre class="uscript"><span class="uscript-keyword">local</span> aClassName aVariable<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">foreach</span> anotherObject<span class="uscript-operator">.</span>IteratorFunction<span class="uscript-operator">(</span><span class="uscript-keyword">class</span><span class="uscript-name">'aClassName'</span><span class="uscript-operator">,</span> aVariable<span class="uscript-operator">,</span> other parameters<span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-comment">// execute something here</span>
+<span class="uscript-operator">}</span></pre><p>This syntax doesn't make sense for all iterator functions, though. It is useful when using an iterator function which returns objects based on the object it was called for (e.g. ZoneActors or ChildActors) or when you want to use an iterator that isn't available in your class. (e.g. DynamicActors from an <a href="interaction.html">Interaction</a>)</p>
+<p>Note that the game will crash with the error "Unknown code token 58" when the <code>anotherObject</code> variable is <code>None</code>. Also the actor iterators should only be called in a game environment. They will cause problems (e.g. a crash with "Unknown code token 31") when executed e.g. from <a href="brushbuilder.html">BrushBuilder</a> code in the editor.</p>
+<h2><a name="0.3"></a>Definitions</h2>
+<h3><a name="0.3.1"></a>Object</h3>
+<dl><dt>AllObjects (class&lt;<a href="object.html">Object</a>&gt; BaseClass, out <a href="object.html">Object</a> Object)</dt><dd>Included in Deus Ex and Unreal Engine versions later than UT. Iterates through all objects, including all loaded classes.</dd></dl>
+<h3><a name="0.3.2"></a>Actor</h3>
+<dl><dt>AllActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor, optional name MatchTag)</dt><dd>Iterates through all actors of the specified BaseClass in the level. These will be assigned to the variable you specified as the second parameter. If you specify an optional MatchTag, only includes actors which have a "Tag" variable matching the tag you specified. This will go through every actor in the level and is thus somewhat slow (this is not noticeable however unless it is called multiple times in one frame), so use it sparingly. If a more class specific list exists, such as <code>Level.PawnList</code> and <code>Level.NavigationPointList</code>, use those instead.</dd><dt>DynamicActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor, optional name MatchTag)</dt><dd>Iterates through all the actors that have <code>bStatic=False</code>.  Works only (apparently) in Unreal Engine versions later than UT (v436). This is supposed to be faster than <code>AllActors</code> because it doesn't iterate through all the static actors.  Again, if you specify an optional MatchTag, the iteration will only include those dynamic actors in your game that have a "Tag" variable that equals your MatchTag.</dd><dt>ChildActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor)</dt><dd>Iterates through all actors in the level which have their owner set to the class this is run on. This has the same speed hit as <code>AllActors</code>.</dd><dt>BasedActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor)</dt><dd>Iterates through all actors which are standing on the actor this is run on, i.e. all actors which have their <code>Base</code> property set to this actor. This has the same speed hit as <code>AllActors</code>.</dd><dt>TouchingActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out actor Actor)</dt><dd>Iterates through all actors which are touching (interpenetrating) this actor. This seems to be pretty fast.</dd><dt>TraceActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor, out vector HitLoc, out vector HitNorm, vector End, optional vector Start, optional vector Extent)</dt><dd>Iterates through all actors which touch a line traced from the Start point to the End point, using a box of collision extent Extent. On each iteration, HitLoc is set to the hit location, and HitNorm is set to an outward-pointing hit normal. This is as fast as any Trace.</dd><dt>RadiusActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor, float Radius, optional vector Loc)</dt><dd>Iterates through all actors within a specified radius of the specified location (or if no location is specified, this actor's location). This has the same speed hit as <code>AllActors</code>.</dd><dt>VisibleActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor, optional float Radius, optional vector Loc)</dt><dd>Iterates through a list of all actors who are visible to the specified location (or if no location is specified, this actor's location). Here "visible" means "a line can connect some part of an actor and this actor's center without passing through level geometry", not "bHidden=False".  This has the same speed hit as <code>AllActors</code>.</dd><dt>VisibleCollidingActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor, float Radius, optional vector Loc, optional bool bIgnoreHidden)</dt><dd>Iterates through a list of all actors which are visible to the specified location (or if no location is specified, this actor's location) and have <code>bCollideActors=True</code>. Here "visible" does not mean "bHidden=False", but this can be changed through <em class="em1">bIgnoreHidden</em>. (just a guess) The <em class="em1">bIgnoreHidden</em> parameter might not be available in earlier engine versions. (prior to UT v436 or Unreal v226) Usually this is much faster than <code>AllActors</code> because it uses the collision hash instead of the much larger native actor list, but with a very high radius VisibleActors might be more efficient. </dd><dt>CollidingActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor, float Radius, optional vector Loc)</dt><dd>Iterates through all actors within the specified radius using the collision hash. (<code>bCollideActors=True</code>) This is slightly faster than RadiusActors with radii at least up to 2000UU and much faster than VisibleActors or VisibleCollidingActors due to the visibility check those iterators have to perform for each actor.</dd></dl>
+<h3><a name="0.3.3"></a>ZoneInfo</h3>
+<dl><dt>ZoneActors (class&lt;<a href="actor.html">Actor</a>&gt; BaseClass, out <a href="actor.html">Actor</a> Actor)</dt><dd>Iterates through all actors of type BaseClass within the acting <a href="zoneinfo.html">ZoneInfo</a>. Same speed hit as <code>AllActors</code>.</dd></dl>
+<h3><a name="0.3.4"></a>GameInfo</h3>
+<dl><dt>AllDataObjects (class objClass, out <a href="object.html">Object</a> obj, string packageName)</dt><dd><em class="em1">Uhm...</em></dd></dl>
+<h2><a name="0.4"></a>Usage</h2>
+<p>Iterating actors is one of the most important concepts to understand in UnrealScripting.  There are many times when this will be the only way for you to gain valid reference to other classes for use in your function, and as such, it is essential that you gain a very familiar understanding of the methods used in iterating.</p>
+<p>AllActors is normally used with two parameters - the class, and a variable.  The variable parameter may be a global, local, or argument variable, and there are situations when it is good to use each one.  To use AllActors, first define a variable of the class you want to iterate.  Next, designate the variable that will host the reference to this class object.  Inside the brackets, specify what you want to happen each time an object of the specified class is found.  The iterator variable is always equal to the last object that was found matching that class, so if you want to get a valid reference to each object in the game of a particular type, you would need to somehow assign that object to yet another variable inside the iterator, before it continues on to the next object of that class.  </p>
+<pre class="uscript"><span class="uscript-keyword">class</span> MyMut <span class="uscript-keyword">extends</span> Info<span class="uscript-operator">;</span>
+
+
+<span class="uscript-keyword">function</span> PostBeginPlay<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> Pawn OnlyThisPawn<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">foreach</span> AllActors<span class="uscript-operator">(</span><span class="uscript-keyword">class</span><span class="uscript-name">'Pawn'</span><span class="uscript-operator">,</span> OnlyThisPawn<span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        <span class="uscript-keyword">break</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+<span class="uscript-operator">}</span></pre><p>This above code reads something like "Look for all actors in the game that are of the class 'Pawn'.  When a Pawn is found is found, assign THAT Pawn to the variable OnlyThisPawn, then perform the statements within the next set of brackets. Once finished with those statements, look for the next actor of the class 'Pawn' and assign THAT pawn to the OnlyPawnVariable, overwriting the last value of the OnlyThisPawn variable."  But, there is only one statement there!  The break statement causes the foreach iterator to stop it's cycling through the Actors on the level.  (It will stop looking for other Actors to assign to OnlyThisPawn). This is an extremely useful way to get a valid reference to an instance of a particular class when there isn't aren't any other ways of attaching to this class.  In the example above, the iterator assigns the first actor of class'pawn' that it finds to the OnlyThisPawn variable, breaks out of the "ForEach" statement, and script execution continues through the rest of the function.  You may now use the OnlyThisPawn variable without receiving the "Access None" error in the logfile, as long as there are valid Pawns in the level when you perform this iterator.</p>
+<p>Typically, however, a ForEach statement should be used to perform a particular action on multiple instances of a class, to be most efficient.  Avoid using extensive iterators in rapidly executing code (such as Tick), and instead try to place in situations where they are only executed once or at least rarely (PostBeginPlay, BeginState are good places).  You should also avoid using iterators for assigning object variables, instead trying less resource-expensive methods of gaining valid references.  For some ideas of how to do this, see <a href="traversing-classes.html">Traversing Classes</a></p>
+<p><em class="em2">Wormbo:</em> Iterating through all Pawns is a bad example. Avoid using <code>ForEach AllActors(class'Pawn', P)</code> on the server.<br><code>For (P = Level.PawnList; P != None; P = P.NextPawn)</code> does the same and is much more efficient. Always look for a <a href="linked-list.html">linked list</a> that contains the actors you want to access before using <code>ForEach AllActors(...)</code>.</p>
+<h3><a name="0.4.1"></a>Using Iterators From Objects</h3>
+<p>Ever have an Object and want to use an iterator but realized much to your frustration that they are all defined down in Actor?  Well boys and girls, this is actually very easily worked around as demonstrated by the following example:</p>
+<pre class="uscript"><span class="uscript-keyword">class</span> MyObj <span class="uscript-keyword">extends</span> Object<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">var</span> Actor MyActorRef<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">function</span> SomeNiftyFunc<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> Actor AnActor<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">foreach</span> MyActorRef<span class="uscript-operator">.</span>AllActors<span class="uscript-operator">(</span> <span class="uscript-keyword">class</span><span class="uscript-name">'Actor'</span><span class="uscript-operator">,</span> AnActor <span class="uscript-operator">)</span>
+        <span class="uscript-keyword">break</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><p>Since iterators are just normal functions you can treat them as such and call them from any other Object that has a reference to them.  Just be sure that your Actor reference is valid before you attempt to call an iterator on it, otherwise all sorts of "bad things" can happen.</p>
+<pre class="uscript"><span class="uscript-keyword">function</span> SomeNiftyFunc<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> Actor AnActor<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> MyActorRef <span class="uscript-operator">==</span> <span class="uscript-keyword">NONE</span> <span class="uscript-operator">||</span> MyActorRef<span class="uscript-operator">.</span>bDeleteMe <span class="uscript-operator">)</span>
+        <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">foreach</span> MyActorRef<span class="uscript-operator">.</span>RadiusActors<span class="uscript-operator">(</span> <span class="uscript-keyword">class</span><span class="uscript-name">'Actor'</span><span class="uscript-operator">,</span> AnActor<span class="uscript-operator">,</span> <span class="uscript-number">500</span> <span class="uscript-operator">)</span>
+        <span class="uscript-keyword">break</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><h2><a name="0.5"></a>Related Topics </h2>
+<ul><li>Tim Sweeney's reference: <a href="unrealscript-language-refe1.html">UnrealScript Language Reference/Advanced Language Features</a></li>
+<li><a href="flow-syntax.html">Flow Syntax</a></li>
+<li><a href="code-optimization.html">Code Optimization</a> &ndash; If your framerate drops considerably when using iterators.</li>
+<li><a href="linked-list-existing-lists.html">Linked List/Existing Lists In Unreal Tournament</a> also has some info on execution speed of the various iterator functions</li>
+</ul>
+<h2><a name="0.6"></a>Comments</h2>
+<p>COuld we have more examples? I don't really understand </p>
+<pre class="paraverbatim"> AllObjects (class&lt;<a href="object.html">Object</a>&gt; BaseClass, out <a href="object.html">Object</a> Object)</pre><p>since the code I see looks like:</p>
+<pre class="paraverbatim"> foreach AllObjects(class'Actor', A) </pre><p>where is the BaseClass variable? Can I write</p>
+<pre class="paraverbatim"> foreach AllObjects(class'SomeClassOrOther', A)</pre><p><em class="em2">Wormbo:</em> Is the Syntax section enough to answer this question?</p>
+<p><em class="em2">Tarquin:</em> Yup. It's great! Thanks <img alt=":D" src="emoticons/biggrin.gif" align="middle"> <img alt=":D" src="emoticons/biggrin.gif" align="middle"> I've actually managed today to get iterators to work in Brushbuilder. I'll post about it when I've got it all worked out. </p>
+<p><em class="em2">Foxpaw:</em> Destroying actors in Iterators seems to cause some strangeness. The following code caused mysterioud GPFs for the longest time for me:</p>
+<pre class="uscript">  <span class="uscript-keyword">foreach</span> AllObjects<span class="uscript-operator">(</span> <span class="uscript-keyword">class</span><span class="uscript-name">'VehicularThing'</span><span class="uscript-operator">,</span> Old <span class="uscript-operator">)</span>
+    Old<span class="uscript-operator">.</span>Destroy<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre><p>It wouldn't crash as soon as I executed it, but would go for about 8 cycles or so before crashing. I believe this may cause some kind of a memory leak or something, possibly due to the internal workings of the iterators. I stopped the GPFs by doing the following, and it hasn't caused a crash since:</p>
+<pre class="uscript">  <span class="uscript-keyword">foreach</span> AllObjects<span class="uscript-operator">(</span> <span class="uscript-keyword">class</span><span class="uscript-name">'VehicularThing'</span><span class="uscript-operator">,</span> Old <span class="uscript-operator">)</span>
+    MarkedMen<span class="uscript-operator">[</span>MarkedMen<span class="uscript-operator">.</span><span class="uscript-keyword">Length</span><span class="uscript-operator">]</span> <span class="uscript-operator">=</span> Old<span class="uscript-operator">;</span>
+    
+  <span class="uscript-keyword">for</span> <span class="uscript-operator">(</span>i<span class="uscript-operator">=</span><span class="uscript-number">0</span><span class="uscript-operator">;</span>i<span class="uscript-operator">&lt;</span>MarkedMen<span class="uscript-operator">.</span><span class="uscript-keyword">Length</span><span class="uscript-operator">;</span>i<span class="uscript-operator">++</span><span class="uscript-operator">)</span>
+    MarkedMen<span class="uscript-operator">[</span>i<span class="uscript-operator">]</span><span class="uscript-operator">.</span>Destroy<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre><p><em class="em2">Daid303:</em> The killall cheat never crashed for me... but it uses DynamicActors, why are you using AllObjects? (I can't think of any slower function)</p>
+<pre class="uscript"><span class="uscript-keyword">exec</span> <span class="uscript-keyword">function</span> KillAll<span class="uscript-operator">(</span><span class="uscript-keyword">class</span><span class="uscript-operator">&lt;</span>actor<span class="uscript-operator">&gt;</span> aClass<span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> Actor A<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> ClassIsChildOf<span class="uscript-operator">(</span>aClass<span class="uscript-operator">,</span> <span class="uscript-keyword">class</span><span class="uscript-name">'AIController'</span><span class="uscript-operator">)</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        Level<span class="uscript-operator">.</span>Game<span class="uscript-operator">.</span>KillBots<span class="uscript-operator">(</span>Level<span class="uscript-operator">.</span>Game<span class="uscript-operator">.</span>NumBots<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> ClassIsChildOf<span class="uscript-operator">(</span>aClass<span class="uscript-operator">,</span> <span class="uscript-keyword">class</span><span class="uscript-name">'Pawn'</span><span class="uscript-operator">)</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        KillAllPawns<span class="uscript-operator">(</span><span class="uscript-keyword">class</span><span class="uscript-operator">&lt;</span>Pawn<span class="uscript-operator">&gt;</span><span class="uscript-operator">(</span>aClass<span class="uscript-operator">)</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+    <span class="uscript-keyword">ForEach</span> DynamicActors<span class="uscript-operator">(</span><span class="uscript-keyword">class</span> <span class="uscript-name">'Actor'</span><span class="uscript-operator">,</span> A<span class="uscript-operator">)</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> ClassIsChildOf<span class="uscript-operator">(</span>A<span class="uscript-operator">.</span><span class="uscript-keyword">class</span><span class="uscript-operator">,</span> aClass<span class="uscript-operator">)</span> <span class="uscript-operator">)</span>
+            A<span class="uscript-operator">.</span>Destroy<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><p><em class="em2">Foxpaw:</em> It may only apply to AllObjects, since that one operates on non-actors as well, and the notion of an object having been destroyed in a previous iteration doesn't really apply for garbage collection, which is what it was designed for. I'm using AllObjects because it's being called from a non-actor class, and only actors can use the AllActors, DynamicActors, etc. iterators. As far as I can tell only AllObjects is valid for use in classes not derived from actor.</p>
+<p><em class="em2">Wormbo:</em> Avoid AllObjects when AllActors or DynamicActors gives you the same results. Also when UsingAllObjects, make sure the actor you try to Destroy() isn't already destroyed (i.e. bDeleteMe should not yet be True).</p>
+<p><em class="em2">Foxpaw:</em> Well, objects not derived from Actor can't use any iterators except AllObjects, so my options are limited. Plus, since it's in the GUI, I don't really have to worry much about framerate.</p>
+<p><em class="em2">Dma:</em> Actually, you can use any iterator even in a static function in a non-actor class by doing something like this:</p>
+<pre class="uscript"><span class="uscript-keyword">static</span> <span class="uscript-keyword">final</span> <span class="uscript-keyword">function</span> Test<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-operator">{</span>
+   <span class="uscript-keyword">local</span> PlayerController PC<span class="uscript-operator">;</span>
+   <span class="uscript-keyword">foreach</span> <span class="uscript-keyword">class</span><span class="uscript-name">'Object'</span><span class="uscript-operator">.</span>AllObjects<span class="uscript-operator">(</span><span class="uscript-keyword">class</span><span class="uscript-name">'PlayerController'</span><span class="uscript-operator">,</span> PC<span class="uscript-operator">)</span> <span class="uscript-operator">{</span>
+      <span class="uscript-keyword">foreach</span> PC<span class="uscript-operator">.</span>AllActors<span class="uscript-operator">(</span><span class="uscript-operator">.</span><span class="uscript-operator">.</span><span class="uscript-operator">.</span><span class="uscript-operator">)</span> <span class="uscript-operator">{</span>
+         <span class="uscript-comment">// ...</span>
+      <span class="uscript-operator">}</span>
+      <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+   <span class="uscript-operator">}</span>
+<span class="uscript-operator">}</span></pre><script type="text/javascript"><!--
+ menuItemAdd("The Actor List", "#0.1");
+menuItemAdd("Syntax", "#0.2");
+menuItemAdd("Definitions", "#0.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Object", "#0.3.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Actor", "#0.3.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>ZoneInfo", "#0.3.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>GameInfo", "#0.3.4");
+menuItemAdd("Usage", "#0.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Using Iterators From Objects", "#0.4.1");
+menuItemAdd("Related Topics ", "#0.5");
+menuItemAdd("Comments", "#0.6");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Iterator">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Iterator">View other revisions</a><br>Last edited January 13, 2005 22:21 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Iterator">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Iterator">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>There is no spoon
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

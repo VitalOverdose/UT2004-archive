@@ -1,0 +1,22 @@
+Materials[14] =
+{
+    Materials[0] = { Material=None, EnableCollision=true }
+    Materials[1] = { Material=None, EnableCollision=true }
+    Materials[2] = { Material=None, EnableCollision=true }
+    Materials[3] = { Material=None, EnableCollision=true }
+    Materials[4] = { Material=None, EnableCollision=true }
+    Materials[5] = { Material=None, EnableCollision=true }
+    Materials[6] = { Material=None, EnableCollision=true }
+    Materials[7] = { Material=None, EnableCollision=true }
+    Materials[8] = { Material=None, EnableCollision=true }
+    Materials[9] = { Material=None, EnableCollision=true }
+    Materials[10] = { Material=None, EnableCollision=true }
+    Materials[11] = { Material=None, EnableCollision=true }
+    Materials[12] = { Material=None, EnableCollision=true }
+    Materials[13] = { Material=None, EnableCollision=true }
+}
+UseSimpleLineCollision = false
+UseSimpleBoxCollision = false
+UseSimpleKarmaCollision = false
+UseVertexColor = false
+InternalVersion = 0

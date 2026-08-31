@@ -1,0 +1,149 @@
+Created @ [09/04/2026 19:52:25] current max file [F:\Projects\UT2004_2026\DropShip\Final_DoublePackedV1\Final_DoublePackedV1_No_Endgons.max]
+CheckMate Lite v3.25
+runCurrentTest
+openAllGroups
+gatherTestObjects
+sortTestObjects
+setAllObjectsModifersState count[1]
+		setObjectModifersState Target] numModifers[1]
+			each[Edit_Poly:Edit Poly]
+			no modifiers found
+		sceneHasMissingDLLs
+objectHasMissingDLL
+			objectHasMissingDLL [Target] numModifers[1]
+			each[Edit_Poly:Edit Poly]
+requireBitmaps.processTextures
+			textureFile.init [E:\My_3D_Master\3d textures\Custom_UV_Checker.jpg]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Custom_UV_Checker]
+			textureFile.init [E:\Resorce_Items_For_Projects\My Texture Packs\ShipTech2\ShipTech2\FD_SPCoreLogo10.bmp]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [FD_SPCoreLogo10]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\My_New_Model_2026\fuckup\Final\New Chamfers\Stable\Better_Pivot\TargetAmbient Occlusion.tga]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [TargetAmbient Occlusion]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\My_New_Model_2026\fuckup\Final\New Chamfers\Stable\Better_Pivot\Target_Arnold_diffuse_albedo_New_VWM_Packd_TGA.tga]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Target_Arnold_diffuse_albedo_New_VWM_Packd_TGA]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\textures larger\14e1fe3a-f7b3-4c77-b533-41c3484eeeff.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [14e1fe3a-f7b3-4c77-b533-41c3484eeeff]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\textures larger\engin.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [engin]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\textures larger\engin_darker.jpg]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [engin_darker]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\textures larger\FatalsDest_Text.utx-Orig.BestGrateCover(Texture)_0-gigapixel-redefine-realistic-4x.BMP]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [FatalsDest_Text.utx-Orig.BestGrateCover(Texture)_0-gigapixel-redefine-realistic-4x]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\textures larger\panel_darker.jpg]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [panel_darker]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\textures larger\SC_Text.utx-Grates.cp_Evil7_01(Texture)_0-gigapixel-redefine-realistic-4x.BMP]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [SC_Text.utx-Grates.cp_Evil7_01(Texture)_0-gigapixel-redefine-realistic-4x]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\using\Compressed.bdr18cs_dxt1.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Compressed.bdr18cs_dxt1]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\using\Compressed.bdr18cs_dxt1c.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Compressed.bdr18cs_dxt1c]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\using\Compressed.wal37CS_dxt1.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Compressed.wal37CS_dxt1]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\using\Untitled-2.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Untitled-2]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\using\Untitled-5.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Untitled-5]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\using\Untitled-9b.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Untitled-9b]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\using\Untitled_End.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Untitled_End]
+			textureFile.init [F:\Projects\UT2004_2026\DropShip\Walls.wal40cs.png]
+				 TextureIsDefaultStudioTexture [false]
+				 TextureName [Walls.wal40cs]
+Running Test (CheckMate Lite v3.25]
+Create Header [Grand Total Errors]
+Create Header [# General Settings:]
+	running test geometryTests
+getLayersWithGeometry
+0 (Default Layer)
+				TS_RequiredLayerExists [Final_DoublePackedV1_No_Endgons]
+					false
+			Target
+TS_DefaultNameChecker [Target]
+	object [0] Light [0]
+		gathering geometric statistics
+			Target
+				caseof [PolyMeshObject]
+				getNodeNGonInfo
+					classof[PolyMeshObject]
+					PolyMeshObject
+						edit_poly modifer exists
+				polyCount [1086]
+				vertCount [1246]
+				triFaceCount [84]
+				quadFaceCount [1002]
+				ngonFaceCount [0]
+				triMeshFaceCount [0]
+				triMeshVertCount [0]
+TS_DefaultNameChecker [Target]
+	object [0] Light [0]
+				TS_ScaleCheck[Target]
+					[true]
+fillinHasMissingDLL
+fillinDuplicateNames
+ CountDuplicateNames [0]
+Create Header [# Objects:]
+	running test objectTests
+		gathering geometric statistics
+			Target
+TS_DefaultNameChecker [Target]
+	object [0] Light [0]
+				TS_CheckObjectName [Target]
+				fix unprintable [Target][Target]
+				false
+				TS_CheckObjectLayer [Target]
+					Not assigned to required geometry Layer [Final_DoublePackedV1_No_Endgons]
+				calcOverlapResults
+					'CHECKMATE_LITE'
+					TS_OverLapUVsCheck [Target] tolerance[0.0001]
+					classof [PolyMeshObject]
+TS_OverLapUVsCheck FAILED 
+				isolatedVerticesCount[0]
+				overlapVerticesCount [0]
+				overlapFacesCount[0]
+				overlapUVsCount [0]
+				TS_ScaleCheck[Target]
+					[true]
+				getCacheObjectNodeResults
+creaseInfo [#()]
+tvertsInfo[#()]
+polesInfo [#()]
+Create Header [# Materials:]
+	running test materialTests
+collectMaterials
+adding, Material  [Material #1060]
+adding, Material  [Material #1060 [Target]]
+runIndividualTests
+	CollectData Material #1060:Physical_Material
+runMaterialTest [Material #1060]
+			checkMaterialName Material #1060
+	DefaultMaterialNameChecker [Material #1060]
+default material name
+	CollectData Material #1060 [Target]:Shell_Material
+runMaterialTest [Material #1060 [Target]]
+			checkMaterialName Material #1060 [Target]
+	DefaultMaterialNameChecker [Material #1060 [Target]]
+default material name
+Create Header [# Textures:]
+	running test textureTests
+gatherTestObjects
+sortTestObjects
+	5943 ms
+

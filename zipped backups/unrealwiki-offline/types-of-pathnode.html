@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Types Of Pathnode</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Types_Of_Pathnode; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Types Of Pathnode">Types Of Pathnode</a></h1>
+	<div class="wiki"><p>This page gives a quick summary of the types of Pathnode and what they are used for. These are all children of the <a href="navigationpoint.html">NavigationPoint</a> class.</p>
+<h2><a name="0.1"></a>Bot Navigation</h2>
+<h3><a name="0.1.1"></a>Pathnode</h3>
+<p>The basic pathnode actor.</p>
+<h3><a name="0.1.2"></a>LiftCenter &amp; LiftExits</h3>
+<p>Used to add bot support to lifts. See <a href="pathing-lifts.html">Pathing Lifts</a> for details.</p>
+<h3><a name="0.1.3"></a>JumpSpot &amp; LiftExits</h3>
+<p>A variant of the LiftCenter/LiftExit combination. Tells bots where they can jump with boots, and how to use kickers. (Kickers are a pain. Theories on how to actually make them work on <a href="pathing-kickers.html">Pathing Kickers</a>)</p>
+<h3><a name="0.1.4"></a>TranslocDest &amp; LiftExits</h3>
+<p>A Variant of the LiftCenter/LiftExit combination. Tells bots where they can trasnlocate to/from providing the translocator is in use. See <a href="pathing-translocators.html">Pathing Translocators</a> for details</p>
+<h2><a name="0.2"></a>Bot Tactics</h2>
+<h3><a name="0.2.1"></a>AmbushPoint</h3>
+<p>Mainly for Singleplayer missions. With the pawns orders set to Ambushing and their ordertag set to the tag of one or more ambushpoint-ags they may randomly spawn there. Ambushpoints can also tell the pawn that this is a good place to lay out an ambush for the player rather so rather than persueing the player he may go to this point and wait the player out (however I use alarmpoints for this:)</p>
+<h3><a name="0.2.2"></a>DefensePoint</h3>
+<p>Tells bots that its a good place to defend a base or control point in a team game.</p>
+<h2><a name="0.3"></a>Monster Tactics</h2>
+<h3><a name="0.3.1"></a>PatrolPoint, HomeBase, AlarmPoint</h3>
+<p>These work with <a href="scriptedpawn.html">ScriptedPawn</a>s (ie monsters) to script complex behaviour.</p>
+<h2><a name="0.4"></a>Spawning points</h2>
+<h3><a name="0.4.1"></a>PlayerStart</h3>
+<h3><a name="0.4.2"></a>Teleporter, VisibleTeleporter, YawTeleporter</h3>
+<hr class="thin"><p><a href="category-mapping.html">Category Mapping</a><br><a href="category-to-do.html">Category To Do</a> &ndash; add missing information</p>
+<script type="text/javascript"><!--
+ menuItemAdd("Bot Navigation", "#0.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Pathnode", "#0.1.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>LiftCenter &amp; LiftExits", "#0.1.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>JumpSpot &amp; LiftExits", "#0.1.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>TranslocDest &amp; LiftExits", "#0.1.4");
+menuItemAdd("Bot Tactics", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>AmbushPoint", "#0.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>DefensePoint", "#0.2.2");
+menuItemAdd("Monster Tactics", "#0.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>PatrolPoint, HomeBase, AlarmPoint", "#0.3.1");
+menuItemAdd("Spawning points", "#0.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>PlayerStart", "#0.4.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Teleporter, VisibleTeleporter, YawTeleporter", "#0.4.2");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Types_Of_Pathnode">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Types_Of_Pathnode">View other revisions</a><br>Last edited May 25, 2003 5:42 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Types_Of_Pathnode">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Types_Of_Pathnode">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>Mostly Harmless
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

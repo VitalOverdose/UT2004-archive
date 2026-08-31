@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Replication</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Replication; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Replication">Replication</a></h1>
+	<div class="wiki"><h2><a name="0.1"></a>Overview of Replication</h2>
+<p>Computer games have supported multiple players pretty well since their inception. At first, it was merely turn-based on the same PC. Soon, games controlled by multiple players using different input devices on the same computer evolved. Multiplayer games were, naturally, quite popular, especially since game AI at that time was relatively poor. It wasn't long before people figured out how they could play their games over a network.</p>
+<p>Thus, network gaming was born. Each player could play using their own computer, had their own screen so the other players couldn't "peek," and there was a certain something about playing against other people who you couldn't see in real life at the time. Initially restricted to null modem cables, things quickly escalated to modems and IPX networks, and eventually to internet gaming through the use of a progam called Kali. (which was later followed by numerous clones)</p>
+<p>However, there was an issue that needed to be addressed. Obviously, the actions of players needed to be communicated to the other players in the game. They also had to remain synchronized with the other computers to ensure that everything was happening at the same time on all computers involved, despite lag on the network. This problem was not hard to solve: it was called lock-step.</p>
+<p>Lock-step reigned for a long time as the only effective method of keeping players on a network synchronized. Every "tick" on the network, information was passed around until there was a consensus among all computers about where everything was and what it was doing. This didn't take very long and was not particularly noticeable, however it had a big problem: if a person with a fast computer played with a person with a slow computer, the fast computer was always waiting around for the slow computer to keep up. The players on the slower computers thus seemed to "skip" around whenever their position was updated on the network. Obviously, this annoyed the fast computer users. Quake pioneered a technology which was only slightly better - one machine was designated the 'server' and was the absolute authority. All of the other machines just told the server what the player on that end was doing, and the server dictated what happened and told the clients what to render as a result. Eventually, the Unreal engine came around with a thing called "replication."</p>
+<p>Replication was a much more advanced method of keeping computers in sync. It was not as intuitive, but allowed computers of varying speeds to play together seamlessly. Replication consisted of updating values on the clients only when they were updated. Every client computer running the game would simulate the game as if nothing had changed until told otherwise. This not only sharply decreased bandwidth, but cut down on skipping for the fast computers/fast connections.</p>
+<p>If you're new to replication, you might want to now go to the <a href="introduction-to-replication.html">Introduction to Replication</a>, which is the first in a sequence of <a href="unrealscript-lessons.html">UnrealScript Lessons</a> on replication.</p>
+<h2><a name="0.2"></a>How Replication Works</h2>
+<p>There are several parts that relate to replication, some of which are more obvious than others. Key concepts are those of relevance and the <a href="replication-block.html">replication block</a>. <a href="role.html">Role</a>, RemoteRole, <a href="netmode.html">NetMode</a>, <a href="simulated-function.html">simulated function</a>s and <a href="replicated-function.html">replicated function</a>s also come into play.</p>
+<h3><a name="0.2.1"></a>The Types of Replication</h3>
+<p>There are three 'types' of replication, though they are all in a way the same:</p>
+<dl><dt>Actor Replication</dt><dd>This is called whenever an actor is 'created.' It instructs the client to spawn an actor of this class and initialize it with its (clientside) default properties. This is also called when an actor becomes relevant, as it needs to be created on the client. Actors are replicated as soon as the server decides that the client in question needs to know about its existance, as determined by "relevance," below.</dd><dt>Variable Replication</dt><dd>Called whenever a variable changes, if the replication conditions are also met. The replication conditions are defined in the class script.  This instructs the client to change a variable to the new value. Clients can also replicate some variables to the server, in the case of inputs, etc. Variables waiting to be replicated enter a queue and are replicated when bandwidth is availible.</dd><dt>Function Replication</dt><dd>Instructs the client to call a function locally. It can also be used to call a function on the server based on the client's input. See <a href="replicated-function.html">Replicated Function</a>.</dd></dl>
+<h3><a name="0.2.2"></a>Relevance</h3>
+<p>To cut down on bandwidth usage, only actors that are deemed <em class="em1">relevant</em> are replicated. (updated) Often there are actors in the level that cannot interact or be seen by a given client. Any bandwidth used updating these actors is wasted. It is worth noting that actors deemed irrelevant may, on occasion, cease to exist on the client. You must keep this in mind when checking a reference to another object within script on a client if the possibility exists that that actor may be irrelevant. The object and the reference still persists on the server and will be linked back up automatically once the server decides it is relevant again. The Unreal engine uses a set of conditions to determine whether an actor is relevant or not:</p>
+<ul><li>If the actor has bAlwaysRelevant set to true, then this actor is always relevant.</li>
+<li><a href="zoneinfo.html">ZoneInfo</a> and its subclasses are always relevant.</li>
+<li>Actors with bStatic or bNoDelete set to true are always relevant.</li>
+<li>If an actor's owner is set to the local player, then that actor is relevant.</li>
+<li>If an actor has bOnlyRelevantToOwner set to true, it is only relevant to its owner. It will not be replicated to any other clients. It still exists on the server, but is not replicated to anyone but the actor's owner. (But note that bAlwaysRelevant overrides bOnlyRelevantToOwner, which is.... weird)</li>
+<li>If an actor is a subclass of <a href="weapon.html">Weapon</a> and it is owned by an actor who is visible, then it is relevant.</li>
+<li>If the actor has bHidden set to true, bBlockPlayers is set to false, and AmbientSound is set to None, then the actor is not relevant. (barring the above conditions, which will override this.)</li>
+<li>If the actor is visible on the client's screen, then it is relevant. In some cases this can be inaccurate for actors with very large meshes, as it goes by the center of the object, however, some leeway is provided.</li>
+<li>If the actor is not visible on the client's screen but was recently visible, then it is still considered relevant. The amount of time it remains relevant varies based on bandwidth availible, and will vary from 2 to 10 seconds.</li>
+<li>The <a href="linked-list.html">linked list</a>s <em class="em2">Level.ControllerList</em> (UT2003) and <em class="em2">Level.PawnList</em> (UT) do not exist on network clients. If you attempt to reference them the list will appear empty. <em class="em2">Level.Game</em> is also never replicated and does not exist on the client at all. If you need to access the game's <a href="gamereplicationinfo.html">GameReplicationInfo</a>, it can still be referenced by the locally controlled player's <a href="playercontroller.html">PlayerController</a> or <a href="playerpawn.html">PlayerPawn</a>. See <a href="netcode-idioms.html">Netcode Idioms</a> for an explanation of how to do this.</li>
+</ul>
+<dl><dt>NetPriority</dt><dd>If there are more relevant actors that need updating than bandwidth is availible, this floating point variable is used to determine priority. The ratio of an actors NetPriority and another actors NetPriority is the same ratio of bandwidth allocated to each. As a result, actors with more NetPriority will be updated more frequently. The default value for actors in UT'99 v4.36 is 1.00.</dd><dt>NetUpdateFrequency</dt><dd>NetUpdateFrequency is another variable useful in replication. It effectively causes an otherwise relevant (not useful when the actor is not relevant) actor to be relevant NetUpdateFrequency times per second. This is useful when the data changes frequently but you only want periodic updates. For example, PlayerReplicationInfo contains a lot of data about the client. Stuff like the various player's pings may change quite frequently, and having the client keep track of such information would be quite a network hog. But since PlayerReplicationInfo has a NetUpdateFrequency of 2, it is only updated twice a second, which is much nicer for that player's bandwidth. The list of the current NetUpdateFrequency's (times per second) for all UT classes are listed below:</dd></dl>
+<table class="paratable-border" border=0 cellspacing=0 cellpadding=0><tr valign=top><td align=center><em class="em2">UT'99 class</em></td>
+<td align=center><em class="em2">NetUpdateFrequency </em></td>
+</tr>
+<tr valign=top><td align=center>Actor</td>
+<td align=center>100 Hz</td>
+</tr>
+<tr valign=top><td align=center>Inventory</td>
+<td align=center>8 Hz</td>
+</tr>
+<tr valign=top><td align=center>ZoneInfo</td>
+<td align=center>4 Hz</td>
+</tr>
+<tr valign=top><td align=center>GameReplicationInfo</td>
+<td align=center>4 Hz</td>
+</tr>
+<tr valign=top><td align=center>PlayerReplicationInfo</td>
+<td align=center>2 Hz</td>
+</tr>
+</table>
+<dl><dt>bNetOwner</dt><dd>A boolean that simply indicates if the client we are considering replicating this to is the owner of the thing we are considering replicating. This is only of value within the <em class="em1">replication block.</em></dd><dt>bNetInitial</dt><dd>Similar to bNetOwner, this is used only inside the <em class="em1">replication block.</em> It is true if this is the first time this actor has been replicated to the client. It is false otherwise. This is useful, for instance, for things like projectiles that only need to have their location and velocity replicated once and their movement can then be predicted reliably.</dd></dl>
+<h3><a name="0.2.3"></a>Role and RemoteRole</h3>
+<p>The Role of an actor determines what it "is" on the local machine with regards to the network. The RemoteRole is similar but represents what it "is" on the remote machine. See <a href="role.html">Role</a> for details.</p>
+<h3><a name="0.2.4"></a>NetMode</h3>
+<p>The NetMode is not directly connected to the concept of replication itself, but also very important for writing netcode. Basically NetMode represents the physical role that this machine is running: Dedicated server, client, etc. See <a href="netmode.html">NetMode</a> for details. </p>
+<h3><a name="0.2.5"></a>The Replication Block</h3>
+<p>In many classes there is a block of code that looks like this:</p>
+<pre class="uscript"><span class="uscript-keyword">replication</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">reliable</span> <span class="uscript-keyword">if</span><span class="uscript-operator">(</span> bNetOwner <span class="uscript-operator">&amp;&amp;</span> <span class="uscript-operator">(</span>Role<span class="uscript-operator">==</span>ROLE_Authority<span class="uscript-operator">)</span> <span class="uscript-operator">)</span>
+        NumCopies<span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><p>This is called the "replication block" or "replication statement", see <a href="replication-block.html">Replication Block</a> for details.</p>
+<h3><a name="0.2.6"></a>Simulated Functions</h3>
+<p>Another great mystery of UnrealScript's netcode is the keyword <em class="em1">simulated</em> for functions and states. It's not really replication, but only tells the engine whether a function may be executed on clients. See <a href="simulated-function.html">Simulated Function</a> for details.</p>
+<h3><a name="0.2.7"></a>Miscellaneous Replication Information</h3>
+<dl><dt>Tearing Off Actors</dt><dd>If an actor has bTearOff set to true, it will, as soon as possible, notify all clients to whom the actor is relevant that the actor is no longer being replicated by the client and that they should take over all responsibility for the actor. This sets the actor to ROLE_Authority on the clients to whom this actor is relevant. The actor will no longer be replicated to any clients, even if it later becomes relevant to them. If the variable bNetTemporary is set to true, this actor will be 'torn off' on a given client as soon as it is initially replicated to that client. This saves bandwidth by not replicating physics changes to objects with predictable motion. (IE a projectile) Note that although the projectile is no longer being replicated, even if something happens to it on the client the takedamage calls will still reach the client when the projectile impacts on the server.</dd><dt>Dirty Replication</dt><dd>This is a hack built in to the replication system. It allows the replication to work much faster, as replication conditions are simply bypassed if no variables have been set within unrealscript since the last time the conditions were checked. This is only logical - if no variables have changed, nothing needs to be replicated. Unrealscript will natively set this to true and false for you whenever you assign a non-local variable. This applies even if the variable is not replicated. (not that it really matters, but I suppose it's a way of optimizing if you're desperate.) The variable bNetDirty, declared in actor, is true whenever the actor should get it's conditions checked. If it is false, no variables have changed since the replication conditions were checked. (not counting bNetDirty itself, obviously) This excludes natively changed variables, however. They will be replicated regardless. The variable bOnlyDirtyReplication, also defined in actor, can be used to override this behaviour. If it is set to true, natively changed variables will not be replicated until a variable is replicated in Unrealscript. This will run faster, but should only be used if no variables will be updated through native code, meaning basically that no physics should be performed on the actor and preferably it should be as inert as possible. (like a decoration)</dd><dt>Server Packages</dt><dd>The packages that the client will load in order to open the level on the server are defined by the ServerPackages in your UnrealTournament or UT2003 INI file. All of the packages specified in the list found in the INI file will be loaded, as will any packages that contain superclasses of the classes of any class in the packages specified. (Hope that's not confusing. <img alt=":P" src="emoticons/tongue.gif" align="middle">)</dd><dt>PostBeginPlay versus PostNetBeginPlay</dt><dd>The difference between these two functions is small, but important. PostBeginPlay is called after the actor is created but BEFORE any values have been replicated to it. PostNetBeginPlay is called after all of the variables have been replicated to the actor. PostBeginPlay should be used for initialization sorts of things, while PostNetBeginPlay can be used for stuff like setting up variables that are not replicated but instead divined from the value of the variables that are replicated. In botplay or on the server of a network game, PostNetBeginPlay will be called immediately after PostBeginPlay.  One caveat of PostNetBeginPlay() that may not be immediately obvious is that since PostNetBeginPlay() is not called until variables have been replicated, this means that it will not be called until any variable's value has actually been changed.</dd></dl>
+<h2><a name="0.3"></a>Hints and Tips from those who've been there</h2>
+<dl><dt>Network-compatible code isn't "code plus netcode"</dt><dd>Try to avoid the approach "I'll write my code now and when it's free of bugs I'll add 'netcode'."  While that might work for less complex cases, more often than not coding something in a way that makes it work in network games requires a completely different approach to start with, and keeping that in mind before you start coding is much easier and less error-prone than altering your code afterwards.</dd><dt>Test your Code under Network Conditions</dt><dd>For obvious reasons, you must test your code under network conditions. This is not the same as running a listen server. A listen server is halfway between a botmatch and a dedicated server. Nothing is being replicated to the local machine when you run a listen server - the values are read directly from the server values, since they are on the same machine. <a href="debugging-techniques.html">Debugging Techniques</a> explains how to run a dedicated server and a client simultaneously.</dd><dt>Reliable versus Unreliable</dt><dd>Another optimization used in networking is the difference between Reliable and Unreliable data. In the case of variables, all data is reliable. It is all guaranteed to reach the client, even if it arrives in the wrong order. (Pawns however, have code that prevent them from appearing jumpy, although the effects of this can still be seen at times when the player bounces back and forth in a somewhat laggy game.....location updates are being received out of order.) Functions however, exist in both reliable and unreliable forms. A reliable function, like reliable data, is guaranteed to reach the client. An unreliable function however, is sent to the client, but it is not guaranteed of reaching the client. Something that sends messages to the client, like BroadcastMessage or BroadcastLocalizedMessage, are reliable to ensure that the client gets the message. Something like a client's update to the server about its position need not be reliable, however. Since the client sends these update requests to the server every single tick (in ServerMove, if you're wondering), it does not matter if they all reach the server. And since each update is timestamped, the server knows which ones to regard because they are out of order or lagged. And so, the server can be assured of getting updates from the client, while not requiring that they ALL be sent. A reliable function is repeatedly sent over the network until the client acknowledges it. This can lead to a one second delay or more if it has to try to send the message once or twice. Since you don't want to bog down the network connection with reliable updates about where the client is looking or moving, unreliable is best in this situation since the server only needs to get "most" of them to work great.</dd></dl>
+<h2><a name="0.4"></a>Related Topics</h2>
+<ul><li><a href="role.html">Role</a> and RemoteRole, and <a href="netmode.html">NetMode</a>.</li>
+<li><a href="simulated-function.html">Simulated Function</a></li>
+<li><a href="replication-block.html">Replication Block</a></li>
+<li><a href="replicated-function.html">Replicated Function</a></li>
+<li><a href="netcode-idioms.html">Netcode Idioms</a></li>
+<li><a href="animation-replication.html">Animation Replication</a></li>
+<li><a href="introduction-to-replication.html">Introduction to Replication</a></li>
+<li><a href="replication-examples.html">Replication examples</a></li>
+<li><a href="replication-examples-battle.html">Replication Examples/Battle City</a></li>
+</ul>
+<h2><a name="0.5"></a>External Links</h2>
+<p>Replication is a complex and sometimes difficult to understand part of writing code for the Unreal Engine. The following are some documents which describe replication in all of it's glory. They can be used as a guide or simply as supplements to the information provided here.</p>
+<ul><li><a href="http://unreal.epicgames.com/Network.htm">[Networking Architecture]</a> by Tim Sweeney himself.</li>
+<li><a href="http://unreal.jall.org/tutorials/replication.html">[Replication De-Obfuscation]</a> by Mongo</li>
+<li><a href="http://unreal.jall.org/tutorials/guidedripper.html">[Guided Ripper Tutorial]</a> &ndash; A UT-based tutorial describing the pitfalls of creating a weapon that works not only offline.</li>
+<li><a href="http://www.members.shaw.ca/gswilson/Simple2.zip">[Networking Sample]</a> by GW</li>
+<li><a href="http://www.members.shaw.ca/gswilson/SimpleB.zip">[Another Networking Sample]</a> by GW</li>
+</ul>
+<hr class="thin"><h2><a name="0.6"></a>Discussion</h2>
+<p><em class="em2">Daid303:</em> A strange bug shows up in replication when replicating Structures: (I've only tested this in UT2003) I was creating my own Vehicle (A SpaceShip) with it's own replication code, I had copied the Car replication code, and cut out everything about wheels and other not usefull stuff. It looked fine in code, it compiled nice. But it DIDN'T work. I was testing, trying and doing some other wierd stuff for about 4 days, without any result, the stuct seemt only to replicate when i wasn't in the vehicle. (I got very frustraded at a moment and almost deleted my code) I redid everything, and still it didn't work. Then i noticed, after the Struct in Car is the Gear replicated. I had tried everything, so i replicated a Var after my struct. And a mircle happend, I killed the <a href="unrealed-goblin.html">UnrealEd goblin</a> <img alt=":P" src="emoticons/tongue.gif" align="middle">, no not really, but it worked. It seems that epic made an error somewhere in the replication code. What do we learn of this?</p>
+<ul><li>If you want to replicate a struct, and it doesn't work, try to replicate something else with it.</li>
+</ul>
+<p><em class="em2">Dawn:</em> In UT, I'm replicating structures reliably with no problems, so the above may only apply to UT2K3.</p>
+<p><em class="em2">Foxpaw:</em> The amount of control you have over what gets replicated when is somewhat minimal.. the variable after the struct may not actually get replicated every time that the struct does. At any rate, it's something to try if anyone is having problems replicating structs.</p>
+<p><em class="em2">Haral:</em>  I think that an actor set to bStatic or bNoDelete is <em class="em1">not</em> relevant, contrary to what this page says.  In fact, if you set an actor to bStatic, it won't even try to send replicated functions.  On a side note, anyone know why you'd get 'unwanted function received' on the server end of a replicated function?</p>
+<p><em class="em2">Foxpaw:</em> I'm pretty sure they are relevant, like the page says. If they were not they would not appear in the map at all, unless strictly client side only. The lack of function replication may be a result of the objects role or remoterole, nettemporary, or others. I'm not clear on your other question though. I actually have a question of my own though: if multiple elements of a dynamic array are being replicated and the packets arrive out of order, will they end up out of order in the array, or is there a timestamp of sorts sent along with it to ensure that the elements are ordered properly when they arrive?</p>
+<p><em class="em2">Wormbo:</em> Dynamic arrays can't be replicated, this is mentioned at least on the <a href="variable-syntax.html">Variable Syntax</a> page.</p>
+<p><em class="em2">Foxpaw:</em> So it says. I was hoping they could since the compiler didn't complain, but I can write a different implementation. Are reliable functions guaranteed to reach the other side in the same order they are sent? Right now I'm using a "net leeway" variable and any elements recieved within that amount of time are assumed to be out of order and sorted, but this is rather inefficient, especially since it's being used to transfer player input and some things, like axis movements, occur very frequently.</p>
+<p><em class="em2">Mysterial:</em> No, they're not. Why not simply add a parameter to the replicated function indicating the index into the array where the data should go?</p>
+<p><em class="em2">Mychaeel:</em> Keep in mind that "replicating an array" this way will leave it completely empty for players joining mid-game.  You could use a generously dimensioned static array instead and set it up as a round-robin buffer; for all clients in game only one value will be replicated at a time when it is added to the buffer (plus the updated number of elements in the buffer), while joining clients will automatically get the entire buffer.</p>
+<p><em class="em2">Foxpaw:</em> It's okay if newly joined players don't get the full array - it's simply a buffer of time-stamped inputs from the player. Information is only stored in it for a maximum of four seconds, to allow all of the things that want to read the player's input to have a chance to see it.</p>
+<p><em class="em2">Haral:</em> Well I see Mungo and Tim Sweeney seem to disagree on the point of bStatic/bNoDelete variables.  In the Replication DeObfuscation article an actor is listed as passing the first stage of checks if it is not either of these.  It makes sense as far as bStatic goes.  Why in the world would something bStatic need to be relevant all the time?  The client only needs to know if something changes.  I think I'll test when I'm off of work and see what's up.  I still am not quite sure what that error message (received in the server log) was about.  However, I got my code working when I came to understand the difference between calling a function on the server and executing it on the server.  Whoops!</p>
+<p><em class="em2">Foxpaw:</em> I believe it is because, depending on that actors Role, often things that are not relevant will simply cease to exist on the client. Often those bStatic things you still want to be around. Things that are relevant still don't get replicated unless something changes, with the exception of actor replication which occurs only when they first become relevant. So, in effect, a bStatic thing will probrably never actually get replicated because it generally doesn't change, even though it is always relevant. I had another question about replicating dynamic arrays/functions too. Does anyone know what the result will be if you replicate a function which takes a dynamic array as an argument? Will this simply replicate the entire array along with the function or will it arrive as an empty argument?</p>
+<p><em class="em2">GW:</em> Just an FYI, I havn't see this documented anywhere. It is not possible to call a function on a client from the server using any sort of 'player input' function. This includes exec functions and things like playerMove(). To get around this, have the input function set a boolean and then check against that boolen in a timer or tick function...which will then call your replicated function.</p>
+<p><em class="em2">Foxpaw:</em> I'm confused: you would have to replicate the bool to the server in order for it to replicate the function back.. wouldn't it be easier to just have the client call that function itself?</p>
+<p><em class="em2">GW:</em>  I'll post another 'Sample' with an example so you can see exactly what I mean. You dont have to replicate the boolean because the server is the only box that needs to know its value. The server is the one that's calling a client only function via it's tick.</p>
+<p><em class="em2">Foxpaw:</em> Ooooh, I see what you mean. I thought you meant that it wasn't possible for the server to pick up on client inputs AT ALL without that workaround. I see now, but wouldn't it be easier in that instance to call the client function from the exec function itself? IE:</p>
+<pre class="uscript"><span class="uscript-comment">// I don't actually write my programs like this BTW. :P</span>
+<span class="uscript-keyword">exec</span> <span class="uscript-keyword">function</span> ExecuteThis<span class="uscript-operator">(</span> <span class="uscript-type">string</span> ImAnArgument <span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+  MangleMyArguments<span class="uscript-operator">(</span> ImAnArgument <span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+  DoSomethingnow<span class="uscript-operator">(</span> ImAnArgument <span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+  CallThisOnTheClient<span class="uscript-operator">(</span> ImAnArgument <span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">simulated</span> <span class="uscript-keyword">function</span> CallThisOnTheClient<span class="uscript-operator">(</span> <span class="uscript-type">string</span> ImAnArgument <span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+  <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> Role <span class="uscript-operator">==</span> ROLE_Authority <span class="uscript-operator">)</span> <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+
+  ClientFunctionality<span class="uscript-operator">(</span> ImAnArgument <span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+  DoSomeOtherStuff<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+  IHopeThisFunctionGotCalled<span class="uscript-operator">(</span> <span class="uscript-keyword">true</span> <span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><p><em class="em2">GW:</em> hehe, thats exactly what I was trying to say. You cannot call a function on a client from the server using an exec. Here's another sample.  <a href="http://www.members.shaw.ca/gswilson/SimpleB.zip">[Another Networking Sample]</a> It contains a working example of the boolean method via tick(). There's a few commented sections, which if uncommented, show the function in question doesn't log on the client like it's supposed too.</p>
+<p><em class="em2">Wormbo:</em> Would all this fit onto a [/pitfalls and known bugs]<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Replication/Pitfalls_And_Known_Bugs&referrerid=Replication">?</a> page? It clearly requires a <a href="refactor-me.html">Refactor Me</a> tag. <img alt=";)" src="emoticons/wink.gif" align="middle"></p>
+<p><em class="em2">MasterOfTheDark:</em> In response to Haral's 'unwanted function': I have managed to duplicate this effect and discovered the problem: "This replicated function calls for FunctionName to the server if the actor is owned by this client's player."  The object you are trying to replicate a function on isn't owned by the client you're replicating from.  I had the same problem when trying to make a shopkeeper - I fixed it by having my client call a function on one of it's owned objects (the player's Pawn) which in turn called the shopkeeper's Purchase function.</p>
+<p><em class="em2">NickR:</em> After nearly 3 years of Unreal Script, replication is the only aspect that still eludes my complete understanding. Ideally, I'd like more simple examples on the different aspects of replication and all the keywords and variables associated with it. If no-one fancies doing this, I might do I myself and hopefully you guys might correct my mistakes. </p>
+<p><em class="em2">Tarquin:</em> See the "requests" section on <a href="unrealscript-lessons.html">UnrealScript Lessons</a>. </p>
+<p><em class="em2">Lilguy:</em> Linked to the "Introduction to Replication" page from this page, and added a comment here and there (hope that's alright: I personally find it more useful to have things added directly to the document than to search through the discussion section to find the real answers)</p>
+<p><em class="em2">Tarquin:</em> Yup, that's fine &ndash; though it's still work in progress. It is a very good idea to replace discussion with document-style material &ndash; it's what we call "text refactoring"</p>
+<p><em class="em2">Tarquin:</em> "It instructs the client to spawn an actor of this class and initialize it with its (clientside) default properties" &ndash; does that mean that Class'Foo'.default.Bar might not have the same value on Server and Client?</p>
+<p><em class="em2">EntropicLqd:</em> Hacking aside it depends on whether Foo.Bar is a configurable value.  If the default value of Foo.Bar is stored within an INI file then the values can be different client and server side.  My <em class="em1">Power Core Volume Control</em> mutator relies on this fact to allow clients to set their own volume levels.  <a href="netcode-idioms.html">Netcode Idioms</a> sort of covers this.</p>
+<p><em class="em2">Lilguy:</em> Using the method of replicating a variable and then checking that clientside to see wheter a function should be called clientside is the "correct" way to execute functions to clients. Rather than checking it in the tick function, check the variable's value in PostNetReceive(), which is called on the client after a simulated variable's value changes, as long as bNetNotify is true on that actor. For an example of this, look in the weapon classes...</p>
+<hr class="thin"><p><em class="em2">Wormbo:</em> I think we should give the replication section of the wiki a major cleanup. Pages have overlapping content and some parts confuse the new coder more than they help him. I'll start a page for <a href="replication-discussing.html">/discussing</a> this problem.</p>
+<hr class="thin"><p><a href="category-tutorial.html">Category Tutorial</a></p>
+<p><a href="big-cleanup.html">Big Cleanup</a></p>
+<script type="text/javascript"><!--
+ menuItemAdd("Overview of Replication", "#0.1");
+menuItemAdd("How Replication Works", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>The Types of Replication", "#0.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Relevance", "#0.2.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Role and RemoteRole", "#0.2.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>NetMode", "#0.2.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>The Replication Block", "#0.2.5");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Simulated Functions", "#0.2.6");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Miscellaneous Replication Information", "#0.2.7");
+menuItemAdd("Hints and Tips from those who've been there", "#0.3");
+menuItemAdd("Related Topics", "#0.4");
+menuItemAdd("External Links", "#0.5");
+menuItemAdd("Discussion", "#0.6");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Replication">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Replication">View other revisions</a><br>Last edited August 30, 2005 10:11 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Replication">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Replication">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>Gah - a solution with more questions. (EntropicLqd)
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

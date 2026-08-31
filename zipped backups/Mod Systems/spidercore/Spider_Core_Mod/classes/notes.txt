@@ -1,0 +1,58 @@
+MakeHealable            //   1          0        0          0       0
+AddSheild               //   1          1        1          1       0
+MaxDesireability        //   1          0        0          0       0
+WheelsScale             //   1          0        0          0       0
+AllowFlip               //   1          0        0          0       1
+SetTheDrawScale         //   1          1        1          1
+setTheCollisionRadius        1          1        1          1
+setTheCollisionHeight        1          0        0          0       0
+changeMesh                   0          0        0          0       1
+SetTheGravSale               1          1        1          1       0                         KSetActorGravScale
+SetTheMass                   1          1        1          1       0              KSetMass
+setTheMaxGroundSpeed         1          1        1          1       0
+KWake                        1          0        0          0       0
+spawn                        1          1        1          1       1
+SetTheMaxAirSpeed            1          0        0          0       0
+SetTheMass                   1          1        1          1       0
+RemoveAltfire                1          1        1          1       0
+RemovePrimaryFire            1          1        1          1       0
+EnablePrimaryFire            1          1        1          1       0
+HardAttach                   1          1        1          1       1
+Boost                        1          0        0          0       0
+ChangeEventTo                0          0        0          0       1
+ChangeTagTo                  0          0        0          0       1
+MakeMoveable                 1          1        1          1       1
+ChangeMovetime               0          0        0          0       1
+GiveAmbiantSound             1          1        1          1       1
+GiveSkin                     1          1        1          1       1
+ResetAllToDefaults           1          1        1          1       1
+bDestroyInPainVolume;        0          0        0          0       1
+bCanBeDamaged;               1          1        1          1       0
+Buoyancy                     1          1        1          1
+SoundVolume                  1          1        1          1       1
+music change                                                                  native final function int PlayMusic( string Song, optional float FadeInTime );
+Soundpitch                   1          1        1          1       1
+soundradius                  1          1                   1       0
+RotationRate                 1          1        1                  1
+SetLocation                  1          1        1          1       1
+SetRotation                  1          1        1          1       1
+
+  // * TouchingActors() returns all actors touching the current actor (fast)
+                        // CollidingActors ( class<actor> BaseClass, out actor Actor, float Radius, optional vector Loc );
+                        // DynamicActors() only iterates through the non-static actors on the list (still relatively slow, bu
+ much better than AllActors).  This should be used in most cases and replaces AllActors in most of
+ Epic's game code.
+                        //AllActors() - avoid using AllActors() too often as it iterates through the whole actor list and is therefore slow
+
+
+
+                        Extra Conditions
+                        IsAirborn;
+isMoving;
+IsntMoving;
+isFireing
+hasbotdriver
+bWeaponisFiring;
+bWeaponisAltFiring;
+bDriverHoldsFlag
+

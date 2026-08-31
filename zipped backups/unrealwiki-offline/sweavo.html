@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Sweavo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Sweavo; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Sweavo">Sweavo</a></h1>
+	<div class="wiki"><p>Hello.  </p>
+<p>Got a bit confused about krazy login system so I have two IDs.  Sticking with this one now.  I'm responsible for the changes logged as "watdenku.demon.co.uk" and also the <a href="mod-ideas-skinrelay.html">Mod Ideas/SkinRelay</a></p>
+<p>I'm a medium - to - ok Onslaught player that goes by the names ukj_n00b or chutneyferret.uk.  This last name amoosed me muchly because a Dutch server wouldn't let me join because my name contained a rude word (n00b) so I was forced to change it.  It let me have <a href="http://www.urbandictionary.com/define.php?term=chutney+ferret">[chutneyferret]</a> though.</p>
+<hr class="thin"><h2><a name="0.1"></a>Project: vehicle dibs</h2>
+<p>A mutator that holds onto the last vehicle you used indefinitely, so you can raptor up to some lofty place, snipe for a bit, then get back in it without it having been destroyed by the game engine while your back was turned.</p>
+<p>So I figured out that ONSVehicles disappear by having their CheckReset() called.  I'm not 100% sure what all those conditions are below, but if you can see the vehicle it seems you count as a collidingactor.</p>
+<pre class="uscript"><span class="uscript-comment">// in ONSVehicle</span>
+<span class="uscript-keyword">event</span> CheckReset<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">local</span> Pawn P<span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> bKeyVehicle <span class="uscript-operator">&amp;&amp;</span> IsVehicleEmpty<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        Died<span class="uscript-operator">(</span><span class="uscript-keyword">None</span><span class="uscript-operator">,</span> <span class="uscript-keyword">class</span><span class="uscript-name">'DamageType'</span><span class="uscript-operator">,</span> Location<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> <span class="uscript-operator">!</span>IsVehicleEmpty<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+            ResetTime <span class="uscript-operator">=</span> Level<span class="uscript-operator">.</span>TimeSeconds <span class="uscript-operator">+</span> <span class="uscript-number">10</span><span class="uscript-operator">;</span>
+            <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+
+    <span class="uscript-keyword">foreach</span> CollidingActors<span class="uscript-operator">(</span><span class="uscript-keyword">class</span> <span class="uscript-name">'Pawn'</span><span class="uscript-operator">,</span> P<span class="uscript-operator">,</span> <span class="uscript-number">2500.0</span><span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>P<span class="uscript-operator">.</span>Controller <span class="uscript-operator">!=</span> <span class="uscript-keyword">none</span> <span class="uscript-operator">&amp;&amp;</span> P <span class="uscript-operator">!=</span> <span class="uscript-keyword">self</span> <span class="uscript-operator">&amp;&amp;</span> P<span class="uscript-operator">.</span>GetTeamNum<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-operator">==</span> GetTeamNum<span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-operator">&amp;&amp;</span> FastTrace<span class="uscript-operator">(</span>P<span class="uscript-operator">.</span>Location <span class="uscript-operator">+</span> P<span class="uscript-operator">.</span>CollisionHeight <span class="uscript-operator">*</span> <span class="uscript-keyword">vect</span><span class="uscript-operator">(</span><span class="uscript-number">0</span><span class="uscript-operator">,</span><span class="uscript-number">0</span><span class="uscript-operator">,</span><span class="uscript-number">1</span><span class="uscript-operator">)</span><span class="uscript-operator">,</span> Location <span class="uscript-operator">+</span> CollisionHeight <span class="uscript-operator">*</span> <span class="uscript-keyword">vect</span><span class="uscript-operator">(</span><span class="uscript-number">0</span><span class="uscript-operator">,</span><span class="uscript-number">0</span><span class="uscript-operator">,</span><span class="uscript-number">1</span><span class="uscript-operator">)</span><span class="uscript-operator">)</span><span class="uscript-operator">)</span>
+        <span class="uscript-operator">{</span>
+            ResetTime <span class="uscript-operator">=</span> Level<span class="uscript-operator">.</span>TimeSeconds <span class="uscript-operator">+</span> <span class="uscript-number">10</span><span class="uscript-operator">;</span>
+            <span class="uscript-keyword">return</span><span class="uscript-operator">;</span>
+        <span class="uscript-operator">}</span>
+    <span class="uscript-operator">}</span>
+
+    <span class="uscript-comment">//if factory is active, we want it to spawn new vehicle NOW</span>
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> ParentFactory <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        ParentFactory<span class="uscript-operator">.</span>VehicleDestroyed<span class="uscript-operator">(</span><span class="uscript-keyword">self</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        ParentFactory<span class="uscript-operator">.</span>Timer<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        ParentFactory <span class="uscript-operator">=</span> <span class="uscript-keyword">None</span><span class="uscript-operator">;</span> <span class="uscript-comment">//so doesn't call ParentFactory.VehicleDestroyed() again in Destroyed()</span>
+    <span class="uscript-operator">}</span>
+
+    Destroy<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><p>I'd like to somehow figure out a mutator that stops the last vehicle any player used from resetting.  So I can fly the raptor up to a cliff, camp for a bit, and not turn around to find it gone.  Without subclassing both player and vehicle, it's currently looking like it'll have to be done by polling: some piece of code on a timer constantly updates the ResetTime of the player's last vehicle to stop it timing out.</p>
+<p>Found a bNeverReset in ONSVehicle.  Wondering if I can make the mutator keep track on the client of what vehicle the local player has been getting in, and can set bNeverReset on vehicles the player gets in, and clear bNeverReset (and/or set the CheckReset timer) on the previous veh.</p>
+<hr class="thin"><h2><a name="0.2"></a>Project: AS Turrets for ONS</h2>
+<p>I love ONS-MassDestruction but it had a major flaw when there are only a few players: if you immediately jump in a cicada you can fly to the opposing base and jack their ion cannon before they've even got in it.  So I have the quest of getting the ion cannon to spawn with the right team set and teamlocked.</p>
+<p>While fiddling with this, I was playing with setting the team property at runtime.  The link turrets on ONS-MassDestruction start shooting at the enemy as soon as you set their team.  I'm having trouble figuring out when the turret's controller gets created and the turret gets possessed.  Creating a virgin onslaught map and placing an ASVehicleFactory_LinkTurret in it, I get the following:</p>
+<ul><li>By default the turret automatically fires at anyone on the map</li>
+<li>Setting AIVisibility to 0 stopped the firing but it still scans the surroundings.</li>
+</ul>
+<p>While playing with THAT, I realise how pitifully few entrypoints a link turret has.  SO here's the current thought:</p>
+<p>A subclass of ASLinkTurret called ONSLinkTurret, which will simply be an ASLinkTurret with more entry points <em class="em2">DONE</em></p>
+<p>A subclass of ONSVehicleFactory called ONSASTurretFactory, which should be designed to handle ASLinkTurret (therefore also ONSLinkTurret) and potentially the Ion Cannon too.  <em class="em1">At present, I have ONSLinkTurretFactory that is specific to linkturrets</em></p>
+<ul><li>make a factory that creates link turrets with correct ONS team, teamlocked, and with no automatic controller.  <em class="em2">DONE</em></li>
+</ul>
+<h3><a name="0.2.1"></a>Summary at 2005/06/22:</h3>
+<p>I have <em class="em2">ONSLinkTurret</em> which is a rip of ASTurret_LinkTurret (as opposed to a subclass) and subclasses ASTurret.  Maybe if I'd subclasses something from ONS it would have given me more stuff for free... who can tell... [<em class="em2">Sweavo</em> I can ... i tried it and it was rubbish! ]  ONSLinkTurret has a few default properties added to the source for ASTurret_LinkTurret:</p>
+<pre class="uscript">     bTeamLocked<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     bEnterringUnlocks<span class="uscript-operator">=</span><span class="uscript-keyword">True</span>
+     EntryRadius<span class="uscript-operator">=</span><span class="uscript-number">200.00</span>
+     AutoTurretControllerClass<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'MutScratchMutator.PassiveTurretController'</span></pre><p>... the first two are for more conventional ONS team play dynamics than MassDestruction currently has, and the next makes the turret much easier to get in and out of.  The last prevents the turret from scanning side to side when no-one is in it, and more importantly, prevents it automatically shooting at the opposing team when spawned.</p>
+<p><em class="em2">PassiveTurretController</em> is a turret controller that simply enters state "psv" in which it takes no action.</p>
+<p>I also have <em class="em2">ONSLinkTurretFactory</em>, extending SVehicleFactory </p>
+<pre class="uscript"><span class="uscript-keyword">defaultproperties</span>
+<span class="uscript-operator">{</span>
+     RedBuildEffectClass<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'Onslaught.ONSPRVBuildEffectRed'</span>
+     BlueBuildEffectClass<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'Onslaught.ONSPRVBuildEffectBlue'</span>
+     VehicleClass<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'MutScratchMutator.ONSLinkTurret'</span>
+     bStatic<span class="uscript-operator">=</span><span class="uscript-keyword">false</span><span class="uscript-operator">;</span>
+     bNoDelete<span class="uscript-operator">=</span><span class="uscript-keyword">false</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><p>The last two are so that the class can be spawned by a mutator.  I couldn't get the Mesh property to work.  I wanted it to be StaticMesh=StaticMesh'AS_Weapons_SM.Turret.LinkTurret_STATIC' but it didn't seem to want to play ball.</p>
+<p>Finally, the mutator, <em class="em2">MutASTurretsInONS</em></p>
+<pre class="uscript"><span class="uscript-keyword">function</span> <span class="uscript-type">bool</span> CheckReplacement<span class="uscript-operator">(</span> Actor Other<span class="uscript-operator">,</span> <span class="uscript-keyword">out</span> <span class="uscript-type">byte</span> bSuperRelevant <span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+
+    <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> ASVehicleFactory_LinkTurret<span class="uscript-operator">(</span>Other<span class="uscript-operator">)</span> <span class="uscript-operator">!=</span> <span class="uscript-keyword">None</span> <span class="uscript-operator">)</span>
+    <span class="uscript-operator">{</span>
+        Log<span class="uscript-operator">(</span><span class="uscript-string">"Replaced a link turret"</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-comment">// Can't seem to actually destroy the ASVehiclefactory so we just let it lie dormant</span>
+        ASVehicleFactory_LinkTurret<span class="uscript-operator">(</span>Other<span class="uscript-operator">)</span><span class="uscript-operator">.</span>VehicleClassStr<span class="uscript-operator">=</span><span class="uscript-string">"None"</span><span class="uscript-operator">;</span>
+        <span class="uscript-comment">// Our custom vehiclefactory has bDeleteMe and bStatic set to false, just so that it</span>
+        <span class="uscript-comment">// can be spawned in this way.</span>
+        ReplaceWith<span class="uscript-operator">(</span> Other<span class="uscript-operator">,</span> <span class="uscript-string">"MutScratchMutator.ONSLinkTurretFactory"</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+        <span class="uscript-keyword">return</span> <span class="uscript-keyword">false</span><span class="uscript-operator">;</span>
+    <span class="uscript-operator">}</span>
+    <span class="uscript-keyword">else</span>
+        <span class="uscript-keyword">return</span> <span class="uscript-keyword">true</span><span class="uscript-operator">;</span>
+
+<span class="uscript-operator">}</span></pre><p>This has to use this rather unusual way of replacing the pawn because replacee is bNoDelete and/or bStatic.</p>
+<h3><a name="0.2.2"></a>TODO:</h3>
+<ul><li>Get hijacked announcement to trigger when ONSLinkTurret stolen</li>
+<li>Figger out why the alt fire beam seems to come from map origin rather than the turret.  I think this is something to do with instigator ... but what?</li>
+<li>Get turrets to disappear or unlock when powernode nearby is destroyed.</li>
+<li>BETTER: look at how ONS turrets are powered / unpowered, and look at using that approach instead.</li>
+</ul>
+<hr class="thin"><h2><a name="0.3"></a>Uh-oh, it's getting a bit silly now</h2>
+<p>Also thinking about a mutator-mutator so that servers can have different mutators applied to different maps</p>
+<p>And a link-manta, with weak primary link fire and good secondary link fire, only really any good in a supporting role on maps with large number of players for healing vehs and nodes, or if linked up to one another, can become powerful (though hard to maintain links because they are so nimble)</p>
+<hr class="thin"><h2><a name="0.4"></a>Comments</h2>
+<p><em class="em2">Tarquin:</em> Hello!</p>
+<p><em class="em2">Sweavo:</em> *waves*</p>
+<hr class="thin"><p><a href="category-personal-page.html">Category Personal Page</a></p>
+<script type="text/javascript"><!--
+ menuItemAdd("Project: vehicle dibs", "#0.1");
+menuItemAdd("Project: AS Turrets for ONS", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Summary at 2005/06/22:", "#0.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>TODO:", "#0.2.2");
+menuItemAdd("Uh-oh, it's getting a bit silly now", "#0.3");
+menuItemAdd("Comments", "#0.4");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Sweavo">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Sweavo">View other revisions</a><br>Last edited July 3, 2005 14:46 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Sweavo">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Sweavo">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>I'm a doctor, not a mechanic
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

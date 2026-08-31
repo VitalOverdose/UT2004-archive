@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: MythOpus/Polarity</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=MythOpus/Polarity; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="mythopus.html">MythOpus</a>/<a href="http://wiki.beyondunreal.com/wiki?back=MythOpus/Polarity">Polarity</a></h1>
+	<div class="wiki"><h1><a name="1"></a>The Polarity Project</h1>
+<p><em class="em2">Link:</em>  <a href="http://www.polaritydevjournal.blogspot.com">[Polarity Developers Journal]</a></p>
+<h2><a name="1.1"></a>Introduction</h2>
+<p>During my time working with UScript (A couple of years?) I have created a lot of stuff, most of which I haven't used at all.  I did however, learn an incredible amount of stuff.  Some of it I learned from experimenting, some I've learned from searching the wiki, and even more from asking questions on the <a href="help-desk.html">Help Desk</a>.  I have tried several times to create a "big" mod.  It always started out great, but then I get bored, or stumped and I give up and work on something else.  This time, it is not so.  Finally, I have a big project that I'm working on where I'm getting a lot done and I'm not really getting bored!</p>
+<p>Polarity Is a team-based per-round game, similar to the Half Life modification Counter-Strike.  It is very similar to Counter-Strike in that once you die, you stay dead for the rest of the round.  Once the round is over, you respawn.  It is also similar in that you get money for kills or disabling objections with which you can use to buy a better weapon and equipment to use.  Currently, there is only the standard team-deathmatch implemented, but in the future there will be other gametypes to choose from.  These gametypes will vary from Bomb Planting/Defusing or Destruction/Defense Of An Important Building.  Unlike Counter-Strike, there is no specific theme... ie. Counter-Terrorism, and as such, the two teams aren't very unique.  They are just two teams competing for victory over the battlefield.  They have access to all the same weapons and equipment.  Similar to Command And Conquer Renegade, you may be able to purchase vehicles of which you will be able to drive and use to destroy you're enemy (the vehicles of course will only be allowed in game objective levels as team-based deathmatch levels would be too small to house vehicles for gameplay).  </p>
+<p>There is currently no want for new Player Models as there is no theme or need to switch the player models from the default one's in UT2004.  There will however, be new weapons implemented.  Some will be coded completely from the ground up, and others like the Standard Bullet Sniper Rifle will have minor fixes and changes here and there to make a 'new' weapon.  There is a need for new weapon models (complete with animations) and also a need for level designers from intermediate to expert level to create new maps as there are things that needed to be added and things done a certain way that you just can't do with the stock maps that come with UT2004.</p>
+<p>So far the skeleton of the new hud is complete.  The Hud displays the amount of money you currently have, and a dollar sign that grows and shrinks according to how much money you have.  In the future, there will be other things to add.  I have taken out adrenealine, kill spread and other things because this mod will not use anything like that.  Shields, Adrenaline, and UDamage has been disabled.  I am currently working on a GUI for buying weapons.  It's very plain at the moment but with new content that I will eventually work on, it might not be so plain.</p>
+<p>The gameplay works alright.  Once you die, you're out for the rest of the round until the other team dies or your team dies.  Then a new round starts.  After a specified amount of rounds, the game will end and whichever team has the highest score is the winner.  When you kill someone, you gain 250 dollars.  When you die, you lose 100 dollars.  When you're your team dies, everyone loses another 100 dollars and if it wins you win another 500 dollars.  These amounts are still subject to change however due to the fact that new weapons haven't been created yet and balancing hasn't really been done.</p>
+<p>Anyways...  This page will serve as a temporary home for the Polarity Mod.  News And Progress will occasionally be updated here.</p>
+<h2><a name="1.2"></a>Project ToDo</h2>
+<h3><a name="1.2.1"></a>Completed/Basically Completed</h3>
+<dl><dt>Game teams and rounds.  Players stay dead when they die and respawn on the next round.</dt><dt>Buy System -Added the ability for players to buy weapons</dt><dt>Players gain money when they kill an enemy player.</dt><dt>Bots randomly jump (for a little bit of behaviour that many players do)</dt><dt>Hud showing the current money you have</dt><dt>New weapon base class (reloadable weapons that can be loaded like shotguns or like assault rifles.  I.E. Single bullet or Clips)</dt></dl>
+<h3><a name="1.2.2"></a>To Be Completed/Currently Working On</h3>
+<dl><dt>New weapons</dt><dt>The Buy System GUI (It works, but needs polish and placeholders for when new weapons are implemented)</dt><dt>New Admin Commands (Slap, Slay, Etc.)</dt><dt>Implement a Buying Timelimit where players are only able to buy new weapons until X amount of minutes passes in the round</dt><dt>HUD Modifications/Polishing (New textures and stuff like that)</dt><dt>Add more functionality to the GameInfo</dt><dt>Player Balancing</dt><dt>Weapon Balancing (after new weapons are implemented)</dt><dt>Some effects (smoke, lightning, fire, Flashbang flash)</dt><dt>Need To Fix How Bot's Don't Spawn With Proper Pawns</dt></dl>
+<h3><a name="1.2.3"></a>Need To Start</h3>
+<dl><dt>New levels</dt><dt>New items/equipment</dt><dt>Create various other gametypes</dt><dt>New vehicles</dt></dl>
+<pre class="paraverbatim">  </pre><script type="text/javascript"><!--
+ menuItemAdd("The Polarity Project", "#1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Introduction", "#1.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Project ToDo", "#1.2");
+menuItemAdd("<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>Completed/Basically Completed", "#1.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>To Be Completed/Currently Working On", "#1.2.2");
+menuItemAdd("<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>Need To Start", "#1.2.3");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="mythopus.html">MythOpus</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=MythOpus/Polarity">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=MythOpus/Polarity">View other revisions</a><br>Last edited July 22, 2005 23:51 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=MythOpus/Polarity">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/MythOpus/Polarity">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>Gah - a solution with more questions. (EntropicLqd)
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

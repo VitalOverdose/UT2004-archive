@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: ONSVehicle</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=ONSVehicle; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=ONSVehicle">ONSVehicle</a></h1>
+	<div class="wiki"><div class="classpath"><img src="shared//gameicons/icon-ut2004.png"> <a href="ut2004.html">UT2004</a> :: <a href="object.html">Object</a> &gt;&gt; <a href="actor.html">Actor</a> &gt;&gt; <a href="pawn.html">Pawn</a> &gt;&gt; <a href="vehicle.html">Vehicle</a> &gt;&gt; <a href="svehicle.html">SVehicle</a> &gt;&gt; <a href="onsvehicle.html">ONSVehicle</a><br></div>
+<p>This is the base class for <a href="vehicles.html">vehicles</a> in <a href="ut2004.html">UT2004</a>.</p>
+<h2><a name="0.1"></a>Properties</h2>
+<h3><a name="0.1.1"></a>Weapons</h3>
+<dl><dt>struct native export DriverWeaponStruct</dt><dd>Custom struct. Holds the info to assign a weapon to a bone.</dd><dt>var() <a href="class-syntax.html">class</a>&lt;<a href="onsweapon.html">ONSWeapon</a>&gt; DriverWeaponStruct.WeaponClass</dt><dd>The class of weapon the driver may use. This may be an "<a href="onsweapon.html">ONSWeapon</a>" or any of its subclass. Note that only the driver uses "<a href="onsweapon.html">ONSWeapon</a>" class of weapons.</dd><dt>var() name DriverWeaponStruct.WeaponBone</dt><dd>Bone to attach "its sibling variable" to.</dd><dt>var(SVehicle) array&lt;DriverWeaponStruct&gt; DriverWeapons</dt><dd>A liniar array consisting of "DriverWeaponStruct" variables. Assigned in the PostNetBeginPlay() function. Each element holds an individual "DriverWeaponStruct" variable.</dd></dl>
+<p class="indent2">Because each element applies only to the driver, it enables the driver to use multiple weapons in a single vehicle. This can be seen with the "*ONSMobileAssaultStation<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSMobileAssaultStation&referrerid=ONSVehicle">?</a>" vehicle (yes, that cannon is actually two completely separate weapons, unrelated to firing modes). I don't recall any other vehicle that has two driver weapons.</p>
+<dl><dt>var array&lt;<a href="onsweapon.html">ONSWeapon</a>&gt; Weapons</dt><dd>An array of spawned classes (taken from "DriverWeapons"). Each is a reference to the actual weapon object. Only applies to the driver! Assigned in the PostNetBeginPlay() function.</dd><dt>struct native export PassengerWeaponStruct</dt><dd>Custom struct. Holds the info to assign a weapon pawn to a bone.</dd><dt>var() <a href="class-syntax.html">class</a>&lt;<a href="onsweaponpawn.html">ONSWeaponPawn</a>&gt; PassengerWeaponStruct.WeaponPawnClass</dt><dd>The class of weapon the driver may use. This my be an "<a href="onsweaponpawn.html">ONSWeaponPawn</a>" or any of its subclass.</dd><dt>var() name PassengerWeaponStruct.WeaponBone</dt><dd>Bone to attach "its sibling variable" to.</dd><dt>var(SVehicle) array&lt;PassengerWeaponStruct&gt; PassengerWeapons</dt><dd>A liniar array consisting of "PassengerWeaponStruct" variables.</dd></dl>
+<p class="indent2">Each element holds an individual "PassengerWeaponStruct" variable.</p>
+<p class="indent2">Because each element applies to each passenger, they can each control one weapon. This can be seen with the "*ONSMobileAssaultStation<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSMobileAssaultStation&referrerid=ONSVehicle">?</a>" vehicle (one weaponpawn/passenger, I don't recall any vehicle that has two weapons for a single passenger.</p>
+<dl><dt>var array&lt;<a href="onsweaponpawn.html">ONSWeaponPawn</a>&gt; WeaponPawns</dt><dd>An array of spawned classes (taken from "PassengerWeapons". Each is a reference to the actual object. Only applies to passengers! Assigned in the PostNetBeginPlay() function.</dd><dt>var byte ActiveWeapon</dt><dd>The <u>array element number</u> in the “Weapons[]” variable. This defines the currently selected weapon.</dd><dt>var <a href="rotator.html">rotator</a> CustomAim</dt><dd>A modification of direction, used for weapon aiming.</dd></dl>
+<p>Internal C++ Code: "Onslaught.ONSVehicle.cpp" (Starting @ line 188)</p>
+<pre class="uscript"><span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>bCustomAiming<span class="uscript-operator">)</span>
+Weapons<span class="uscript-operator">(</span>ActiveWeapon<span class="uscript-operator">)</span><span class="uscript-operator">-</span><span class="uscript-operator">&gt;</span>SetAim<span class="uscript-operator">(</span>Weapons<span class="uscript-operator">(</span>ActiveWeapon<span class="uscript-operator">)</span><span class="uscript-operator">-</span><span class="uscript-operator">&gt;</span>Location <span class="uscript-operator">+</span> Weapons<span class="uscript-operator">(</span>ActiveWeapon<span class="uscript-operator">)</span><span class="uscript-operator">-</span><span class="uscript-operator">&gt;</span>AimTraceRange <span class="uscript-operator">*</span> CustomAim<span class="uscript-operator">.</span>Vector<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">,</span> Rotation<span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre><p>Internal C++ Code: "Onslaught.ONSWeapon.cpp" (Starting @ line 505)</p>
+<pre class="uscript"><span class="uscript-keyword">if</span> <span class="uscript-operator">(</span>bCustomAiming<span class="uscript-operator">)</span>
+Gun<span class="uscript-operator">-</span><span class="uscript-operator">&gt;</span>SetAim<span class="uscript-operator">(</span>Gun<span class="uscript-operator">-</span><span class="uscript-operator">&gt;</span>Location <span class="uscript-operator">+</span> Gun<span class="uscript-operator">-</span><span class="uscript-operator">&gt;</span>AimTraceRange <span class="uscript-operator">*</span> CustomAim<span class="uscript-operator">.</span>Vector<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">,</span> VehicleBase ? VehicleBase<span class="uscript-operator">-</span><span class="uscript-operator">&gt;</span>Rotation : Rotation<span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre><p class="indent2"><em class="em2">odo324:</em> Not used in most (if not all?) vehicles! Could use <u>an idea</u> as too 'why' this ability would be helpful.</p>
+<dl><dt>var bool bHasAltFire</dt><dd>Controls whether altfire events are passed to any <a href="onsweapon.html">ONSWeapon</a>s the vehicle is using. It is set to false for vehicles that have special alt-fires inside the vehicle itself, for example the Scorpion (ONSRV<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSRV&referrerid=ONSVehicle">?</a>) and Manta (ONSHoverBike<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSHoverBike&referrerid=ONSVehicle">?</a>).</dd></dl>
+<p class="indent2"><em class="em2">odo324:</em> Does this apply for ALL the veachle's <a href="onsweapon.html">ONSWeapon</a>s?</p>
+<h3><a name="0.1.2"></a>Team Status</h3>
+<p>The texture for whatever team the vehicle is on.</p>
+<dl><dt>var() <a href="material.html">material</a> RedSkin</dt><dd>Material used when assigned to the Red Team.</dd><dt>var() <a href="material.html">material</a> BlueSkin</dt><dd>Material used when assigned to the Blue Team.</dd></dl>
+<h3><a name="0.1.3"></a>Sound</h3>
+<dl><dt>var() <a href="sound.html">sound</a> IdleSound</dt><dd>...used when a driver exists but is not driving.</dd><dt>var() <a href="sound.html">sound</a> StartUpSound</dt><dd>...used when a player enters the vehicle.</dd><dt>var() <a href="sound.html">sound</a> ShutDownSound</dt><dd>...used when a player leaves the vehicle.</dd></dl>
+<h3><a name="0.1.4"></a>Force Feedback</h3>
+<p>Even though you can, it's best not to change these.</p>
+<dl><dt>var() string StartUpForce</dt><dd>The force feed back played when you get in.</dd><dt>var() string ShutDownForce</dt><dd>The force feed back played when you get out.</dd></dl>
+<h3><a name="0.1.5"></a>Proximity Viewshake</h3>
+<dl><dt>var() float ViewShakeRadious</dt><dd>Distance from the vehicle's origin that view starts to shake.</dd><dt>var() <a href="rotator.html">rotator</a> ViewShakeRotMag</dt><dd>Magnitude (speed?) of rotational movements.</dd><dt>var() float ViewShakeRotFreq</dt><dd>Frequency (rate?) of rotational movements.</dd><dt>var() <a href="vector.html">vector</a> ViewShakeOffsetMag</dt><dd>Magnitude (speed?) of offset movements.</dd><dt>var() float ViewShakeOffsetFreq</dt><dd>Frequency (rate?) of offset movements.</dd><dt>var float ViewShakeLastCheck</dt><dd>Internal.</dd></dl>
+<h3><a name="0.1.6"></a>Damage and Destruction</h3>
+<dl><dt>var() StaticMesh DestroyedVehicleMesh</dt><dd>The 'killed' version of the vehicle.</dd><dt>var() <a href="class-syntax.html">class</a>&lt;<a href="emitter.html">Emitter</a>&gt; DestructionEffectClass</dt><dd>Emitter effect to spawn, when the vehicle is 'killed'.</dd><dt>var() <a href="class-syntax.html">class</a>&lt;<a href="emitter.html">Emitter</a>&gt; DisintegrationEffectClass</dt><dd>Emitter effect to spawn, when the vehicle is destroyed (think 'player death effect').</dd><dt>var() float DisintegrationHealth</dt><dd>Related with the previous variable? </dd></dl>
+<p>Internal C++ Code: "Onslaught.ONSVehicle.cpp" (Starging @ line 155)</p>
+<pre class="uscript"><span class="uscript-keyword">if</span> <span class="uscript-operator">(</span><span class="uscript-operator">!</span>bDisintergrateVehicle <span class="uscript-operator">&amp;&amp;</span> Health <span class="uscript-operator">&lt;=</span> DisintegrationHealth<span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    bDisintegrateVehicle <span class="uscript-operator">=</span> <span class="uscript-keyword">true</span><span class="uscript-operator">;</span>
+    eventClientVehicleExplosion<span class="uscript-operator">(</span><span class="uscript-keyword">true</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><p><em class="em2">Sweavo:</em> You'll see in the game that you can destroy a vehicle so that it takes on the DestroyedVehicleMesh and is no longer any use to get in or use.  If you then shoot it with something big like the goliath, it'll go one further and explode into fragments.  I'm guessing this is that this threshold is for.</p>
+<dl><dt>var() range DestructionLinearMomentum</dt><dd>Speed of straight 'point-to-point' movement?</dd><dt>var() range DestructionAngularMomentum</dt><dd>Speed of rotational movement?</dd><dt>var() float TimeBetweenImpactExplosions</dt><dd>While destroyed, specify the maximum amount of time after an explosion b4 another can occur?</dd><dt>var() array&lt;<a href="sound.html">sound</a>&gt; ExplosionSounds</dt><dd>An array of sounds used for the explosions, when destroyed.</dd><dt>var() float ExplosionSoundVolume</dt><dd>Volume at which to play "ExplosionSounds".</dd><dt>var() float ExplosionSoundRadius</dt><dd>Sound radius of "ExplosionSounds".</dd><dt>var byte ExplosionCount</dt><dd>Possibly Internal?</dd><dt>var byte OldExplosionCount</dt><dd>Possibly Internal?</dd><dt>var float LastVelocitySize</dt><dd>Possibly Internal?</dd><dt>var float LastImpactExplosionTime</dt><dd>Possibly Internal?</dd><dt>var float LastCheckUpsideDownTime</dt><dd>Possibly Internal?</dd><dt>var float UpsideDownDamage</dt><dd></dd><dt>var float ExplosionDamage</dt><dd></dd><dt>var float ExplosionRadius</dt><dd></dd><dt>var float ExplosionMomentum</dt><dd></dd><dt>var <a href="class-syntax.html">class</a>&lt;<a href="damagetype.html">DamageType</a>&gt; ExplosionDamageType</dt><dd></dd><dt>var <a href="class-syntax.html">class</a>&lt;<a href="damagetype.html">DamageType</a>&gt; DestroyedRoadKillDamageType</dt><dd>DamageType for when vehicle runs over/crushes someone after being destroyed.</dd><dt>var() <a href="class-syntax.html">class</a>&lt;ONSDamagedEffect<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSDamagedEffect&referrerid=ONSVehicle">?</a>&gt; DamagedEffectClass</dt><dd></dd><dt>var() float DamagedEffectScale</dt><dd></dd><dt>var() vector DamagedEffectOffset</dt><dd></dd><dt>var() float DamagedEffectHealthSmokeFactor</dt><dd>Proportion of default health before it starts SMOKING.</dd><dt>var() float DamagedEffectHealthFireFactor</dt><dd>Proportion of default health before it starts BURNING.</dd><dt>var() float DamagedEffectAccScale</dt><dd></dd><dt>var() float DamagedEffectFireDamagePerSec</dt><dd></dd><dt>var float DamagedEffectAccuredDamage</dt><dd></dd><dt>var ONSDamagedEffect<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSDamagedEffect&referrerid=ONSVehicle">?</a> DamagedEffect</dt><dd></dd></dl>
+<h3><a name="0.1.7"></a>Most Bools</h3>
+<dl><dt>var bool bDestroyAppearance</dt><dd></dd><dt>var bool bDisintegrateVehicle</dt><dd></dd><dt>var bool bHadFire</dt><dd>Internal.</dd><dt>var() bool bEnableProximityViewShake</dt><dd></dd><dt>var() bool bOnlyViewShakeIfDriven</dt><dd></dd><dt>var bool bSoundsPrecached</dt><dd></dd><dt>var bool bNeverReset</dt><dd></dd><dt>var bool bEjectPassengersWhenFlipped</dt><dd></dd><dt>var bool bDriverCannotLeaveVehicle</dt><dd></dd><dt>var bool bCannotBeBased</dt><dd></dd><dt>var() <a href="vector.html">vector</a> FireImpulse</dt><dd></dd><dt>var() <a href="vector.html">vector</a> AltFireImpulse</dt><dd></dd><dt>var bool bHasFireImpulse</dt><dd></dd><dt>var bool bHasAltFireImpulse</dt><dd></dd><dt>var bool bCustomAiming</dt><dd>Whether this vehicle's aiming will be modified.</dd><dt>var const bool bIsAwake</dt><dd>Used for Replication.</dd><dt>var const bool bHasBeenAwake</dt><dd>Probably internal.</dd><dt>var bool bAltFocalPoint</dt><dd>Used by the AI. This overrides the AI's focal point.</dd><dt>var bool AltFocalPoint</dt><dd></dd></dl>
+<h3><a name="0.1.8"></a>Explosion Camera Shakes</h3>
+<dl><dt>var() <a href="vector.html">vector</a> ShakeRotMag</dt><dd>How far to rotate the view.</dd><dt>var() <a href="vector.html">vector</a> ShakeRotRate</dt><dd>How fast to rotate the view.</dd><dt>var() float ShakeRotTime</dt><dd>How much time to rotate the instigator's view. </dd></dl>
+<p><em class="em2">odo324:</em> Nice explanation, but what does that explanation mean?</p>
+<dl><dt>var() <a href="vector.html">vector</a> ShakeOffsetMag</dt><dd>Maximum view offset vertically.</dd><dt>var() <a href="vector.html">vector</a> ShakeOffsetRate</dt><dd>How fast to vertically offset the view.</dd><dt>var() float ShakeOffsetTime</dt><dd>How much time to offset the view.</dd></dl>
+<h3><a name="0.1.9"></a>Impact Variables</h3>
+<dl><dt>struct native export ImpactInfoStruct</dt><dd>Another custom struct. Holds the information for a single impact.</dd><dt>var <a href="actor.html">actor</a> ImpactInfoStruct.Other</dt><dd></dd><dt>var <a href="vector.html">vector</a> ImpactInfoStruct.Pos</dt><dd></dd><dt>var <a href="vector.html">vector</a> ImpactInfoStruct.ImpactVel</dt><dd></dd><dt>var <a href="vector.html">vector</a> ImpactInfoStruct.ImpactNorm</dt><dd></dd><dt>var <a href="vector.html">vector</a> ImpactInfoStruct.ImpactAccel</dt><dd></dd><dt>var ImpactInfoStruct ImpactInfo</dt><dd></dd><dt>var int ImpactTicksLeft</dt><dd></dd><dt>var() float ImpactDamageTics</dt><dd></dd><dt>var() flost ImpactDamageThreshold</dt><dd></dd><dt>var() float PImpactDamageMult</dt><dd></dd><dt>var() array&lt;<a href="sound.html">Sound</a>&gt; ImpactDamageSounds</dt><dd></dd></dl>
+<h3><a name="0.1.10"></a>Sparks</h3>
+<dl><dt>var() <a href="class-syntax.html">class</a>&lt;ONSImpactSparks<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSImpactSparks&referrerid=ONSVehicle">?</a>&gt; SparkEffectClass</dt><dd></dd><dt>var() <a href="editinline.html">editinline</a> ONSImpactSparks<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSImpactSparks&referrerid=ONSVehicle">?</a> SparkEffect</dt><dd></dd><dt>var() float SparkAdvanceFactor</dt><dd></dd></dl>
+<h3><a name="0.1.11"></a>Headlights</h3>
+<dl><dt>var array&lt;ONSHeadlightCorna<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSHeadlightCorna&referrerid=ONSVehicle">?</a>&gt; HeadlightCorona</dt><dd>One array element for each Headlight.</dd><dt>var() array&lt;<a href="vector.html">vector</a>&gt; HeadlightCronaOffset</dt><dd>One array element for each headlight.</dd><dt>var() <a href="material.html">Material</a> HeadlightCronaMaterial</dt><dd>A single material for all headlights.</dd><dt>var() float HeadlightCronaMaxSize</dt><dd>One size for all headlights.</dd><dt>var ONSHeadlightProjector<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSHeadlightProjector&referrerid=ONSVehicle">?</a> HeadlightProjector</dt><dd></dd><dt>var() <a href="material.html">Material</a> HeadlightProjectorMaterial</dt><dd>If null, do not create projector.</dd><dt>var() <a href="vector.html">vector</a> HeadlightProjectorOffset</dt><dd></dd><dt>var() <a href="rotator.html">rotator</a> HeadlightProjectorRotation</dt><dd></dd><dt>var() float HeadlightProjectorScale</dt><dd></dd></dl>
+<h3><a name="0.1.12"></a>Debugging Variables</h3>
+<dl><dt>var string DebugInfo</dt><dd></dd></dl>
+<h3><a name="0.1.13"></a>AI Variables</h3>
+<dl><dt>var <a href="sound.html">sound</a> LockedOnSound</dt><dd>The sound that will indicate 'this' vehicle is locked onto.</dd><dt>var float ResetTime</dt><dd>If this vehicle has no driver, CheckReset() will be called at 'this' time.</dd><dt>var float LastRunOverWarningTime</dt><dd>Last time checked for pawns in front of vehicle and warned them of their impending doom. <img alt=":)" src="emoticons/smile.gif" align="middle"></dd><dt>var float MinRunOverWarningAim</dt><dd></dd><dt>var <a href="bot.html">bot</a> Reservation</dt><dd>Bot that's about to get in this vehicle.</dd><dt>var int OldYaw</dt><dd>Used by the AI. Don't touch.</dd></dl>
+<h3><a name="0.1.14"></a>Correct Aim Indicator (Crosshair Modification) Variables</h3>
+<p>For clarity, I split the “CrosshairX” and “CrosshairY” variables. Although they 'were' declared simultaneously, they are in fact completely separate ordinary float variables.</p>
+<dl><dt>var config color CrosshairColor</dt><dd></dd><dt>var config float CrosshairX</dt><dd></dd><dt>var config float CrosshairY</dt><dd></dd><dt>var config <a href="texture.html">texture</a> CrosshairTexture</dt><dd></dd></dl>
+<h2><a name="0.2"></a>Inherited Variables</h2>
+<dl><dt>float VehicleMass</dt><dd>Defined in <a href="svehicle.html">SVehicle</a></dd><dt>float MomentumMult</dt><dd>Defined in <a href="vehicle.html">Vehicle</a></dd></dl>
+<h2><a name="0.3"></a>Default Properties</h2>
+<pre class="uscript"><span class="uscript-comment">// Miscellaneous</span>
+bHasAltFire             <span class="uscript-operator">=</span> <span class="uscript-keyword">True</span>
+ViewShakeRadius         <span class="uscript-operator">=</span> <span class="uscript-number">100</span>
+DisintegrationHealth    <span class="uscript-operator">=</span> <span class="uscript-operator">-</span><span class="uscript-number">50</span>
+DestructionAngularMomentum  <span class="uscript-operator">=</span> <span class="uscript-operator">(</span>Min<span class="uscript-operator">=</span><span class="uscript-number">50</span><span class="uscript-operator">,</span> Max<span class="uscript-operator">=</span><span class="uscript-number">50</span><span class="uscript-operator">)</span>
+
+<span class="uscript-comment">// Explosions</span>
+TimeBetweenImpactExplosions <span class="uscript-operator">=</span> <span class="uscript-number">0.1</span>
+
+ExplosionSounds<span class="uscript-operator">(</span><span class="uscript-number">0</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'ONSVehicleSounds-S.Explosions.VehicleExplosion01'</span>
+ExplosionSounds<span class="uscript-operator">(</span><span class="uscript-number">1</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'ONSVehicleSounds-S.Explosions.VehicleExplosion02'</span>
+ExplosionSounds<span class="uscript-operator">(</span><span class="uscript-number">2</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'ONSVehicleSounds-S.Explosions.VehicleExplosion03'</span>
+ExplosionSounds<span class="uscript-operator">(</span><span class="uscript-number">3</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'ONSVehicleSounds-S.Explosions.VehicleExplosion04'</span>
+ExplosionSounds<span class="uscript-operator">(</span><span class="uscript-number">4</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'ONSVehicleSounds-S.Explosions.VehicleExplosion05'</span>
+
+ExplosionSoundVolume    <span class="uscript-operator">=</span> <span class="uscript-number">5</span>
+ExplosionSoundRadius    <span class="uscript-operator">=</span> <span class="uscript-number">200</span>
+ExplosionDamage         <span class="uscript-operator">=</span> <span class="uscript-number">100</span>
+ExplosionRadius         <span class="uscript-operator">=</span> <span class="uscript-number">300</span>
+ExplosionMomentum       <span class="uscript-operator">=</span> <span class="uscript-number">6000</span>
+ExplosionDamageType <span class="uscript-operator">=</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'Onslaught.DamTypeOnsVehicleExplosion'</span>
+
+<span class="uscript-comment">// Road Kill</span>
+DestroyedRoadKillDamageType <span class="uscript-operator">=</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'Onslaught.DamTypeONSVehicleRoadKill'</span>
+
+<span class="uscript-comment">// Damage Effects</span>
+DamagedEffectClass <span class="uscript-operator">=</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'Onslaught.ONSDamagedEffect'</span>
+DamagedEffectScale              <span class="uscript-operator">=</span> <span class="uscript-number">1</span>
+DamagedEffectHealthSmokeFactor  <span class="uscript-operator">=</span> <span class="uscript-number">0.5</span>
+DamagedEffectHealthFireFactor   <span class="uscript-operator">=</span> <span class="uscript-number">0.25</span>
+DamagedEffectAccScale           <span class="uscript-operator">=</span> <span class="uscript-number">0.25</span>
+DamagedEffectFireDamagePerSec   <span class="uscript-operator">=</span> <span class="uscript-number">0.75</span>
+
+<span class="uscript-comment">// Viewshake</span>
+bOnlyViewShakeIfDriven <span class="uscript-operator">=</span> <span class="uscript-keyword">True</span>
+
+<span class="uscript-comment">// Ejection</span>
+bEjectPassengersWhenFlipped <span class="uscript-operator">=</span> <span class="uscript-keyword">True</span>
+
+<span class="uscript-comment">// Viewshake</span>
+ShakeRotMag     <span class="uscript-operator">=</span> <span class="uscript-operator">(</span>Z<span class="uscript-operator">=</span><span class="uscript-number">250</span><span class="uscript-operator">)</span>
+ShakeRotRate    <span class="uscript-operator">=</span> <span class="uscript-operator">(</span>Z<span class="uscript-operator">=</span><span class="uscript-number">2500</span><span class="uscript-operator">)</span>
+ShakeRotTime    <span class="uscript-operator">=</span> <span class="uscript-number">6</span>
+ShakeOffsetMag  <span class="uscript-operator">=</span> <span class="uscript-operator">(</span>Z<span class="uscript-operator">=</span><span class="uscript-number">10</span><span class="uscript-operator">)</span>
+ShakeOffsetRate <span class="uscript-operator">=</span> <span class="uscript-operator">(</span>Z<span class="uscript-operator">=</span><span class="uscript-number">200</span><span class="uscript-operator">)</span>
+ShakeOffsetTime <span class="uscript-operator">=</span> <span class="uscript-number">10</span>
+
+<span class="uscript-comment">// Impact</span>
+ImpactDamageTicks       <span class="uscript-operator">=</span> <span class="uscript-number">10</span>
+ImpactDamageThreshold   <span class="uscript-operator">=</span> <span class="uscript-number">5000</span>
+ImpactDamageMult        <span class="uscript-operator">=</span> <span class="uscript-number">0.0003</span>
+
+ImpactDamageSounds<span class="uscript-operator">(</span><span class="uscript-number">0</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'ONSVehicleSounds-S.CollisionSounds.VehicleCollision01'</span>
+ImpactDamageSounds<span class="uscript-operator">(</span><span class="uscript-number">1</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">' ONSVehicleSounds-S.CollisionSounds.VehicleCollision02'</span>
+ImpactDamageSounds<span class="uscript-operator">(</span><span class="uscript-number">2</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">' ONSVehicleSounds-S.CollisionSounds.VehicleCollision03'</span>
+ImpactDamageSounds<span class="uscript-operator">(</span><span class="uscript-number">3</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">' ONSVehicleSounds-S.CollisionSounds.VehicleCollision04'</span>
+ImpactDamageSounds<span class="uscript-operator">(</span><span class="uscript-number">4</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">' ONSVehicleSounds-S.CollisionSounds.VehicleCollision05'</span>
+ImpactDamageSounds<span class="uscript-operator">(</span><span class="uscript-number">5</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">' ONSVehicleSounds-S.CollisionSounds.VehicleCollision06'</span>
+ImpactDamageSounds<span class="uscript-operator">(</span><span class="uscript-number">6</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">' ONSVehicleSounds-S.CollisionSounds.VehicleCollision07'</span>
+
+<span class="uscript-comment">// Sparks: “For the last time, I'm not crippled!"</span>
+SparkEffectClass <span class="uscript-operator">=</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'Onslaught.ONSImpactSparks'</span>
+SparkAdvanceFactor      <span class="uscript-operator">=</span> <span class="uscript-number">1.5</span>
+LockedOnSound <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseGunTech.BSeekLost1'</span>
+MinRunOverWarningAim    <span class="uscript-operator">=</span> <span class="uscript-number">0.88</span>
+
+<span class="uscript-comment">// Crosshair</span>
+CrossHairColor      <span class="uscript-operator">=</span> <span class="uscript-operator">(</span>G<span class="uscript-operator">=</span><span class="uscript-number">255</span><span class="uscript-operator">,</span> A<span class="uscript-operator">=</span><span class="uscript-number">255</span><span class="uscript-operator">)</span>
+CrosshairX          <span class="uscript-operator">=</span> <span class="uscript-number">32</span>
+CrosshairY          <span class="uscript-operator">=</span> <span class="uscript-number">32</span>
+CrosshairTexture    <span class="uscript-operator">=</span> Texture<span class="uscript-name">'ONSInterface-TX.tankBarrelAligned'</span>
+
+<span class="uscript-comment">// ?</span>
+bZeroPCRotOnEntry
+
+<span class="uscript-comment">// Vehicle Lock</span>
+bTeamLocked         <span class="uscript-operator">=</span> <span class="uscript-keyword">True</span>
+bEnterringUnlocks   <span class="uscript-operator">=</span> <span class="uscript-keyword">True</span>
+
+<span class="uscript-comment">// Team</span>
+Team    <span class="uscript-operator">=</span> <span class="uscript-number">0</span><span class="uscript-operator">;</span>
+TeamBeaconTexture   <span class="uscript-operator">=</span> Texture<span class="uscript-name">'ONSInterface-TX.HealthBar'</span>
+NoEntryTexture      <span class="uscript-operator">=</span> Texture<span class="uscript-name">'HUDContent/Generic.NoEntry'</span>
+TeamBeaconBorderMaterial    <span class="uscript-operator">=</span> Texture<span class="uscript-name">'InterfaceContent.Menu.BorderBoxD'</span>
+
+<span class="uscript-comment">// RanOver / Crushed</span>
+RanOverDamageType   <span class="uscript-operator">=</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'Onslaught.DamTypeRoadkill'</span>
+CrushedDamageType   <span class="uscript-operator">=</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'Onslaught.DamTypePancake'</span>
+RanOverSound    <span class="uscript-operator">=</span> Sound<span class="uscript-name">'ONSVehicleSounds-S.CarAlarm.CarAlarm01'</span>
+
+<span class="uscript-comment">// Stolen</span>
+StolenAnnouncement  <span class="uscript-operator">=</span> “Hijecked”
+StolenSound <span class="uscript-operator">=</span> Sound<span class="uscript-name">'ONSVehicleSounds-S.CarAlarm.CarAlarm01'</span>
+
+<span class="uscript-comment">// Bullet Sounds</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">0</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseShieldReflections.BBulletReflect1'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">1</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseShieldReflections.BBulletReflect2'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">2</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseShieldReflections.BBulletReflect3'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">3</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseShieldReflections.BBulletReflect4'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">4</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact1'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">5</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact2'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">6</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact3'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">7</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact4'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">8</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact5'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">9</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact6'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">10</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact7'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">11</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact8'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">12</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact9'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">13</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact11'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">14</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact12'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">15</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact13'</span>
+BulletSounds<span class="uscript-operator">(</span><span class="uscript-number">16</span><span class="uscript-operator">)</span><span class="uscript-operator">=</span> Sound<span class="uscript-name">'WeaponSounds.BaseImpactAndExplosions.BBulletImpact14'</span>
+
+<span class="uscript-comment">// Water</span>
+WaterDamage <span class="uscript-operator">=</span> <span class="uscript-number">150</span>
+VehicleDrowningDamType <span class="uscript-operator">=</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'Gameplay.Drowned'</span>
+
+<span class="uscript-comment">//Shader FX</span>
+SpawnOverlay<span class="uscript-operator">(</span><span class="uscript-number">0</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Shader<span class="uscript-name">'XGameShaders.PlayerShaders.VehicleSpawnShaderRed'</span>
+SpawnOverlay<span class="uscript-operator">(</span><span class="uscript-number">1</span><span class="uscript-operator">)</span> <span class="uscript-operator">=</span> Shader<span class="uscript-name">'XGameShaders.PlayerShaders.VehicleSpawnShaderBlue'</span>
+
+<span class="uscript-comment">// Misc</span>
+VehicleIcon <span class="uscript-operator">=</span> <span class="uscript-operator">(</span>Material<span class="uscript-operator">=</span>Texture<span class="uscript-name">'AS_FX_TX.HUD.TrackedVehicleIcon'</span><span class="uscript-operator">,</span>SizeX<span class="uscript-operator">=</span><span class="uscript-number">64</span><span class="uscript-operator">,</span>SizeY<span class="uscript-operator">=</span><span class="uscript-number">64</span><span class="uscript-operator">)</span>
+bSpecialHUD         <span class="uscript-operator">=</span> <span class="uscript-keyword">True</span>
+bSetPCRotOnPossess  <span class="uscript-operator">=</span> <span class="uscript-keyword">False</span>
+bCanTeleport        <span class="uscript-operator">=</span> <span class="uscript-keyword">False</span>
+
+<span class="uscript-comment">// Sounds</span>
+SoundRadius             <span class="uscript-operator">=</span> <span class="uscript-number">200</span>
+TransientSoundRadius    <span class="uscript-operator">=</span> <span class="uscript-number">600</span></pre><hr class="thin"><h2><a name="0.4"></a>Known Subclasses</h2>
+<ul><li>ONSChopperCraft<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSChopperCraft&referrerid=ONSVehicle">?</a></li>
+<li>ONSHoverCraft<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSHoverCraft&referrerid=ONSVehicle">?</a></li>
+<li><a href="onsplanecraft.html">ONSPlaneCraft</a></li>
+<li>ONSTreadCraft<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSTreadCraft&referrerid=ONSVehicle">?</a></li>
+<li>ONSWheeledCraft<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSWheeledCraft&referrerid=ONSVehicle">?</a></li>
+</ul>
+<h2><a name="0.5"></a>Related Classes</h2>
+<ul><li><a href="vehicle.html">Vehicle</a></li>
+<li><a href="svehicle.html">SVehicle</a> – The super class (parent) of this class.</li>
+<li><a href="onsweapon.html">ONSWeapon</a></li>
+<li><a href="onsweaponpawn.html">ONSWeaponPawn</a></li>
+</ul>
+<hr class="thin"><h2><a name="0.6"></a>Thoughts</h2>
+<p>“Thoughts” refers to questions and theories/hypotheses that need clarification.</p>
+<h4><a name="0.6.0.1"></a>Goals:</h4>
+<ul><li>Better organize confusion regarding this class.</li>
+<li>Help prevent posting without updating the info.</li>
+<li>Reduce non-productive comments.</li>
+</ul>
+<h4><a name="0.6.0.2"></a>Rules:</h4>
+<ul><li>No rants, blocks of code, or discussions!</li>
+<li>Answer by...<ol><li>Updating this page (above)</li>
+<li>Then, posting a short reference to it, here after the "Thought".</li>
+</ol>
+</li>
+<li>Don't delete other people's thoughts unless they're pointless or very simplistic. Modifying for clarity is perfectly fine.</li>
+</ul>
+<table class="paratable-border" border=0 cellspacing=0 cellpadding=0><tr valign=top><td>This is NOT a “quick answer” section! Thoughts could be posted for many months b4 someone has an answer. Please, at least take a couple of DAYS to find an answer yourself.</td>
+</tr>
+</table>
+<h4><a name="0.6.0.3"></a>Your Thoughts:</h4>
+<ul><li>What is ActiveWeapon?<ul><li>The weapon in which the player is holding; its definition has been updated.</li>
+</ul>
+</li>
+<li>What does the “ActiveWeapon” variable represent?<ul><li>“The currently selected weapon, out of all weapons available to the player/bot.” Updated the definition.</li>
+</ul>
+</li>
+<li>Drivers use <a href="onsweapon.html">ONSWeapon</a> while passengers use <a href="onsweaponpawn.html">ONSWeaponPawn</a>. Need to note the general differences between the weapons a driver and passengers can use.</li>
+<li>Because all passengers have their weapons listed in one variable (vs. the individual driver's weapons list), does that REALLY mean each passenger can only have one weapon?</li>
+</ul>
+<hr class="thin"><p><a href="category-class-ut2004.html">Category Class (UT2004)</a></p>
+<h2><a name="0.7"></a>Comments and Discussions:</h2>
+<p><em class="em2">odo324:</em> Just a reminder, everyone's already allowed to add/modify this page. If you know something that isn't here, please post it (wherever most appropriate) ASAP!</p>
+<script type="text/javascript"><!--
+ menuItemAdd("Properties", "#0.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Weapons", "#0.1.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Team Status", "#0.1.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Sound", "#0.1.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Force Feedback", "#0.1.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Proximity Viewshake", "#0.1.5");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Damage and Destruction", "#0.1.6");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Most Bools", "#0.1.7");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Explosion Camera Shakes", "#0.1.8");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Impact Variables", "#0.1.9");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Sparks", "#0.1.10");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Headlights", "#0.1.11");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Debugging Variables", "#0.1.12");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>AI Variables", "#0.1.13");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Correct Aim Indicator (Crosshair Modification) Variables", "#0.1.14");
+menuItemAdd("Inherited Variables", "#0.2");
+menuItemAdd("Default Properties", "#0.3");
+menuItemAdd("Known Subclasses", "#0.4");
+menuItemAdd("Related Classes", "#0.5");
+menuItemAdd("Thoughts", "#0.6");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Goals:", "#0.6.0.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Rules:", "#0.6.0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Your Thoughts:", "#0.6.0.3");
+menuItemAdd("Comments and Discussions:", "#0.7");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSVehicle">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=ONSVehicle">View other revisions</a><br>Last edited June 14, 2005 13:57 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=ONSVehicle">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/ONSVehicle">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>My program doesn't have bugs. It just develops random features.
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

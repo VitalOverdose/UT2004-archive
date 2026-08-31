@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Help Desk</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Help_Desk; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Help Desk">Help Desk</a></h1>
+	<div class="wiki"><p>Having a problem developing an Unreal Engine mod? Post your question here and we'll attempt to answer it. </p>
+<h2><a name="0.1"></a>Read Before Posting</h2>
+<p>A Wiki is not the ideal way to carry on long discussions. <em class="em2">BeyondUnreal's <a href="http://forums.beyondunreal.com/forumdisplay.php?forumid=13">[Unreal Development forums]</a> are recommended instead</em>.</p>
+<h3><a name="0.1.1"></a>Before Posting</h3>
+<p>The question that you plan on asking <em class="em2">may have already be answered</em>, either here or elsewhere. Before posting, please:</p>
+<ul><li>Scan this page</li>
+<li><a href="search.html">Search</a> the Wiki</li>
+<li>Search the <a href="http://forums.beyondunreal.com/forumdisplay.php?forumid=13">[Unreal Development forums]</a></li>
+</ul>
+<h3><a name="0.1.2"></a>When Posting</h3>
+<p>When posting a question, please:</p>
+<ul><li>Use correct <a href="wiki-markup.html">wiki markup</a></li>
+<li>Give your question a heading (level 3)</li>
+<li>Post your question above all other questions to avoid scrolling through older ones</li>
+</ul>
+<h3><a name="0.1.3"></a>After Posting</h3>
+<p>After you have received an answer to your question, please:</p>
+<ul><li>Write up the information somewhere on the site. This may involve refactoring the text from this page or a complete rewrite</li>
+<li><em class="em2">Remove the question and answer from this page</em></li>
+<li>Delete any images you uploaded to show the problem</li>
+</ul>
+<p>If you see a question or discussion that has been idle for over three weeks, <em class="em2">remove the question and answer.</em></p>
+<h2><a name="0.2"></a>Questions </h2>
+<h3><a name="0.2.1"></a>Attaching karma actors to movers</h3>
+<p><em class="em2">Blue Ion:</em> The deal is as simple as the question. I want to attach a karma actor to a mover so when it is triggered  the karma actor would follow the mover and at the same time swing, be shot, and other fun stuff to do with karma actors.</p>
+<p>The idea is to make an elevator that is held with chains that could swing and ultimately break when shot.</p>
+<p>The KBSJoint should do the trick except that it won't work with anything that is either BSP geometry or an other karma actor, and during gameplay, when the karma is activated, the thing shoots of to the center of the world.</p>
+<p><em class="em2">Foxpaw:</em> It is possible that you are not setting up the KBSJoint correctly. It is intended to go between either a Karma simulated actor and another Karma simulated actor, or a Karma simulated actor and the world.</p>
+<p>I believe that attaching to a mover will require a modest amount of coding. However, if you are going to have to custom code something it might not make sense to use Karma at all, and instead code your own elevator physics, since it is a fairly simple case.</p>
+<p>Alternatively, you could get rid of the mover and make the whole thing work on Karma. That would also require some amount of scripting.</p>
+<h3><a name="0.2.2"></a>Calling movement(moveforward etc) from within script</h3>
+<p><em class="em2">Simul:</em> Hi Im creating a script that reads in movement information from a java program on a remote computer and moves the player in unreal.  That is working fine, and now I have 3 values (X,Y,Z) in my script, however I cant for the life of me work out how to emulate a keyboard/mouse input to use the information (like moveForward).  At the moment I am able to use move() on xpawn however there has to be a less dodgy way to do this.  I can get the rotation of the player working fine, its just the movement.  </p>
+<h3><a name="0.2.3"></a>Overriding a native source function in script.</h3>
+<p><em class="em2">Baz:</em> Hi Im trying to override AONSWheeledCraft:: ProcessCarInput() in a subclass of ONSWheeledCraft. is this at all possible, or are all native functions final. Are native functions with the same name as script functions considered different because they dont have the same number?</p>
+<p><em class="em2">Foxpaw:</em> You can override UnrealScript functions declared as native, if they are not final. (Many are, but not all.) However, the function you have indicated does not have a corresponding UnrealScript function, so you cannot override it with UnrealScript. There is probrably an UnrealScript function that you can override to get the same result as you are trying to achieve.</p>
+<p><em class="em2">Baz:</em> oh well, my problem is that bIsInverted is set and checked in the native code, and if bIsInverted is true a vehicle wont reverse when its are upsidedown. Ive got a scorpian driving on the celing, but when you drive into a corner you cant drive out again.</p>
+<h3><a name="0.2.4"></a>Converting BSP to static mesh no longer evil?</h3>
+<p><em class="em2">Tarquin:</em> There used to be this: <span class="interwiki"><a href="http://udn.epicgames.com/Two/ConvertingBspBrushesIsSuboptimal">udn:ConvertingBspBrushesIsSuboptimal</a></span>. However, I was looking for this page just now, and I couldn't see it linked from ANY other page on the UDN. Does that mean that maybe it's ok to do it now? Maybe they've improved the way UnrealEd converts to static meshes?</p>
+<p><em class="em2">Ragdoll:</em> I dont know of any improvements in the BSP&rarr;Static Mesh conversion. It seems ok for basic shapes like cubes etc but from my experience for complex meshes it is better to use a external 3D modelling application. This page explains it quite well:<a href="http://angelmapper.com/tutorials/uedmeshes.htm">http://angelmapper.com/tutorials/uedmeshes.htm</a></p>
+<h3><a name="0.2.5"></a>Registering GameRules</h3>
+<p><em class="em2">Tarquin:</em> Everywhere I've sene examples of using a <a href="gamerules.html">GameRules</a> class, I've seen this sort of code used to register it:</p>
+<pre class="uscript">  <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> Level<span class="uscript-operator">.</span>Game<span class="uscript-operator">.</span>GameRulesModifiers <span class="uscript-operator">==</span> <span class="uscript-keyword">None</span> <span class="uscript-operator">)</span> <span class="uscript-operator">{</span>
+    Level<span class="uscript-operator">.</span>Game<span class="uscript-operator">.</span>GameRulesModifiers <span class="uscript-operator">=</span> myRules<span class="uscript-operator">;</span>
+  <span class="uscript-operator">}</span> <span class="uscript-keyword">else</span> <span class="uscript-operator">{</span>
+    Level<span class="uscript-operator">.</span>Game<span class="uscript-operator">.</span>GameRulesModifiers<span class="uscript-operator">.</span>AddGameRules<span class="uscript-operator">(</span>myRules<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+  <span class="uscript-operator">}</span></pre><p>However, there's an AddGameModifier function in <a href="gameinfo.html">GameInfo</a> that handles the case where no game rules are in the linked list. So you can just do this:</p>
+<pre class="uscript">  Level<span class="uscript-operator">.</span>Game<span class="uscript-operator">.</span>AddGameModifier<span class="uscript-operator">(</span>myRules<span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre><p>This seems simpler... or is there a reason it might not always work?</p>
+<h3><a name="0.2.6"></a>Hud with mouse problems?</h3>
+<p>Okay...  I have been trying to create a little user interface for my game.  Instead of the player looking around with the mouse, the player will have an overhead perspective and is able to interact with things via their mouse.  The problem is, I can't exactly make that work.  Here's what I've got so far.  A custom PlayerController with some game related variables but also a call to Player.GUIController to turn it on... like this.</p>
+<pre class="uscript"><span class="uscript-keyword">class</span> CustomPlayerController <span class="uscript-keyword">extends</span> PlayerController<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">var</span> BaseGUIController HudController<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">exec</span> <span class="uscript-keyword">function</span> MakeGUI<span class="uscript-operator">(</span><span class="uscript-operator">)</span>  <span class="uscript-comment">//it's an exec function just to make things easier for testing purposes</span>
+<span class="uscript-operator">{</span>
+   HudController <span class="uscript-operator">=</span> MQ_HudController<span class="uscript-operator">(</span>Player<span class="uscript-operator">.</span>GUIController<span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+   HudController<span class="uscript-operator">.</span>SetControllerStatus<span class="uscript-operator">(</span><span class="uscript-keyword">true</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><p>MQ_HudController is a custom GUIController that I thought I would need to add custom functionality.  So, what that does is turns on the GUIController which activates mouse functionality.  Here's where things get hard for me.  I can't for the life of me figure out how the actual GUI pages and components for the menu's are 'activated' once the mouse is clicked on them.  I've looked through all relevant classes (from BaseGUIController to GUI, GUIComponent etc...)  Currently, I have no overhead perspective working because I wanted to get this completed first.  All I want for the player to be able to do right now is be able to click anywhere on the ground (with the mouse of course) and then have the pawn of the player move there.  Later I want to add other stuff, but I figure if I figure this out first, I can do the other stuff pretty fast.  Can anyone help me to get the mouse able to be clicked on the ground and have the pawn move there?  PS.  I don't really want like an invisible GUIPage or anything infront of the hud.. if that's possible.</p>
+<h3><a name="0.2.7"></a>Almost ready to launch mod, but a few questions</h3>
+<p><em class="em2">Kou</em>:  Okay, I'm about ready to release a demo of a mod I just made, but I (stupidly) designed the text in my windows based on pixels, and I'm running on 1280x1024 resolution.  Is there a simple way to snap everything into place or am I going to have to set it for each resolution each time?  This is an example of what I currently have...</p>
+<pre class="uscript">       C<span class="uscript-operator">.</span>SetPos<span class="uscript-operator">(</span><span class="uscript-number">550</span><span class="uscript-operator">,</span> <span class="uscript-number">292</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+       C<span class="uscript-operator">.</span>DrawColor<span class="uscript-operator">.</span>R <span class="uscript-operator">=</span> <span class="uscript-number">255</span><span class="uscript-operator">;</span>
+       C<span class="uscript-operator">.</span>DrawColor<span class="uscript-operator">.</span>G <span class="uscript-operator">=</span> <span class="uscript-number">255</span><span class="uscript-operator">;</span>
+       C<span class="uscript-operator">.</span>DrawColor<span class="uscript-operator">.</span>B <span class="uscript-operator">=</span> <span class="uscript-number">255</span><span class="uscript-operator">;</span>
+       C<span class="uscript-operator">.</span>DrawText<span class="uscript-operator">(</span> <span class="uscript-string">"Error!"</span><span class="uscript-operator">,</span> <span class="uscript-keyword">False</span> <span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre><p><em class="em2">Foxpaw:</em> The typical way to resolve this is to multiply by some value based on the resolution. Usually fractional numbers are used and they are multiplied by the resolution, but you can just as easily multiply by the resolution divided by 1280x1024.</p>
+<p>IE:</p>
+<pre class="uscript"><span class="uscript-keyword">local</span> <span class="uscript-type">float</span> XRes<span class="uscript-operator">,</span> YRes<span class="uscript-operator">;</span>
+
+XRes <span class="uscript-operator">=</span> C<span class="uscript-operator">.</span>SizeX <span class="uscript-operator">/</span> <span class="uscript-number">1280</span><span class="uscript-operator">;</span>
+YRes <span class="uscript-operator">=</span> C<span class="uscript-operator">.</span>SizeY <span class="uscript-operator">/</span> <span class="uscript-number">1024</span><span class="uscript-operator">;</span>
+
+C<span class="uscript-operator">.</span>SetPos<span class="uscript-operator">(</span><span class="uscript-number">550</span><span class="uscript-operator">*</span>XRes<span class="uscript-operator">,</span> <span class="uscript-number">292</span><span class="uscript-operator">*</span>YRes<span class="uscript-operator">)</span><span class="uscript-operator">;</span></pre><p><em class="em2">Kou:</em> Thanks, that (kinda) fixed the problem.  I'm wondering how I may play different music in the Instant Action game configuration area rather than the generic UT2k4 menu music. </p>
+<h3><a name="0.2.8"></a>Shuki, How would one collect other Actors data?</h3>
+<p>(NOOB UT Develper)</p>
+<p>I am trying to export data for a classe of actors.</p>
+<p>My ultimate goal is to get user info about all/part of the actors out of UT and display it on a second screen in a dual monitor setup.  I'd be making a very simple overview map of the level with those actors displayed on it as icon.</p>
+<p>The problem seems to be twofold.  First of all I need to somehow have something run on each tick or timer interval and collect the data.  Second of all, I need to find out how I can access the information I want.  In this case, I'd like to start with actor name, time, location, health status.</p>
+<p>(LevelInfo? ZoneInfo?)</p>
+<ul><li>I've thought of a few possible ways to do this: (but of course I am not sure that any of them can be done <img alt=":confused:" src="emoticons/confused.gif" align="middle">)<ul><li>Create a collector actor (can it be a static one?) that has in its Tick event the code that goes out and access the info I want.</li>
+<li>Extend the actor class to add the funcionality to one of the actors of that class and have it collect the info in Timer or Tick.</li>
+<li>Have the Actors in the class report back to the "Master Actor" as in the Reactor sample in <a href="communication-between-objec.html">Communication Between Objects</a></li>
+<li>Last Resort: since my goal is to communicate that information out of UT, I could create an external program that would login to the console and suck out the information from that interface, slow, cumbersome.</li>
+<li>anything else that I missed.</li>
+</ul>
+</li>
+</ul>
+<p>HELP!!!!!!</p>
+<p><em class="em2">Foxpaw:</em> Personally I would gather the information by a collector actor, as you described above. This is fairly simple to implement and does not require subclassing all of the actors that you want to track. If you replace all of those with special "tracking" versions you will break most mutator functionality.</p>
+<p>The biggest obstacle you will likely face is getting the information out. You could use a .ini file and save stuff into it, then have that file polled externally. However, it would probrably be better to use a "network" connection.</p>
+<p>Though it's a bit hokey, you can set up a TCP or UDP server n Unrealscript server and connect to it with your program, then transfer the information across that connection. You can also make your server be the external application and have Unrealscript connect to it. Using a network protocol on the local machine is a bit iffy to me, but it has been demonstrated to be workable on other projects.</p>
+<p><em class="em2">Shuki:</em> Foxpaw, the goal is to get the information out with a UDP uplink and send it to a listener server that will distribute the information.  I've been talking to someone in the Beyond Unreal forum and he also recommended what you said (see <a href="http://forums.beyondunreal.com/showthread.php?t=162347">[Here]</a>)</p>
+<p>Any comments on that code?</p>
+<p>I think I will go with UDP since its faster and the data connection will be reliable.</p>
+<h3><a name="0.2.9"></a>'wUtils' </h3>
+<p><em class="em2">fataloverdose</em>Hi,i was just looking through the pages on 'wUtils' and noticed that all the extra functions are extended off class Object. I didn't think you could go any higher than actor when it comes to adding any code. Or is it that you cant change any code but adding new classes is OK? Is that what the 'X' prefix on some packages is about?</p>
+<p>Thanks.</p>
+<p><em class="em2">Mychaeel:</em> You can extend any class, including <a href="object.html">Object</a> and other non-<a href="actor.html">Actor</a>-derived classes.  The "X" prefix of some classes is only a somewhat poor (and obviously retrofitted) attempt by Digital Extremes to prevent clashes of their class names with engine class names.</p>
+<p><em class="em2">fataloverdose</em>Thanks. But as actor is not subclassed from 'wUtils' how is it i can use the functions if they are on a different branch of the class tree?</p>
+<p><em class="em2">Mychaeel:</em> They're all <code>static</code> functions, i.e. they promise not to access any instance variables or functions from their class and can thus be called on a class reference, not (just) an object reference.  (The compiler enforces this promise.)  So you call those methods as <code>class'wUtilsClass'.static.method()</code>, as described on <a href="wutils.html">wUtils</a>.</p>
+<h3><a name="0.2.10"></a>Lights</h3>
+<p>Everytime I create lights in a level my lights dont work properly when I rebuild the level, the whole level is dark and I can only view the lighting properly when I move the light around, however if I rebuild again the lights go dark again. I'm not sure what I am doing wrong. But when I playtest the level I can only see it when it is in wireframe mode, or texture mode, the lights will not work properly and it is starting to bother me, if anybody else has had this problem please e-mail me at <a href="mailto:mskrob20@student.scad.edu">mskrob20@student.scad.edu</a>, or <a href="mailto:neverhere@msn.com">neverhere@msn.com</a>. </p>
+<p><em class="em2">Foxpaw:</em> It sounds like the light is being blocked by something. When you build the lights it checks to see if the light can actually reach a destination before lighting it up. Unbuilt lights just light everything regardless of whether the light is blocked or not. (still subject to distance, of course) Moving a built light reverts it to it's unbuilt state. For this reason I believe that something is blocking the light.</p>
+<h3><a name="0.2.11"></a>AS Turrets in ONS</h3>
+<p><em class="em2">Sweavo:</em> I'm building a mut that fixes up AS turrets in ONS maps to behave more like ONS would want them to (spawn on node creation, belong to the team, teamlocked, entering unlocks)  And it's mostly working.  Two annoying bugs seem impervious to all my battering: </p>
+<ul><li>I cannot find how to make a vehicle announce "hijacked!" when it is hijacked.  I'm using ONSPRV as my basis, and the fact that the announcement doesn't happen in VCTF made me think that it was something in the gamerules... but can't see anything</li>
+<li>When you man my ONSLinkTurret the regular fire works fine but the alt fire seems to come from map origin rather than from the turret.  Any ideas?</li>
+</ul>
+<p><em class="em2">Ghost3021:</em> Ahh yes i did the same thing for a map I made a while back...in 1st person the beam seems to come from the origin, but if you look at another person using it, it seems to come from the model. I think that there's just some stupid hidden variable that tells what bone to start from (in one of Linkturret 's parents).</p>
+<p>As for the announcer, I believe that like you said it is in the game info. I'll look into that ASAP.</p>
+<h3><a name="0.2.12"></a>Warp Zones</h3>
+<p><em class="em2">Jezinator:</em> Right, erm sorry if this looks a bit wierd but I've never written like this before.  I have a problem with Warp Zones you see.  Im creating a fundamentally mind boggling map using warp zones, not loads of warp zones, just two pairs of them.  I have textured the sheet that defines the zone with AssaultFilmGrain becuase i couldn't find a transparent texture anywhere <img alt=":)" src="emoticons/smile.gif" align="middle"> im using UT2K4 btw.  Anyways the problem is that there is an area of the map behind the warp zone and the geometry is showing through in a very wierd way whenever I play the map.  Its like the corridor behind the Zone (which has nothing to do with the zone itself)  Is overriding the corridor that the Zone links to.  The zone still works perfectly, but its just a glaring aesthetic problem.  I am aware that that was perhaps not the best explanation ever but its a wierd problem.  If there were some way of posting the map here.... Dunno, if anyone has any help, i would seriously appreciate it.  Also I have two other, complete maps which I would like to distribute and don't know how.    </p>
+<p><em class="em2">evil_blue_dude:</em>Rotate one of the zone portals 180 degress. If that doesnt work then rotate them both 180 degrees. (but be sure to try the first before trying the second)</p>
+<p><em class="em2">Jezinator:</em> Yes i did try that, even before I asked here, it doesn't help.  I can't figure out why that happened.</p>
+<p><em class="em2">Foxpaw:</em> I'm not sure if I'm understanding the problem correctly, but it sounds like you might want to try setting the walls of the corridor that has the warpzone info in it to fake backdrop.</p>
+<h3><a name="0.2.13"></a>Collision And caft</h3>
+<p><em class="em2">FOD</em>Hi im making a mod which is a subclass of decoration the only problem is that when i assign a static mesh to the class and play the level im finding all the wheeled craft are sinking into the meshes. I've got collision meshes on the objects and they work fine as just static meshs, but as soon as i use them in a script i find i can drive right through them? Im sure they were fine at one point, but my head so full of code im realy not sure anymore.lol.</p>
+<p><em class="em2">MythOpus:</em>By Wheeled Craft do you mean to imply you're using the karma system?  If so you will need to create Karam Collision Hulls.  Don't know if you already do have them or not though :S</p>
+<p><em class="em2">FOD</em>I think the collision hulls are set ok (if i choose View colision in unrealed the meshs all have pink outlines.) ive got all the settings in collision in the actors properties set to on. Should i be using the simplified collision hull karma/line or box. Its real odd as im using the same static meshs for things like vehicle lifts and the collision is fine there. When i say wheeled craft i mean the scorpion,helbender,hovertenk,artillery and the shock tank. They dont go right through the mesh...just sink up to about their wheel axle. Like being in quicksand? Im sure the answer is blindingly obvious but its winding me up to be getting these sort of problems after all the coding ive just done.For a test made script that just places an actor onto the level:-</p>
+<p>class MyActor extends Actor</p>
+<pre class="paraverbatim">	placeable;</pre><p>defaultproperties</p>
+<p>{</p>
+<pre class="paraverbatim">     DrawType=DT_StaticMesh
+     StaticMesh=StaticMesh'HumanoidHardware.Beams.jribbedcolumn01HA'
+     DrawScale3D=(X=50.000000,Y=50.000000,Z=1.000000)     
+     bCollideActors=True
+     bBlockActors=True
+     bAutoAlignToTerrain=True
+     bBlockKarma=True</pre><p>}</p>
+<p>Now if i try to drive over this in a wheeled craft...quicksand!</p>
+<p>but if i simply just place a static mesh into the map next to it ..the static mesh one is solid and</p>
+<p>can be driven over? im confused.</p>
+<p>The collision is fine if you side swipe the mesh or hit it with a flying craft or even if i just drive directly at it.</p>
+<p>Just did another test..used the same script as above but this time made it a subclass of 'mover' and the collision is ok.?! I suppose i could derive the mod from a mover rather than a decoration but i think there are certain network issues with the 'mover' class which may upset the way my mod works.What are the properties that mover have that make it more solid?</p>
+<h3><a name="0.2.14"></a>ACTION_ShootTarget... what are the firing modes?</h3>
+<p><em class="em2">Tomko:</em> Trying to setup the above action, but the bot just doesnt want to fire at the SetViewTarget I've assigned. Through reading this udn page (<a href="http://udn.epicgames.com/Two/ScriptedSequenceActions#ShootTarget">http://udn.epicgames.com/Two/ScriptedSequenceActions#ShootTarget</a>), it lists AssaultRifle Modes, but I can't get those working either. I have an ACTION_SetViewTarget above it, which points to another xPawn for him to shoot, but it's a no go. The other pawn is in view, in distance, etc... just can't figure out what I might be doing wrong.</p>
+<p>Any assistance would be greatly appreciated, there doesn't seem to be a wealth of information on this action, anywhere!</p>
+<p>p.s. I've also tried the ACTION_FireWeaponAt to no avail.</p>
+<h3><a name="0.2.15"></a>unlimited ammo mutator for 2k4</h3>
+<p><em class="em2">Craze:</em>ok i think i got this right, here was my first ver.</p>
+<pre class="uscript"><span class="uscript-comment">//=============================================================================</span>
+<span class="uscript-comment">// NoLimit.</span>
+<span class="uscript-comment">//=============================================================================</span>
+<span class="uscript-keyword">class</span> NoLimit <span class="uscript-keyword">extends</span> Mutator
+    <span class="uscript-keyword">placeable</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">var</span> weapon TheChosenOnes<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">function</span> PostBeginPlay<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">foreach</span> AllActors<span class="uscript-operator">(</span><span class="uscript-keyword">Class</span><span class="uscript-name">'Weapon'</span><span class="uscript-operator">,</span> TheChosenOnes<span class="uscript-operator">)</span>
+        TheChosenOnes<span class="uscript-operator">.</span>SuperMaxOutAmmo<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    SetTimer<span class="uscript-operator">(</span><span class="uscript-number">50</span><span class="uscript-operator">,</span> <span class="uscript-keyword">true</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">simulated</span> <span class="uscript-keyword">function</span> Timer<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    TheChosenOnes<span class="uscript-operator">.</span>SuperMaxOutAmmo<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+
+<span class="uscript-comment">/*
+exec function AllAmmo()
+{
+    local Inventory Inv;
+    //if (!areCheatsEnabled()) return;
+
+    for( Inv=Pawn.Inventory; Inv!=None; Inv=Inv.Inventory )
+
+        if ( Weapon(Inv)!=None )
+            Weapon(Inv).SuperMaxOutAmmo();
+
+    //AwardAdrenaline( 999 );
+    //ReportCheat("AllAmmo");
+}
+    well heres where i got the code: Object -&gt; cheat manager
+*/</span></pre><p><em class="em2">Craze:</em> and my NEW ver (note neither work)</p>
+<pre class="uscript"><span class="uscript-comment">//=============================================================================</span>
+<span class="uscript-comment">// NoLimit.</span>
+<span class="uscript-comment">//=============================================================================</span>
+<span class="uscript-keyword">class</span> NoLimit <span class="uscript-keyword">extends</span> Mutator
+    <span class="uscript-keyword">placeable</span><span class="uscript-operator">;</span>
+
+    <span class="uscript-keyword">var</span> inventory lazy1<span class="uscript-operator">;</span>
+    <span class="uscript-keyword">var</span> pawn Pawn2<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">function</span> PostBeginPlay<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">foreach</span> AllActors<span class="uscript-operator">(</span><span class="uscript-keyword">Class</span><span class="uscript-name">'Pawn'</span><span class="uscript-operator">,</span> Pawn2<span class="uscript-operator">)</span>
+
+    <span class="uscript-keyword">for</span><span class="uscript-operator">(</span> lazy1<span class="uscript-operator">=</span>Pawn2<span class="uscript-operator">.</span>Inventory<span class="uscript-operator">;</span> lazy1<span class="uscript-operator">!=</span><span class="uscript-keyword">None</span><span class="uscript-operator">;</span> lazy1<span class="uscript-operator">=</span>lazy1<span class="uscript-operator">.</span>Inventory <span class="uscript-operator">)</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> Weapon<span class="uscript-operator">(</span>lazy1<span class="uscript-operator">)</span><span class="uscript-operator">==</span><span class="uscript-keyword">None</span> <span class="uscript-operator">)</span>
+            <span class="uscript-keyword">return</span><span class="uscript-operator">;</span> <span class="uscript-comment">//uhh-ohh... this cant be good... </span>
+            <span class="uscript-comment">//debug crash; //ROFL</span>
+        <span class="uscript-keyword">else</span>
+            Weapon<span class="uscript-operator">(</span>lazy1<span class="uscript-operator">)</span><span class="uscript-operator">.</span>SuperMaxOutAmmo<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+    SetTimer<span class="uscript-operator">(</span><span class="uscript-number">5</span><span class="uscript-operator">,</span> <span class="uscript-keyword">true</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+<span class="uscript-keyword">function</span> Timer<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+<span class="uscript-operator">{</span>
+    Weapon<span class="uscript-operator">(</span>lazy1<span class="uscript-operator">)</span><span class="uscript-operator">.</span>SuperMaxOutAmmo<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span>
+
+
+<span class="uscript-comment">/*
+exec function AllAmmo()
+{
+    local Inventory Inv;
+    //if (!areCheatsEnabled()) return;
+
+    for( Inv=Pawn.Inventory; Inv!=None; Inv=Inv.Inventory )
+        if ( Weapon(Inv)!=None )
+            Weapon(Inv).SuperMaxOutAmmo();
+
+    //AwardAdrenaline( 999 );
+    //ReportCheat("AllAmmo");
+}
+    well heres where i got the code: Object -&gt; cheat manager
+*/</span></pre><p><em class="em2">Craze:</em> plz help me and make it work</p>
+<p><em class="em2">zugy:</em> What are you returning in the PostBeginPlay function? You don't have a return type, so I dunno why you need to return anything...If you could post your error message as well that'd help...(I should explain most of my coding expertise lies in C++ and java at the moment, UScript is still new to me, so I dunno if you need a return type for PGB's without one being explicitly stated) Try this: </p>
+<pre class="uscript"><span class="uscript-keyword">function</span> PostBeginPlay<span class="uscript-operator">(</span><span class="uscript-operator">)</span>
+
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">foreach</span> AllActors<span class="uscript-operator">(</span><span class="uscript-keyword">Class</span><span class="uscript-name">'Pawn'</span><span class="uscript-operator">,</span> Pawn2<span class="uscript-operator">)</span>
+
+    <span class="uscript-keyword">for</span><span class="uscript-operator">(</span> lazy1<span class="uscript-operator">=</span>Pawn2<span class="uscript-operator">.</span>Inventory<span class="uscript-operator">;</span> lazy1<span class="uscript-operator">!=</span><span class="uscript-keyword">None</span><span class="uscript-operator">;</span> lazy1<span class="uscript-operator">=</span>lazy1<span class="uscript-operator">.</span>Inventory <span class="uscript-operator">)</span>
+        <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> Weapon<span class="uscript-operator">(</span>lazy1<span class="uscript-operator">)</span><span class="uscript-operator">!=</span><span class="uscript-keyword">None</span> <span class="uscript-operator">)</span>
+             Weapon<span class="uscript-operator">(</span>lazy1<span class="uscript-operator">)</span><span class="uscript-operator">.</span>SuperMaxOutAmmo<span class="uscript-operator">(</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+
+
+    SetTimer<span class="uscript-operator">(</span><span class="uscript-number">5</span><span class="uscript-operator">,</span> <span class="uscript-keyword">true</span><span class="uscript-operator">)</span><span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span></pre><h3><a name="0.2.16"></a>Compiler Error</h3>
+<p><em class="em2">GargleSoap:</em> Ok i got this as a compiler error using UMake, while trying to do a simple vehical weapon mod: </p>
+<p>Superclass shockmanta of class ONSHoverBike not found.</p>
+<p>My directory looks like: C:\UT2004\shockmanta\Classes\ONSHoverBike.</p>
+<p>and the begining of my hoverbike code is:</p>
+<pre class="paraverbatim">      class ONSHoverBike extends shockmanta ;</pre><p>what is the problem?!? (thnx for any help this is my first mod)(and obviuosly this is my first post ever)</p>
+<p><em class="em2">Graphik:</em> This is an extremely basic problem you're encountering, so you should probably learn a bit more about UnrealScript before attempting to code too much; you'll only frustrate yourself. Take it from me: learning by project is (in my experience) the most difficult way to learn a complex technical subject, though it may seem preferable to reading a great deal of reference material. Just a friendly tip to help you avoid my mistakes. <img alt=":)" src="emoticons/smile.gif" align="middle"></p>
+<p>That said, you may wish to make note of the fact that you've reversed your class definition. ShockManta is your custom class; therefore it extends the existing ONSHoverBike class. The keyword "extends" in UnrealScript means 'inherits from', or, in other words, 'makes use of'.</p>
+<h3><a name="0.2.17"></a>Compiling Error</h3>
+<p><em class="em2">craze:</em> ok well when i try to compile anything it works but seems to take a while to ocmplete ok i see errors i fix them(BTW im working on script in UED(2k4)) i compile again, works i hit compile once more so it will be 'everything is up to date' then it just locks up the compile window at closing, + it won save packages properly, a person contacted and ahas a 'similar' problem, can someone help me?(yes, i have tried reinstalling)</p>
+<p><em class="em2">Tarquin:</em> Why are you compiling a second time?</p>
+<p><em class="em2">craze:</em> because thats how ive always done it(and its always worked), and it seems then whenever i get it to save, nothing works with the changes ive made as if the files ive saved no longer exist, and sometimes they dont exist when i reopen UED(i wonder if i should have dont a clean install instead of just overwriting the old stuff)</p>
+<p><em class="em2">Graphik:</em> I was able to sort of guess at what you meant to have said after having brilliantly deduced that the above was in fact not an accident on your keyboard but an attempt at English.</p>
+<p>As for your UnrealScript-related difficulties, I recommend using UCC.exe for compiling rather than UnrealEd.</p>
+<p><em class="em2">craze:</em> so your saying i cant speak english?(i ant use UCC i dont have all teh tex, or the meshes etc.</p>
+<p><em class="em2">Foxpaw:</em> It sounds like you are recompiling the existing UT2004 code, an example of "<a href="do-not-alter-default-packag.html">altering default packages</a>." If that is not the case, I don't understand what you mean by not having the textures and meshes.</p>
+<p><em class="em2">craze:</em> naw im edinting a mod package an i dont know how to export textures and meshes etc. just scripts, so can you explain why my editor is not working?</p>
+<p><em class="em2">craze:</em> im trying to write a fix for UnWheel (that annoying wrong tex showing up on cars durring online games bug)</p>
+<p><em class="em2">Foxpaw:</em> Textures that have been compressed can't be exported by UnrealEd. (for some reason) I don't know what the reason is that UnrealEd is not working for your compilation, but I believe it's fairly flaky overall when it comes to compiling. I would try to make the fix to UnWheel by making a mod of the mod, rather than trying to change the mod itself. Alternatively, you could figure out what the problem is and notify the makers of UnWheel so they could fix it in the official release. Modifying a mod's packages carries the same caveats as modifying default packages - your modified packages will become incompatible with the official distribution of UnWheel and you won't be able to play online with people who don't also have your fixed version.</p>
+<p><em class="em2">Graphik:</em> Actually tell Shrimp the problem you're experiencing with UnWheel on the forums rather than "MY UED IS BROKEN!!!" (<a href="http://forums.beyondunreal.com/showthread.php?t=164091">http://forums.beyondunreal.com/showthread.php?t=164091</a>). I expect he'll have much greater success at fixing his own mod.</p>
+<p><em class="em2">craze:</em> i PMed him a copy of my script a few days ago, but can you please tell me why my ued has stopped working properly when trying to code?(also see thread 'demolition' i posted the script in .txt form for all to see)(im pretty sure he is aware of the problem....i just wanted to see if i could fix it myself)</p>
+<p><em class="em2">craze:</em> ok its not my mods hat are causing the problem <img alt=":)" src="emoticons/smile.gif" align="middle"> its definitely my UED i added a comment to the class 'UWSCar' compiled(once cuz thats all i can do wiht out it locking up) and tested it, and would ya look at that it wont work, hmmm so can someone please answer my question as to why this is happening and why i cant recompile??</p>
+<p><em class="em2">Graphik:</em> Attempt to compile with UCC and post the error here.</p>
+<p><em class="em2">craze:</em> i dont have all the nessessary stuff to compile it and i dont know how to export it....</p>
+<p><em class="em2">Foxpaw:</em> I think you will find that there are few people with the experience to answer your question. Compiling with UEd is a very uncommon practice because typically one is creating their own mod and so have any resources that would be required for compilation. Perhaps the lack of said resources is the source of your problem.</p>
+<p>The first thing I would try is reinstalling. I think that is the thing most likely to fix the problem you are having.</p>
+<p><em class="em2">craze:</em> well i guess i should try a CLEAN install thanks foxpaw <img alt=":)" src="emoticons/smile.gif" align="middle"></p>
+<h3><a name="0.2.18"></a>I Deleted my MyLevel file </h3>
+<p><em class="em2">tommmyhawk:</em> I think I deleted the MyLevel file because if I want to put a screenshot in it it wont</p>
+<p>apear. if someone can help me i would be verry happy </p>
+<p>(sorry for my bad english (im dutch) and i did not really get the scripting so sorry for that too <img alt=":(" src="emoticons/sad.gif" align="middle"></p>
+<p><em class="em2">MythOpus:</em> You shouldn't be having a MyLevel file to delete...  MyLevel is an internal package system thing that will store all textures/sounds/whatever into your map.  If you load up your map and you don't have a MyLevel package that you can select from in the list, it's probably just that you either didn't put anything in the MyLevel package yet or you didn't save you map (which saves the MyLevel package into the map file).  So, a solution would be to import a texture into MyLevel and see if it appears.</p>
+<p><em class="em2">tommmyhawk:</em>thanx for the tip but i tried that before and it wont apear .a while ago it did apear but is was the wrong texture so i deleted it  but nowthe whole package doesnt apear anymore instead there is a package with textures that are used in the game (blood and smoke and that kind of things) but no"mylevel" package</p>
+<script type="text/javascript"><!--
+ menuItemAdd("Read Before Posting", "#0.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Before Posting", "#0.1.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>When Posting", "#0.1.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>After Posting", "#0.1.3");
+menuItemAdd("Questions ", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Attaching karma actors to movers", "#0.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Calling movement(moveforward etc) from within script", "#0.2.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Overriding a native source function in script.", "#0.2.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Converting BSP to static mesh no longer evil?", "#0.2.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Registering GameRules", "#0.2.5");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Hud with mouse problems?", "#0.2.6");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Almost ready to launch mod, but a few questions", "#0.2.7");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Shuki, How would one collect other Actors data?", "#0.2.8");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>'wUtils' ", "#0.2.9");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Lights", "#0.2.10");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>AS Turrets in ONS", "#0.2.11");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Warp Zones", "#0.2.12");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Collision And caft", "#0.2.13");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>ACTION_ShootTarget... what are the firing modes?", "#0.2.14");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>unlimited ammo mutator for 2k4", "#0.2.15");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Compiler Error", "#0.2.16");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Compiling Error", "#0.2.17");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>I Deleted my MyLevel file ", "#0.2.18");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Help_Desk">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Help_Desk">View other revisions</a><br>Last edited September 24, 2005 4:06 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Help_Desk">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Help_Desk">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>The three virtues of a programmer: Laziness, Impatience, and Hubris. (Larry Wall)
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

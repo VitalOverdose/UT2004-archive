@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Map Design</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Map_Design; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Map Design">Map Design</a></h1>
+	<div class="wiki"><p><em class="em2">Map Design</em>, like any design, is essentially an art.  It is a personal creation by the designer that attempts to communicate with their audience.  The designer works like any other artist, to attract their audience for the purpose of further discovery</p>
+<p>Design for Unreal maps focuses on elements that appeal to the player and that entice the player to explore the map.</p>
+<h2><a name="0.1"></a>Design Principles</h2>
+<p>General design principles help to solidify ideas and give structure to mappers with only a vague idea.  On the macro-level, these principles help to organize the most important ideas, but they can also serve to help with the decisions made for every detail.  A design is a set of answers to the open-ended questions these principles pose.</p>
+<h3><a name="0.1.1"></a>Theme</h3>
+<p>The theme of a map is a combination of the setting and circumstances that make this map unique.  A map's theme can be any well-defined circumstances that influence other elements and principles of the design in a consistent way.  Most decisions made should be based on theme.  The theme is what the map seems to present to the player.</p>
+<h3><a name="0.1.2"></a>Style</h3>
+<p>The style of any art makes it distinctive.  For successful design, the style becomes a consistent way the various elements are communicated to the player.  Style will carry from one element, aspect or detail of the design to another in similar ways.  The style is how the map presents itself to the player.</p>
+<h3><a name="0.1.3"></a>Balance</h3>
+<p>Balance is an important principle to be aware of in design.  It should not always suggest perfect balance (which tends to be boring in aestetic matters), but instead should suggest an awareness of the balance between various elements.  A map called, "King of the Hill", may indeed require a highly fortified central hill that would seem to throw the map's balance off, but it would be necessary.  The balance of a map refers to the predictable climate the player will find themself in.</p>
+<h3><a name="0.1.4"></a>Variation</h3>
+<p>Variation is an essential design principle.  Without variation, the player will experience less and have less to act upon or think about.  Variation works only when there is some patten or rhythm to vary against, perhaps even a consistent Theme, Style or Balance.  Variation is what suprises the player; it's the subject of discovery.</p>
+<h4><a name="0.1.4.1"></a>Break Up Surfaces</h4>
+<p class="indent1">Try not to let any surface be plain, add some indents, some meshes, maybe a few walking gorillas if you have to, but a plain map is a failure, even if it has good flow not many will play it.</p>
+<h2><a name="0.2"></a>Mapping Elements</h2>
+<p>These mapping elements are common terms in Unreal mapping.  They represent the framework for all map design.  By defining the these terms, mappers gain a toolbox of ideas they can implement.  </p>
+<h3><a name="0.2.1"></a>Layout</h3>
+<p>Layout, sometimes referred to as Map Architecture, is the term used to describe the overall shape of the map as well as the detailed interconnections between areas.  A layout is the simple "floor plan" of the map: how many rooms?, how big is this space?,  where do these paths lead?, etc.</p>
+<p>See also <a href="map-flow.html">Map Flow</a>.</p>
+<h3><a name="0.2.2"></a>Placement</h3>
+<p>Placement of elements within the layout becomes crucial for popular gameplay.  PlayerStarts, Weapons, Items, and even Decoration and Lights, all need proper placement to appeal to the player.  PlayerStart, Weapon, Item, and GameType Goal placement is governed by the guideline of Risk vs Reward; the idea that for every risk a player takes, there is a reward of equal value.</p>
+<h4><a name="0.2.2.1"></a>Risk vs Reward</h4>
+<p class="indent1">As famously expounded by CliffyB, "Put desirable things in a dangerous or exposed spot.".  The Keg of Health you want to place on your map should be in the most open, visible, and exposed spot you can find.  It should be a risk to get there, and double the risk to get back.  A fine example of this is the shield-belt and damage-amp chamber in DM-Pressure.</p>
+<p>See also <a href="placing-playerstart.html">Placing PlayerStart</a>, <a href="weapon-placement.html">Weapon Placement</a>, and <a href="inventory-item-placement.html">Inventory Item Placement</a>.</p>
+<h3><a name="0.2.3"></a>Decoration</h3>
+<p>Decoration serves to support the player's suspension of disbelief and to draw the player into the environment.  Decoration not only includes the decorative items added to support theme and style, it also includes the decorative features and details of the architecture, particle work, skyboxes, etc.  When used consistently through a map, decoration helps to give the player a sense that the experience is real.</p>
+<h4><a name="0.2.3.1"></a>Edge Trim</h4>
+<p class="indent1">This has a nice effect leading to an overall graphically pleasing map. A trimmed edge is where you put a different texture (preferably a different colour and a plain one) on the edge of the original texture, i.e. at the floor-wall corners, at the edge of ramps and walkways and ALWAYS on staircases. Trim can now come in mesh format as well, for example DM-Plunge, every surface has that weir light holder has trim, and it looks so much better.</p>
+<p>See also <a href="building-with-static-meshes.html">Building With Static Meshes</a> and <a href="texture-topics.html">Texture Topics</a>.</p>
+<h3><a name="0.2.4"></a>Lighting</h3>
+<p>Lighting is a critical element to communicating to the player.  Without light, the player has lost half their senses.  Each opportunity to shine light on the details of the design is a communication to the player.  Red or Blue lights talk about Team sides, a red flashing light warns of a hazard, a small spotlight beaming down on a spot in the layout becons players to go there.</p>
+<p>See also <a href="lighting.html">Lighting</a>, <a href="lighting-basics.html">Lighting Basics</a> and <a href="lighting-strategies.html">Lighting Strategies</a>.</p>
+<h3><a name="0.2.5"></a>Sound</h3>
+<p>The other half of the player's senses is hearing; and as crucial as it is, sound is forgotten more often than not.  The sound in a map usually isn't noticed until it's not there.  It's a very powerful tool to manipulate perception.  Working in tandem with light, the player will have support for the visual communication, making things seem more real.  While sound working in contrast or discord with light, can make the players feel disengaged, disoriented or anxious.</p>
+<h4><a name="0.2.5.1"></a>Create sound cues </h4>
+<p class="indent1">Use sounds to give away player locations.  Make each lift on the map sound slightly different.  That way a player will know when he uses a lift his opponent will know exactly where he is.  Health vials, jump boots, and other objects that make a distinctive sound can be used to place players at certain points on the map.  Shallow pools of water are also good for this.  Effective use of sound cues can make a 1v1 battle turn into an intense tactical battle as each player tries to outmaneuver the other based upon where they hear they opponent is rather than where they see their opponent is.</p>
+<p>See also <a href="ambientsound.html">AmbientSound</a> and <a href="triggering-sounds.html">Triggering Sounds</a>.</p>
+<h3><a name="0.2.6"></a>Bot Support</h3>
+<p>Sometimes bots are used simply as player place-holders in servers, often bots are the only opponents a player can find for a custom map.  Bots need help to act like real players.  It is the job of the mapper to create the support system all botplayers expect.  The goal of good botplay design is to allow the player to forget their opponent is a bot.</p>
+<p>See also <a href="bot-support.html">Bot Support</a>.</p>
+<h2><a name="0.3"></a>Mapper Master Classes</h2>
+<p><em class="em2">Tarquin:</em>  SnowDog<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=SnowDog&referrerid=Map_Design">?</a> helped me out with some design ideas the other day on IRC. I can't remember if I said he should write tutes, but I certainly thought it. The problem is, it's very hard to create generalities on design, and specific examples can often merely lead others to clone rather than take extract principles.</p>
+<p>Anyway, musing on this has given me an idea: we could invite experienced mappers to comment on and explain features in their existing maps. For example, SnowDog could explain some of the neat features in JB-Rune: how they were built, how they evolved from the basic shapes, the design decisions he took and why.</p>
+<p>Thoughts, anyone?</p>
+<p><em class="em2">Bean:</em> good idea. the author could, for example, post the name of map , his name, and what unique design ideas that he will tackle in the article. Then, he writes an article on his map, how he does thing with pics. Then, we could see how multiple mappers do things such as trim, deco, skyboxes, lighting, etc...</p>
+<h2><a name="0.4"></a>Public Colaborative Compilations</h2>
+<p>This is another idea for learning from the advanced mappers</p>
+<ol><li>Create a really simple feature, like a doorway, a junction, a ramp or something.</li>
+<li>Give that simple map to a number of mappers, and have them make it <em class="em1">more interesting</em> &ndash; keep the base geometry but add whatever brushes, deco and lighting.</li>
+<li>Compile the results together into one map</li>
+<li>Create a page here showing screenies &amp; layout plans of the original map, with a subpage for each mapper's version, with screenies &amp; diagrams explaining how their design works.</li>
+</ol>
+<h2><a name="0.5"></a>Public Colaborative Response</h2>
+<ol><li>Write up a list of ideas, at least twenty-five, that you think would be cool to put into your map.</li>
+<li>Go to any forums.</li>
+<li>Create a new thread and write down the list of ideas and ask for them to tell you if they like or dislike any one of those ideas.</li>
+<li>Gather the responses, preferably waiting a week and a half, and then chart the ones praised and not praised</li>
+<li>Compile the praised and neutral ideas and then repeat the process. Get rid of the neutral and bad ideas on the second round, but keep the good ones.</li>
+<li>Now you should have around five ideas, and put them to use.</li>
+</ol>
+<h2><a name="0.6"></a>Resources</h2>
+<ul><li><a href="http://www.3dgate.com/techniques/2001/010811/0811pagan_01.html">[Level Design by Tito Pagán]</a></li>
+<li><a href="http://www.planetquake.com/aeons/on_mapping.html">[æon's Mapping Guide]</a></li>
+<li><a href="http://www.castlewales.com/life.html">[Rooms of a Castle]</a> (What's needed to give an impression of people living in your ancient arena) </li>
+</ul>
+<h2><a name="0.7"></a>Related Topics</h2>
+<ul><li><a href="map-flow.html">Map Flow</a></li>
+<li><a href="map-planning.html">Map Planning</a></li>
+<li><a href="making-architecture.html">Making Architecture</a></li>
+<li><a href="mapping-lessons.html">Mapping Lessons</a> &ndash; A collection of lessons and thoughts on map making.</li>
+<li><a href="topics-on-mapping.html">Mapping Resources</a> &ndash; like the mapping lessons page, but on steroids.</li>
+<li><a href="adding-polish-to-maps.html">Adding Polish To Maps</a>, a page of general style tips which probably needs a name-change.</li>
+<li><a href="making-trim.html">Making Trim</a>, but this just covers the technical side, not the stylistic aspect</li>
+<li>The thorny issue of <a href="brush-deletion.html">Brush Deletion</a></li>
+<li>Mapping for specific <a href="gametype.html">Gametype</a>s<ul><li><a href="mapping-for-as-ut.html">Mapping For AS (UT)</a></li>
+<li><a href="mapping-for-br.html">Mapping For BR</a></li>
+<li><a href="mapping-for-ctf.html">Mapping For CTF</a></li>
+<li><a href="mapping-for-dm.html">Mapping For DM</a></li>
+<li><a href="mapping-for-dom.html">Mapping For DOM</a></li>
+<li><a href="mapping-for-ddom.html">Mapping For DDOM</a></li>
+<li><a href="mapping-for-jailbreak.html">Mapping for Jailbreak</a></li>
+<li><a href="mapping-for-ut-jailbreak.html">Mapping for UT Jailbreak</a></li>
+</ul>
+</li>
+</ul>
+<h2><a name="0.8"></a>Discussion</h2>
+<p><em class="em2">Tarquin:</em>  I've been pondering if we can identify patterns in map design, somehow analogous to the programming patterns on the PPR, which themselves are inspired by patterns in building architecture. Neat loop, huh? </p>
+<p>Links: </p>
+<ul><li><span class="interwiki"><a href="http://c2.com/cgi/wiki?PatternsForBeginners">PPR:PatternsForBeginners</a></span></li>
+<li><span class="interwiki"><a href="http://c2.com/cgi/wiki?WikiPagesAboutWhatArePatterns">PPR:WikiPagesAboutWhatArePatterns</a></span></li>
+</ul>
+<p><em class="em2">SuperApe:</em>  Large revision done.  I've moved the pattern talk to discussion.  What do you think?</p>
+<hr class="thin"><p><a href="category-mapping.html">Category Mapping</a></p>
+<p><a href="category-to-do.html">Category To Do</a></p>
+<script type="text/javascript"><!--
+ menuItemAdd("Design Principles", "#0.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Theme", "#0.1.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Style", "#0.1.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Balance", "#0.1.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Variation", "#0.1.4");
+menuItemAdd("<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>Break Up Surfaces", "#0.1.4.1");
+menuItemAdd("Mapping Elements", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Layout", "#0.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Placement", "#0.2.2");
+menuItemAdd("<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>Risk vs Reward", "#0.2.2.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Decoration", "#0.2.3");
+menuItemAdd("<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>Edge Trim", "#0.2.3.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Lighting", "#0.2.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Sound", "#0.2.5");
+menuItemAdd("<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>Create sound cues ", "#0.2.5.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Bot Support", "#0.2.6");
+menuItemAdd("Mapper Master Classes", "#0.3");
+menuItemAdd("Public Colaborative Compilations", "#0.4");
+menuItemAdd("Public Colaborative Response", "#0.5");
+menuItemAdd("Resources", "#0.6");
+menuItemAdd("Related Topics", "#0.7");
+menuItemAdd("Discussion", "#0.8");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Map_Design">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Map_Design">View other revisions</a><br>Last edited March 15, 2005 11:10 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Map_Design">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Map_Design">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>The three virtues of a programmer: Laziness, Impatience, and Hubris. (Larry Wall)
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

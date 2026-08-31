@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Summoning</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Summoning; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Summoning">Summoning</a></h1>
+	<div class="wiki"><p>SUMMON &lt;package&gt;.&lt;class&gt; </p>
+<p>This command allows you to summon objects into the level. You will need to be logged in as Admin or playing offline to use the Summon Command. The package and class names specified with the command are case sensitive.  Not all objects are "summonable".  If an object fails to appear check your game log file for error messages. </p>
+<p>Heres the basic list of stuff you can summmon and the command</p>
+<p>Press Tab key and type them in, or bring up the console, usually the ' and @ key, and type them in there</p>
+<p><em class="em2">Weapons</em></p>
+<p>SUMMON Botpack.enforcer      </p>
+<p>-an enforcer</p>
+<p>SUMMON Botpack.ImpactHammer    </p>
+<p>-impact hammer</p>
+<p>SUMMON Botpack.minigun2   </p>
+<p>-minigun</p>
+<p>SUMMON Botpack.PulseGun      </p>
+<p>-Pulse</p>
+<p>SUMMON Botpack.ripper            </p>
+<p>-ripper</p>
+<p>SUMMON Botpack.ShockRifle        </p>
+<p>-shock</p>
+<p>SUMMON Botpack.SniperRifle       </p>
+<p>-sniper</p>
+<p>SUMMON Botpack.Translocator      </p>
+<p>-trans</p>
+<p>SUMMON Botpack.ut_biorifle       </p>
+<p>-bio</p>
+<p>SUMMON Botpack.UT_Eightball      </p>
+<p>-rocket launcher</p>
+<p>SUMMON Botpack.UT_FlakCannon     </p>
+<p>-flak</p>
+<p>SUMMON Botpack.WarheadLauncher   </p>
+<p>-redeemer</p>
+<p>SUMMON Botpack.SuperShockRifle   </p>
+<p>-Insta Gib Rifle</p>
+<p><em class="em2">Health</em></p>
+<p>SUMMON Botpack.HealthPack        </p>
+<p>-Super Health (heals 100)</p>
+<p>SUMMON Botpack.HealthVial        </p>
+<p>-HealthVial (heals 5)</p>
+<p>SUMMON Botpack.Medbox            </p>
+<p>-Med box (heals 20)</p>
+<p><em class="em2">Ammo</em></p>
+<p>SUMMON Botpack.BioAmmo           </p>
+<p>-Bio Ammo</p>
+<p>SUMMON Botpack.BladeHopper       </p>
+<p>-Ripper Ammo</p>
+<p>SUMMON Botpack.BulletBox         </p>
+<p>-Sniper Ammo</p>
+<p>SUMMON Botpack.FlakAmmo          </p>
+<p>-Flak Ammo</p>
+<p>SUMMON Botpack.Miniammo          </p>
+<p>-Minigun/enforcer ammo</p>
+<p>SUMMON Botpack.PAmmo             </p>
+<p>-Pulse Cell/Ammo</p>
+<p>SUMMON Botpack.RocketPack        </p>
+<p>-Rocket Ammo</p>
+<p>SUMMON Botpack.ShockCore         </p>
+<p>-Shock ammo</p>
+<p><em class="em2">Armor</em></p>
+<p>SUMMON Botpack.Armor2            </p>
+<p>-Body Armor (100 Armor)</p>
+<p>SUMMON Botpack.ThighPads         </p>
+<p>-Thigh Pads (50 Armor)</p>
+<p>SUMMON Botpack.UT_ShieldBelt     </p>
+<p>-ShieldBelt (150 Armor)</p>
+<p><em class="em2">Other Pickups</em></p>
+<p>SUMMON Botpack.UT_Jumpboots      </p>
+<p>-Jumpboots</p>
+<p>SUMMON Botpack.UT_invisibility   </p>
+<p>-Invis</p>
+<p>SUMMON Botpack.UDamage           </p>
+<p>-Damage Amp</p>
+<p>SUMMON UnrealShare.Flashlight    </p>
+<p>-Small Flashlight</p>
+<p>SUMMON UnrealI.Searchlight       </p>
+<p>-Big Searchlight</p>
+<p>SUMMON UnrealShare.Flare         </p>
+<p>-Flare</p>
+<p>SUMMON UnrealI.Dampener          </p>
+<p>-Makes weapons quieter</p>
+<p>SUMMON UnrealShare.SCUBAGear     </p>
+<p>-Breath underwater</p>
+<p>SUMMON UnrealShare.VoiceBox      </p>
+<p>-Provides a distraction</p>
+<p><em class="em2">Suits</em></p>
+<p>SUMMON UnrealI.ToxinSuit         </p>
+<p>-No damage from slime</p>
+<p>SUMMON UnrealI.AsbestosSuit      </p>
+<p>-No damage from Lava</p>
+<p><em class="em2">Monsters</em></p>
+<p>SUMMON UnrealShare.LesserBrute   </p>
+<p>-Lesser Brute</p>
+<p>SUMMON UnrealI.Behemoth          </p>
+<p>-Behemoth</p>
+<p>SUMMON UnrealShare.Cow           </p>
+<p>-Cow</p>
+<p>SUMMON UnrealShare.BabyCow       </p>
+<p>-BabyCow</p>
+<p>SUMMON UnrealShare.Devilfish     </p>
+<p>-Devilfish (best in water)</p>
+<p>SUMMON UnrealShare.Fly           </p>
+<p>-Fly</p>
+<p>SUMMON UnrealI.Gasbag            </p>
+<p>-Gasbag (can fly)</p>
+<p>SUMMON UnrealI.GiantGasbag       </p>
+<p>-Bigger version of gasbag</p>
+<p>SUMMON UnrealI.Krall             </p>
+<p>-Krall</p>
+<p>SUMMON UnrealI.KrallElite        </p>
+<p>-Krall Elite</p>
+<p>SUMMON UnrealI.LeglessKrall      </p>
+<p>-Legless Krall (crawls or swims)</p>
+<p>SUMMON UnrealShare.CaveManta     </p>
+<p>-Manta (flys)</p>
+<p>SUMMON UnrealI.GiantManta        </p>
+<p>-Bigger version of Manta</p>
+<p>SUMMON UnrealI.Mercenary         </p>
+<p>-Mercenary</p>
+<p>SUMMON UnrealI.MercenaryElite    </p>
+<p>-Better version of Mercenary</p>
+<p>SUMMON UnrealShare.Nali          </p>
+<p>-Nali (does not attack)</p>
+<p>SUMMON UnrealShare.NaliPriest    </p>
+<p>-Different version of Nali</p>
+<p>SUMMON UnrealI.Pupae             </p>
+<p>-Pupae (green spider thing, V. Hard to kill)</p>
+<p>SUMMON UnrealI.Queen             </p>
+<p>-Queen, has a shield, energy attack and can teleport</p>
+<p>SUMMON UnrealShare.Slith         </p>
+<p>-Slith (can swim and is not hurt by slime)</p>
+<p>SUMMON UnrealI.Squid             </p>
+<p>-Squid (can swim)</p>
+<p>SUMMON UnrealShare.Tentacle      </p>
+<p>-Tentacle (hangs from roof)</p>
+<p>SUMMON UnrealI.StoneTitan        </p>
+<p>-Stone Titan (throws boulders)</p>
+<p>SUMMON UnrealI.Warlord           </p>
+<p>-The Warlord (has a powerful missile attack and flys)</p>
+<p>SUMMON UnrealShare.SkaarjScout   </p>
+<p>-One of the many varietys of Skaarj</p>
+<p>SUMMON UnrealI.SkaarjLord        </p>
+<p>-Best Skaarj</p>
+<p>SUMMON UnrealI.SkaarjBerserker   </p>
+<p>-Another Skaarj</p>
+<p>SUMMON UnrealI.SkaarjAssassin    </p>
+<p>-And another</p>
+<p>SUMMON UnrealI.IceSkaarj         </p>
+<p>-A blue Skaarj</p>
+<p>SUMMON UnrealI.SkaarjSniper      </p>
+<p>-Skaarj with a sniper rifle</p>
+<p>SUMMON UnrealI.SkaarjOfficer     </p>
+<p>-Another Skaarj</p>
+<p>SUMMON UnrealI.SkaarjInfantry    </p>
+<p>-Yet another one</p>
+<p>SUMMON UnrealI.SkaarjGunner      </p>
+<p>-And another for your collection</p>
+<hr class="thin"><p>Have fun <img alt=";)" src="emoticons/wink.gif" align="middle">  <em class="em2">xX)(Xx</em></p>
+<p><em class="em2">Graphik:</em> <img alt=":-/" src="emoticons/hmm.gif" align="middle"> We already have <a href="console-commands.html">Console Commands</a> and <a href="class-tree.html">Class Tree</a>, is this really useful?</p>
+<p><em class="em2">xX)(Xx:</em> <a href="console-commands.html">Console Commands</a> does not list all of the summonable items, <a href="class-tree.html">Class Tree</a> lists all items, perhaps to a mapper/coder they make sense as to what is summonable in game, but to someone with no knowledge, i think this page is simple and straight forward, besides, i searched for summon, and only <a href="console-commands.html">Console Commands</a> came up, and as it does not have a very concise list (it lists 2 items) this page is probably better...plus it sounds more user friendly <img alt=";)" src="emoticons/wink.gif" align="middle"></p>
+<p><em class="em2">Foxpaw:</em> Perhaps a different name or something would be good. I agree that some of the information here is duplicated elsewhere. This will lead to new information being placed either here or there, so in time neither page will be complete. Also this should be linked from it's explanation on console commands. Perhaps a list of stuff that can be summoned into your UT levels for testing is a good idea, but it should be named or described so that it does not conflict with the definition and stuff on <a href="console-commands.html">Console Commands</a>.</p>
+</div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Summoning">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Summoning">View other revisions</a><br>Last edited September 20, 2004 16:27 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Summoning">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Summoning">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>I search for solutions in this order: Past Code, Unreal Source, Wiki, BUF, groups.yahoo, google, screaming at monitor. (RegularX)
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

@@ -1,0 +1,21 @@
+﻿F:\Projects\UT2004_2026\DropShip\My_New_Model_2026\t$m$p$$$\Final_DoublePackedV1.max
+F:\Projects\UT2004_2026\DropShip\My_New_Model_2026\t$m$p$$$\MAXFILES.TXT
+F:\Projects\UT2004_2026\DropShip\using\Compressed.bdr18cs_dxt1.png
+F:\Projects\UT2004_2026\DropShip\using\Untitled-9b.png
+E:\My_3D_Master\3d textures\Custom_UV_Checker.jpg
+F:\Projects\UT2004_2026\DropShip\using\Untitled-5.png
+F:\Projects\UT2004_2026\DropShip\using\Compressed.wal37CS_dxt1.png
+F:\Projects\UT2004_2026\DropShip\textures larger\panel_darker.jpg
+E:\Resorce_Items_For_Projects\My Texture Packs\ShipTech2\ShipTech2\FD_SPCoreLogo10.bmp
+F:\Projects\UT2004_2026\DropShip\textures larger\FatalsDest_Text.utx-Orig.BestGrateCover(Texture)_0-gigapixel-redefine-realistic-4x.BMP
+F:\Projects\UT2004_2026\DropShip\textures larger\SC_Text.utx-Grates.cp_Evil7_01(Texture)_0-gigapixel-redefine-realistic-4x.BMP
+F:\Projects\UT2004_2026\DropShip\textures larger\engin_darker.jpg
+F:\Projects\UT2004_2026\DropShip\using\Untitled_End.png
+F:\Projects\UT2004_2026\DropShip\My_New_Model_2026\fuckup\Final\New Chamfers\Stable\Better_Pivot\Target_Arnold_diffuse_albedo_New_VWM_Packd_TGA.tga
+F:\Projects\UT2004_2026\DropShip\textures larger\14e1fe3a-f7b3-4c77-b533-41c3484eeeff.png
+F:\Projects\UT2004_2026\DropShip\textures larger\engin.png
+F:\Projects\UT2004_2026\DropShip\using\Untitled-2.png
+F:\Projects\UT2004_2026\DropShip\using\Compressed.bdr18cs_dxt1c.png
+F:\Projects\UT2004_2026\DropShip\Walls.wal40cs.png
+F:\Projects\UT2004_2026\DropShip\My_New_Model_2026\fuckup\Final\New Chamfers\Stable\Better_Pivot\TargetAmbient Occlusion.tga
+C:\Program Files\Autodesk\3ds Max 2021\maps\uvwunwrap\UV_Checker.png

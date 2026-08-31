@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Mover</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Mover; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Mover">Mover</a></h1>
+	<div class="wiki"><div class="classpath"><img src="shared//gameicons/icon-ut2004.png"> <a href="ut2004.html">UT2004</a> :: <a href="actor.html">Actor</a> &gt;&gt; Mover  (Engine)<br></div>
+<p>A <a href="static-mesh.html">StaticMesh</a> that can move between positions and rotations defined in <a href="unrealed-interface.html">UnrealEd</a>.</p>
+<p>See <a href="mover-ut.html">Mover (UT)</a> for the UT version of this class, which uses a <a href="brush.html">brush</a> instead of a StaticMesh.</p>
+<p><em class="em1">Somebody please copy stuff back from <a href="mover-ut.html">Mover (UT)</a> as far as it still applies (i.e. no brush hacking or other brush-related stuff, movers are not brushes anymore)</em></p>
+<h2><a name="0.1"></a>Properties</h2>
+<h3><a name="0.1.1"></a>Mover Group</h3>
+<dl><dt>name AntiPortalTag</dt><dd>Tag of [Attached AntiPortalActor]<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Attached_AntiPortalActor&referrerid=Mover">?</a>.</dd><dt>bool bDamageTriggered</dt><dd>Triggered by taking damage  </dd><dt>bool bDynamicLightMover</dt><dd>Apply dynamic lighting to mover.  </dd><dt>bool bOscillatingLoop</dt><dd>Goes from 0 up to X then back down to 0  </dd><dt>byte BrushRaytraceKey</dt><dd>Raytrace the brush here.  </dd><dt>bool bSlave</dt><dd>This brush is a slave.  </dd><dt>bool bToggleDirection</dt><dd></dd><dt>bool bTriggerOnceOnly</dt><dd>Go dormant after first trigger.  </dd><dt>name BumpEvent</dt><dd>Optional event to cause when any valid bumper bumps the mover.  </dd><dt>EBumpType  BumpType</dt><dd>Determines what actors can bump-trigger the mover (see declaration for EBumpType below).</dd><dt>bool bUseShortestRotation</dt><dd>rot by -90 instead of +270 and so on.  </dd><dt>bool bUseTriggered</dt><dd>Triggered by a player "using" the trigger.  Player must be in the mover's vicinity and press the "use" key.</dd><dt>float DamageThreshold</dt><dd>minimum damage to trigger  </dd><dt>float DelayTime</dt><dd>delay before starting to open  </dd><dt>int EncroachDamage</dt><dd>How much to damage encroached actors.  </dd><dt>byte KeyNum</dt><dd>Current or destination keyframe.  </dd><dt>EMoverEncroachType  MoverEncroachType</dt><dd>Determines how the mover reacts if encroached by another actor (see declaration for EMoverEncroachType below).</dd><dt>EMoverGlideType  MoverGlideType</dt><dd></dd><dt>float MoveTime</dt><dd>Time to spend moving between keyframes.  </dd><dt>byte NumKeys</dt><dd>Number of keyframes in total (0-3).  </dd><dt>float OtherTime</dt><dd>TriggerPound stay-open time.  </dd><dt>name PlayerBumpEvent</dt><dd>Optional event to cause when the player bumps the mover.  </dd><dt>float StayOpenTime</dt><dd>How long to remain open before closing.  </dd><dt>byte WorldRaytraceKey</dt><dd>Raytrace the world with the brush here.  </dd></dl>
+<h3><a name="0.1.2"></a>AI Group</h3>
+<dl><dt>bool bAutoDoor</dt><dd>automatically setup Door NavigationPoint for this mover  </dd><dt>bool bNoAIRelevance</dt><dd>don't warn about this mover during path review  </dd></dl>
+<h3><a name="0.1.3"></a>MoverEvents Group</h3>
+<dl><dt>name ClosedEvent</dt><dd>Event to cause when closed  </dd><dt>name ClosingEvent</dt><dd>Event to cause when closing  </dd><dt>name LoopEvent</dt><dd>Event to cause when the mover loops  </dd><dt>name OpenedEvent</dt><dd>Event to cause when opened  </dd><dt>name OpeningEvent</dt><dd>Event to cause when opening  </dd></dl>
+<h3><a name="0.1.4"></a>MoverSounds Group</h3>
+<dl><dt>sound ClosedSound</dt><dd>When finish closing.  </dd><dt>sound ClosingSound</dt><dd>When start closing.  </dd><dt>sound LoopSound</dt><dd>Played on Loop  </dd><dt>sound MoveAmbientSound</dt><dd>Optional ambient sound when moving.  </dd><dt>sound OpenedSound</dt><dd>When finished opening.  </dd><dt>sound OpeningSound</dt><dd>When start opening.  </dd></dl>
+<h3><a name="0.1.5"></a>ReturnGroup Group</h3>
+<dl><dt>bool bIsLeader</dt><dd>This mover is the leader of a return group of movers.</dd><dt>name ReturnGroup</dt><dd>The return group this mover belongs to. All movers in a return group form a <a href="linked-list.html">linked list</a> of "followers" with each mover's <tt>Leader</tt> pointing to the main mover that should be triggered, bumped, or otherwise activated. The leading mover will tell its <tt>Follower</tt> to open/close whenever it opens or closes itself. The follower in turn will do the same with its own follower, and so on. Make sure only one mover in a return group is flagged as the leader, otherwise you might experience weird stuff including "Invinite Script Recursion" crashes.</dd></dl>
+<h3><a name="0.1.6"></a>UnrealScript-Only</h3>
+<dl><dt>KeyRot[24]</dt><dd></dd><dt>KeyPos[24]</dt><dd></dd><dt>array&lt;AntiPortalActor<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=AntiPortalActor&referrerid=Mover">?</a>&gt; AntiPortals</dt><dd></dd><dt>vector BasePos</dt><dd></dd><dt>rotator BaseRot</dt><dd></dd><dt>bool bClientPause</dt><dd></dd><dt>bool bDelaying</dt><dd></dd><dt>bool bOpening</dt><dd></dd><dt>bool bPlayerOnly</dt><dd></dd><dt>int ClientUpdate</dt><dd></dd><dt>Mover Follower</dt><dd>Next mover in the <a href="linked-list.html">linked list</a> of movers belonging to a "return group".</dd><dt>Mover Leader</dt><dd>The primary mover of a "return group".</dd><dt><a href="navigationpoint.html">NavigationPoint</a> myMarker</dt><dd></dd><dt>int numTriggerEvents</dt><dd>number of times triggered ( count down to untrigger )  </dd><dt>vector OldPos</dt><dd></dd><dt>vector OldPrePivot</dt><dd></dd><dt>rotator OldRot</dt><dd></dd><dt>float PhysRate</dt><dd>Interpolation rate per second.  </dd><dt>byte PrevKeyNum</dt><dd>Previous keyframe.  </dd><dt>vector RealPosition</dt><dd></dd><dt>rotator RealRotation</dt><dd></dd><dt>vector SavedPos</dt><dd></dd><dt>rotator SavedRot</dt><dd></dd><dt><a href="actor.html">Actor</a> SavedTrigger</dt><dd>Who we were triggered by.  </dd><dt>vector SimInterpolate</dt><dd></dd><dt>vector SimOldPos</dt><dd></dd><dt>int SimOldRotPitch</dt><dd></dd><dt>int SimOldRotRoll</dt><dd></dd><dt>int SimOldRotYaw</dt><dd></dd></dl>
+<h2><a name="0.2"></a>States</h2>
+<dl><dt>OpenTimedMover</dt><dd>Master State for OpenTimed mover states (for movers that open and close)</dd><dt>StandOpenTimed (extends OpenTimedMover)</dt><dd>Open when stood on, wait, then close.</dd><dt>BumpOpenTimed (extends OpenTimedMover)</dt><dd>Open when bumped, wait, then close.</dd><dt>TriggerOpenTimed (extends OpenTimedMover)</dt><dd>When triggered, open, wait, then close.</dd><dt>LoopMove</dt><dd>When triggered, the mover keeps looping through it's animation until it gets untriggered.</dd><dt>TriggerToggle</dt><dd>Toggle when triggered.</dd><dt>TriggerControl</dt><dd>Open when triggered, close when get untriggered.</dd><dt>TriggerPound</dt><dd>Start pounding when triggered.</dd><dt>BumpButton</dt><dd>Open when bumped, close when reset.</dd><dt>ConstantLoop</dt><dd>Loop this mover from the moment we begin</dd><dt>LeadInOutLooper</dt><dd>A Looping move that goes from 0 to 1 when trigger, loops 1-x then returns to 0 when triggered again.</dd></dl>
+<p>(For Scripters: Goes to state LeadInOutLooping when triggered and back to LeadInOutLooper when triggered again.)</p>
+<dl><dt>RotatingMover</dt><dd>Toggles between rotation directions when triggered, stops rotating when untriggered.</dd></dl>
+<h2><a name="0.3"></a>Enums</h2>
+<h3><a name="0.3.1"></a>EMoverEncroachType</h3>
+<dl><dt>ME_StopWhenEncroach</dt><dd>Stop when the mover hit an actor.</dd><dt>ME_ReturnWhenEncroach</dt><dd>Return to previous position when the mover hit an actor.</dd><dt>ME_CrushWhenEncroach</dt><dd>Crush the poor helpless actor.</dd><dt>ME_IgnoreWhenEncroach</dt><dd>Ignore encroached actors.</dd></dl>
+<h3><a name="0.3.2"></a>EMoverGlideType</h3>
+<dl><dt>MV_MoveByTime</dt><dd>Move linearly.</dd><dt>MV_GlideByTime</dt><dd>Move with smooth acceleration.</dd></dl>
+<h3><a name="0.3.3"></a>EBumpType</h3>
+<dl><dt>BT_PlayerBump</dt><dd>Can only be bumped by player.</dd><dt>BT_PawnBump</dt><dd>Can be bumped by any <a href="pawn-ut.html">Pawn (UT)</a>.</dd><dt>BT_AnyBump</dt><dd>Can be bumped by any solid actor.</dd></dl>
+<h2><a name="0.4"></a>Known Subclasses</h2>
+<ul><li>ClientMover<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ClientMover&referrerid=Mover">?</a> (not in UT2003)</li>
+<li><a href="damagetriggermover.html">DamageTriggerMover</a> (custom)</li>
+</ul>
+<h2><a name="0.5"></a>Related Topics</h2>
+<ul><li>The <a href="mover-topics.html">Mover Topics</a> page</li>
+<li><a href="types-of-trigger.html">Types of Trigger</a> and <a href="event.html">Event</a></li>
+</ul>
+<hr class="thin"><p><a href="category-class-ut2003.html">Category Class (UT2003)</a><br><a href="category-class-ut2004.html">Category Class (UT2004)</a><br><a href="category-to-do.html">Category To Do</a></p>
+<script type="text/javascript"><!--
+ menuItemAdd("Properties", "#0.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Mover Group", "#0.1.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>AI Group", "#0.1.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>MoverEvents Group", "#0.1.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>MoverSounds Group", "#0.1.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>ReturnGroup Group", "#0.1.5");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>UnrealScript-Only", "#0.1.6");
+menuItemAdd("States", "#0.2");
+menuItemAdd("Enums", "#0.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>EMoverEncroachType", "#0.3.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>EMoverGlideType", "#0.3.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>EBumpType", "#0.3.3");
+menuItemAdd("Known Subclasses", "#0.4");
+menuItemAdd("Related Topics", "#0.5");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Mover">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Mover">View other revisions</a><br>Last edited May 22, 2005 17:42 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Mover">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Mover">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>Gah - a solution with more questions. (EntropicLqd)
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

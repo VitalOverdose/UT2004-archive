@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Sounds</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Sounds; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Sounds">Sounds</a></h1>
+	<div class="wiki"><h3><a name="0.0.1"></a>Sounds</h3>
+<ul><li><a href="importing-sounds.html">Importing Sounds</a><br></li>
+</ul>
+<h3><a name="0.0.2"></a>Music</h3>
+<p>The music of your level is selected via the <a href="level-properties.html">Level Properties</a>.</p>
+<p>You access the level Properties by doing <a href="unrealed-main-menu.html">UnrealEd Main Menu</a> &rarr; View &rarr; <a href="level-properties.html">Level Properties</a>.</p>
+<p>Expand the "Audio" Tab you'll see a "song" section. Click on it and you'll see 3 little buttons appear. Click on '...' and you'll go to the <a href="music-browser.html">Music Browser</a>.<br></p>
+<p>Select your song by clicking on it.Close the music Browser.<br></p>
+<p>Now go to the song section (in level Properties) and click 'Use'.You should see the title of the song appear in the text area.</p>
+<p>If you want your level to have no music (to stress the nice sounds effects for instance) you can leave this tab empty.But the problem is that if you go to the UT menu or the console you'll have the UT Menu Music playing on your level.<br></p>
+<p>To be sure that music will remain absolutely mute you have to create a 'blank' music,import it as a .umx file and select it as your level music.</p>
+<p>If you wan't to know more about the music format and how to import your own music go to the <a href="engine-directory-structure.html">FileTypes</a> section </p>
+<h3><a name="0.0.3"></a>Sound Actors</h3>
+<ul><li><a href="ambientsound-ut.html">AmbientSound (UT)</a><br></li>
+<li><a href="dynamicambientsound.html">DynamicAmbientSound</a><br></li>
+<li><a href="triggeredambientsound.html">TriggeredAmbientSound</a><br></li>
+<li><a href="musicevent.html">MusicEvent</a><br></li>
+</ul>
+<p>See Also: <a href="simulated-surround-sound.html">Simulated Surround Sound</a> for a description of how you can use multiple samples of the same sound, positioned in 5.1 surround sound fashion, to create the effect of surround sound on stereo speakers.</p>
+<p><em class="em2">Mosquito:</em> <a href="importing-sounds.html">Importing Sounds</a> &lt;&mdash;When I'm done what I'm doing I'll transfer any relevant info to the other page</p>
+<p><em class="em2">Foxpaw:</em> I'm confused. You want to transfer everything from here to <a href="importing-sounds.html">Importing Sounds</a>? It seems to me that there should probrably be a generic "Sounds" page to reference stuff pertaining to sound.</p>
+<p><em class="em2">Mosquito:</em> This page has very little to do with sounds themselves as it does with importing them.</p>
+<p><em class="em2">Foxpaw:</em> That implies that stuff pertaining to sound should be put here, rather than, "this page has little content, so let's move what little content it has elsewhere," wouldn't you think?</p>
+<script type="text/javascript"><!--
+ menuItemAdd("Sounds", "#0.0.1");
+menuItemAdd("Music", "#0.0.2");
+menuItemAdd("Sound Actors", "#0.0.3");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Sounds">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Sounds">View other revisions</a><br>Last edited January 11, 2005 10:53 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Sounds">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Sounds">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>I don't need to test my programs. I have an error-correcting modem.
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: ONSManualGun</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=ONSManualGun; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=ONSManualGun">ONSManualGun</a></h1>
+	<div class="wiki"><div class="classpath"><img src="shared//gameicons/icon-ut2004.png"> <a href="ut2004.html">UT2004</a> :: <a href="actor.html">Actor</a> &gt;&gt; <a href="onsweapon.html">ONSWeapon</a> &gt;&gt; ONSManualGun<br></div>
+<h2><a name="0.1"></a>Summary</h2>
+<p>This is the fire class of the Energy Turret, This sets gfx properties and implements the damage dealing firepower doled out by our energy turret. This class is referenced in <a href="onsmanualgunpawn.html">ONSManualGunPawn</a>.</p>
+<p>Something to note about all <a href="onsweapon.html">ONSWeapon</a> sub-classes is that they only can fire when in one of the firing states. InstantFireMode or ProjectileFireMode. This takes place through the <a href="onsweapon.html">ONSWeapon</a> property bInstantFire which is checked in <a href="onsweapon.html">ONSWeapon</a>'s PostNetBeginPlay() function to goto one of the two states.</p>
+<h2><a name="0.2"></a>EXECS</h2>
+<ol><li>exec OBJ LOAD FILE=..\Animations\ONSWeapons-A.ukx</li>
+<li>exec OBJ LOAD FILE=..\Textures\TurretParticles.utx</li>
+</ol>
+<h2><a name="0.3"></a>Properties</h2>
+<dl><dt>class&lt;ONSTurretBeamEffect&gt; BeamEffectClass[2]</dt><dd>Different Beam Effect for red/blue teams :</dd></dl>
+<h2><a name="0.4"></a>Functions</h2>
+<dl><dt>static function StaticPrecache(LevelInfo L)</dt><dd></dd><dt>simulated function UpdatePrecacheMaterials()</dt><dd></dd><dt>function TraceFire(Vector Start, Rotator dir) </dt></dl>
+<p class="indent1">This performs a trace from point a to point b and applies (DamageMin + Rand(DamageMax - DamageMin)) damage to anything in the way. </p>
+<p class="indent1">Checks are made to ensure the person firing is not caught in the trace </p>
+<p class="indent1">Any effects that should be applied to the recieving end of the trace are applied. </p>
+<h2><a name="0.5"></a>States</h2>
+<h3><a name="0.5.1"></a>InstantFireMode</h3>
+<dl><dt>simulated function SpawnHitEffects(actor HitActor, vector HitLocation. vector HitNormal)</dt><dd></dd></dl>
+<h2><a name="0.6"></a>DefaultProperties</h2>
+<p>defaultproperties</p>
+<p>{</p>
+<pre class="paraverbatim">     BeamEffectClass(0)=Onslaught.ONSTurretBeamEffect
+     BeamEffectClass(1)=Onslaught.ONSTurretBeamEffectBlue
+     YawBone="TurretBase"
+     PitchBone="Dummy01"
+     PitchUpLimit=15000
+     PitchDownLimit=52500
+     WeaponFireAttachmentBone="TurretCockpit"
+     GunnerAttachmentBone="TurretCockpit"
+     WeaponFireOffset=25.000000
+     DualFireOffset=75.000000
+     bInstantRotation=True
+     bInstantFire=True
+     bDualIndependantTargeting=True
+     FireInterval=0.300000
+     FireSoundClass=WeaponSounds.Misc.instagib_rifleshot
+     FireForce="Laser01"
+     DamageType=Onslaught.DamTypeTurretBeam
+     DamageMin=30
+     DamageMax=30
+     TraceRange=20000.000000
+     Momentum=50000.000000
+     AIInfo(0)= (bInstantHit=True,aimerror=750.000000)
+     Mesh=SkeletalMesh'ONSWeapons-A.NewManualGun'
+     CollisionRadius=50.000000
+     CollisionHeight=70.000000</pre><p>}</p>
+<script type="text/javascript"><!--
+ menuItemAdd("Summary", "#0.1");
+menuItemAdd("EXECS", "#0.2");
+menuItemAdd("Properties", "#0.3");
+menuItemAdd("Functions", "#0.4");
+menuItemAdd("States", "#0.5");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>InstantFireMode", "#0.5.1");
+menuItemAdd("DefaultProperties", "#0.6");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=ONSManualGun">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=ONSManualGun">View other revisions</a><br>Last edited June 25, 2004 2:04 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=ONSManualGun">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/ONSManualGun">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>The three virtues of a programmer: Laziness, Impatience, and Hubris. (Larry Wall)
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

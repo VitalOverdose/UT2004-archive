@@ -1,0 +1,7 @@
+Runs OK without files
+
+
+DBshipText
+DBshipwur
+snogroup
+snowgroup3

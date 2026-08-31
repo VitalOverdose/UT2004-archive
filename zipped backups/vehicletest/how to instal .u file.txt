@@ -1,0 +1,51 @@
+put the VehicleTest.u file into your ut2004/system directory.
+then locate the text file ut2004/system/ut2004.ini and open it with any text editor
+then locate the block of text that looks like 
+EditPackages=Core
+EditPackages=Engine
+EditPackages=Fire
+EditPackages=Editor
+EditPackages=UnrealEd
+EditPackages=IpDrv
+EditPackages=UWeb
+EditPackages=GamePlay
+EditPackages=UnrealGame
+EditPackages=XGame_rc
+EditPackages=XEffects
+EditPackages=XWeapons_rc
+EditPackages=XPickups_rc
+EditPackages=XPickups
+EditPackages=XGame
+EditPackages=XWeapons
+EditPackages=XInterface
+EditPackages=XAdmin
+EditPackages=XWebAdmin
+EditPackages=Vehicles
+EditPackages=BonusPack
+EditPackages=SkaarjPack_rc
+EditPackages=SkaarjPack
+EditPackages=UTClassic
+EditPackages=UT2k4Assault
+EditPackages=Onslaught
+EditPackages=GUI2K4
+EditPackages=UT2k4AssaultFull
+EditPackages=OnslaughtFull
+EditPackages=xVoting
+EditPackages=StreamlineFX
+EditPackages=UTV2004c
+EditPackages=UTV2004s
+EditPackages=OnslaughtBP    <<<addline after last edit packeages
+CutdownPackages=Core
+CutdownPackages=Editor
+CutdownPackages=Engine
+CutdownPackages=Fire
+CutdownPackages=GamePlay
+CutdownPackages=GUI2K4
+CutdownPackages=IpDrv
+CutdownPackages=UT2K4Assault
+
+after the last one you will need to add the line 
+EditPackages=vehicletest
+
+then just save.
+;-)

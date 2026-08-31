@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head lang="en">
+	<title>UnrealWiki: Variable Type</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/template-default.css">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="shared/styles.chblue.css">
+	<link rel="stylesheet" type="text/css" media="screen, print"
+		href="shared/stylebase.structural.css">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="shared/template-default-print.css">
+	<!--[if IE 6]>
+			<style>
+			/* dirty hack for IE6. */
+			#quickbar {
+				position: absolute;
+				}
+			</style>
+	<![endif]-->
+  <link rel="start" href="http://wiki.beyondunreal.com/">
+  <link rel="glossary"  href="http://wiki.beyondunreal.com/wiki/Terminology">
+  <link rel="help"  href="http://wiki.beyondunreal.com/wiki/Using_The_Wiki">
+<script type="text/javascript" src="shared/dhtml.js"></script>
+<script type="text/javascript" src="shared/dhtml-menu.js"></script>
+<style type="text/css">#dhtml-menu    { background: #eee; padding: 5px 0px; margin-right: -20px; border: 1px solid #888; border-left: 1px solid #ccc; border-top: 1px solid #ccc;  border-right: 1px solid #888; border-bottom: 1px solid #888 }
+#dhtml-menu td { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; padding: 1px 10px; cursor: default }
+#dhtml-menu a  { color: #000; font-family: Arial,Helvetica,sans-serif; font-size: 9pt; line-height: 13pt; text-decoration: none }
+#dhtml-menu tt { font-family: monospace; font-size: 9pt }
+#dhtml-menu-separator { height: 1px; background: red }
+#dhtml-menu-anchor { cursor: default }
+</style>
+<script type="text/javascript" src="shared/expandable.js"></script>
+</head>
+<body onLoad="menuInit(); document.cookie='page=Variable_Type; path=/'" class="default">
+<div id="scrolling"><!-- contains all except the fixed sidebar -->
+<div id="topbar"  class="bar">
+	<div class="righthalf">
+		<form class="inline" method="post" action="/wiki" enctype="application/x-www-form-urlencoded"><input type="text" name="search"  size="20" /> <input type="submit" name="search" value="search" /></form>
+	</div>
+	<div class="lefthalf">
+		<script type="text/javascript"><!--
+			menuAlignRight = false;
+		//--></script>
+		<span><script type="text/javascript"><!--
+ menuWriteAnchor("Quick Navigation") //--></script></span> | <a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a>
+	</div>
+</div>
+
+<div id="content"><!-- contains the title and article -->
+	<h1 class='pagetitle'><a href="http://wiki.beyondunreal.com/wiki?back=Variable Type">Variable Type</a></h1>
+	<div class="wiki"><p>This page lists the variable types in <a href="unrealscript.html">UnrealScript</a>. For details on declaring variables, see <a href="variable-syntax.html">Variable Syntax</a>.</p>
+<h2><a name="0.1"></a>Simple Types</h2>
+<h3><a name="0.1.1"></a>bool</h3>
+<p>Boolean values: True, False</p>
+<p>Initial value: False</p>
+<p>Boolean values can't be used for arrays or as <em class="em1">out</em> parameters of functions.</p>
+<h3><a name="0.1.2"></a>int</h3>
+<p>Numbers from -2147483648 to 2147483647.</p>
+<p>Initial value: 0</p>
+<h3><a name="0.1.3"></a>byte</h3>
+<p>Numbers from 0 to 255.</p>
+<p>Initial value: 0</p>
+<p>Assigning a number that exceeds this range will wrap it at the boundaries (so setting a byte variable to 256 will actually set it to 0).</p>
+<h3><a name="0.1.4"></a>float</h3>
+<p>Floating point numbers (single precision with a 24 bit mantissa).</p>
+<p>Initial value: 0</p>
+<p>Maximum precision error free: 2<sup>23</sup> = 8388608</p>
+<h3><a name="0.1.5"></a>string</h3>
+<p>Any number of characters (including zero) enclosed in double quotes.</p>
+<p>Initial value: Empty string <code>""</code></p>
+<ul><li>Escape characters by prefixing them with a backslash: <code>\"</code> for literal double quotes in a string and <code>\\</code> for literal backslashes.</li>
+<li>For a newline character use the <code>Chr(13)</code> function call (<code>\n</code> is just a (needlessly) escaped <code>n</code>)</li>
+<li>Some Unreal Tournament classes have support for the <code>n</code> escape on UnrealScript level, for instance UWindowDynamicTextArea<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=UWindowDynamicTextArea&referrerid=Variable_Type">?</a> (which is, among other things, used to display the weapon description for <a href="tournamentweapon.html">TournamentWeapon</a>, so you can use <code>n</code> &ndash; escaped as <code>n</code> in the <a href="default-properties.html">Default properties</a> block of a .UC file &ndash; to create line breaks in such a description).</li>
+</ul>
+<h3><a name="0.1.6"></a>name</h3>
+<p>An identifier enclosed in single quotes.</p>
+<p>Initial value: <code>'None'</code></p>
+<p>The identifier may only contain letters, numbers and underscores. Names are not case-sensitive, so 'RedeemerDeath' and 'rEdEeMeRdEaTh' are basically the same thing, but the first appearance of the <em class="em1">name</em> in <a href="unrealscript.html">UnrealScript</a> code will be used when converting it to string. (e.g. for logging)</p>
+<h3><a name="0.1.7"></a>Vector, rotator, etc</h3>
+<p>Other apparent variable types such as <a href="vector.html">vector</a>, <a href="rotator.html">rotator</a>, color, etc. are in fact <a href="built-in-struct.html">built-In Struct</a>s, enums or <a href="object.html">Object</a>s. See <a href="color-operators.html">Color Operators</a> for more on colors.</p>
+<h3><a name="0.1.8"></a>Pointer</h3>
+<p>There seems to be a new built-in type <code>pointer</code> which is used instead of <code>int</code> for C++ pointers as of build 2166.</p>
+<h2><a name="0.2"></a>Structs</h2>
+<p>A struct allows you to define a new variable type that is made up of several variables itself. A good example is the <a href="built-in-struct.html">built-in struct</a> <em class="em1"><a href="vector.html">vector</a></em>, which is made up of three floats X, Y, Z.</p>
+<p>Structs are defined at the start of a class. They can't be declared within functions.</p>
+<pre class="uscript"> 
+ <span class="uscript-keyword">struct</span> <span class="uscript-name">''</span>modifiers<span class="uscript-name">''</span> <span class="uscript-name">''</span>StructName<span class="uscript-name">''</span> <span class="uscript-operator">{</span>
+     <span class="uscript-name">''</span>variable declaration <span class="uscript-number">1</span><span class="uscript-name">''</span><span class="uscript-operator">;</span>
+     <span class="uscript-name">''</span>variable declaration <span class="uscript-number">2</span><span class="uscript-name">''</span><span class="uscript-operator">;</span>
+     <span class="uscript-operator">.</span><span class="uscript-operator">.</span><span class="uscript-operator">.</span>
+ <span class="uscript-operator">}</span><span class="uscript-operator">;</span></pre><pre class="paraverbatim"> </pre><p>Variable declaration within struct declaration uses the same syntax as class variables. Using "var" instead of "var()" will hide those component variables in an editable variable that uses the struct.</p>
+<p>All elements of the struct are initialized with their corresponding null values.</p>
+<p>Like variable declarations, struct declarations can have modifiers. The following struct modifiers have been spotted in UT2003 code:</p>
+<dl><dt>native</dt><dd></dd><dt>export</dt><dd></dd></dl>
+<p>The struct's name can be used as variable type within variable and function declarations. A struct declaration can also be used directly as the type of a variable, e.g.:</p>
+<pre class="paraverbatim"> var <em class="em1">VariableModifiers</em> struct <em class="em1">StructModifiers</em> <em class="em1">StructName</em> {
+     <em class="em1">variable declaration 1</em>;
+     <em class="em1">variable declaration 2</em>;
+     ...
+ } <em class="em1">name</em>, <em class="em1">name</em>, ...;</pre><h3><a name="0.2.1"></a>Extending structs</h3>
+<p>You can build a new struct on the base of an old struct.</p>
+<p>In object for example:</p>
+<pre class="uscript"><span class="uscript-comment">// A point or direction vector in 3d space.</span>
+<span class="uscript-keyword">struct</span> Vector
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">var</span><span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-keyword">config</span> <span class="uscript-type">float</span> X<span class="uscript-operator">,</span> Y<span class="uscript-operator">,</span> Z<span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span><span class="uscript-operator">;</span>
+
+<span class="uscript-comment">// A plane definition in 3d space.</span>
+<span class="uscript-keyword">struct</span> Plane <span class="uscript-keyword">extends</span> Vector
+<span class="uscript-operator">{</span>
+    <span class="uscript-keyword">var</span><span class="uscript-operator">(</span><span class="uscript-operator">)</span> <span class="uscript-keyword">config</span> <span class="uscript-type">float</span> W<span class="uscript-operator">;</span>
+<span class="uscript-operator">}</span><span class="uscript-operator">;</span></pre><p>So the Plane will get the X,Y,Z from Vector, but will also includes its own W.</p>
+<h2><a name="0.3"></a>Enums </h2>
+<pre class="paraverbatim"> enum <em class="em1">EnumName</em> { <em class="em1">EnumValue1</em>, <em class="em1">EnumValue2</em>, ... };</pre><p>Enums can be declared within the variable's type like structs.</p>
+<pre class="paraverbatim"> var enum <em class="em1">EnumName</em> { <em class="em1">EnumValue1</em>, <em class="em1">EnumValue2</em>, ... } <em class="em1">name</em>, <em class="em1">name</em>, ...;</pre><p>Enums are internally handled as byte variables and show some strange behavior when you try to <a href="typecasting.html">typecast</a> them. The initial value of an enum is its first element.</p>
+<p>There are some built-in enumerations in UnrealScript like the <em class="em1">ERole</em> enumeration used in the <em class="em1">Role</em> and <em class="em1">RemoteRole</em> variables declared in the <a href="actor.html">Actor</a> class.</p>
+<p>If you want to know the number of items in the enum use <tt>EnumCount(<em class="em1">ENumName</em>)</tt>.</p>
+<p>To get the name representation of an enum value, use GetEnum(), defined in Object.  It takes two parameters - the enum object, and an int corresponding to the value. The expected type for the object parameter is the name of the enum, explicitly casted to an enum.  ex:</p>
+<pre class="paraverbatim"> log("Logging my Role and RemoteRole - Role:" $ GetEnum( enum'ENetRole', Role ) @ "RemoteRole:" $ GetEnum( enum'ENetRole', RemoteRole ));</pre><p><em class="em2">El Muerte TDS:</em> don't know if this always has been like this, but in UT2003 I have to do the following to get the number of elements in a enum:</p>
+<pre class="uscript">EnumName<span class="uscript-operator">.</span><span class="uscript-keyword">EnumCount</span></pre><p><em class="em2">Tarquin:</em> No way to typecast them at ALL? Not even to int?</p>
+<p><em class="em2">Mysterial:</em> I've never had any problems typecasting them either to or from ints.</p>
+<p><em class="em2">Dark Ryder:</em> Does anyone know how to make something like the following work?</p>
+<pre class="uscript"><span class="uscript-keyword">var</span> <span class="uscript-keyword">enum</span> EList <span class="uscript-operator">{</span>
+    LI_One<span class="uscript-operator">,</span>
+    LI_Two
+<span class="uscript-operator">}</span> List<span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">var</span> <span class="uscript-type">string</span> Text<span class="uscript-operator">[</span>List<span class="uscript-operator">.</span><span class="uscript-keyword">EnumCount</span><span class="uscript-operator">]</span><span class="uscript-operator">;</span>
+
+<span class="uscript-keyword">defaultproperties</span> <span class="uscript-operator">{</span>
+    Text<span class="uscript-operator">(</span>LI_One<span class="uscript-operator">)</span><span class="uscript-operator">=</span><span class="uscript-string">"String number one."</span>
+    Text<span class="uscript-operator">(</span>LI_Two<span class="uscript-operator">)</span><span class="uscript-operator">=</span><span class="uscript-string">"String number two."</span>
+<span class="uscript-operator">}</span></pre><p>I keep getting "Error, Variable declaration Text: Illegal array size 1" (also tried EList.EnumCount).  If it can't be done, it can't be done, but that seems like a very strange error to get (count should be 2 and even if it's only 1, that should be a valid array length).</p>
+<p><em class="em2">Wormbo:</em> You can only use numbers in the array index in default properties. Also, the enum count is expressed as EnumCount(List) in your case, but somehow I doubt you can use that in declarations.</p>
+<p><em class="em2">Dark Ryder:</em> So it would seem.  In fact, because the engine seems to be unable to see enums as anything but instance variables, they can't be used as array indices in static functions (e.g. FillPlayInfo and GetDescriptionText), which is the whole point of what I was trying to do.  Oh, well, back to the old-fashioned way...</p>
+<h2><a name="0.4"></a>Objects </h2>
+<p>Specify the name of the object as the type of the variable, e.g. <code>Actor, Sound or UWindowList.</code> The initial value of Object variables is <code>None</code>. Unlike for <em class="em1">name</em> properties, this None is <em class="em1">not</em> enclosed in single quotes.</p>
+<p><em class="em2">Sobiwan:</em> I thought those examples listed were classes.  If that is the case, what is an object?</p>
+<p><em class="em2">GRAF1K:</em> Objects are classes, just like weapons are actors. In other words:</p>
+<pre class="uscript"><span class="uscript-keyword">class</span> Object <span class="uscript-keyword">extends</span> <span class="uscript-keyword">Class</span><span class="uscript-operator">;</span></pre><p>The unrealscript is just a joke, but you get the point. <img alt=":-)" src="emoticons/smile.gif" align="middle"></p>
+<p><em class="em2">Wormbo:</em> Actually the datatype Class is a subclass of Object in UnrealScript. Classes in general are descriptions of a type of objects. Some objects are <a href="actor.html">Actor</a>s, others are <a href="sound.html">Sound</a>s or <a href="texture.html">Texture</a>s and there are also Class objects. You use them very often in default properties or in code, e.g. <tt>Texture'Engine.DefaultTexture'</tt>, <tt>Sound'WeaponSounds.ExplosionSounds.Boom123'</tt> or <tt>class'xGame.xPawn'</tt>. If you opened the properties of e.g. a weapon during the game and checked its Owner property, you'd probably see something like <tt>xPawn'CTF-SomeWeirdMap.xPawn9'</tt> as the value.</p>
+<p><em class="em2">Sobiwan:</em> Considering classes are holders for variables and methods (functions) and classes are considered objects in OOP-speak, I still dont see the difference in passing a variable as an Object vs Class type.  They are the same thing, no?</p>
+<p><em class="em2">Wormbo:</em> Objects and classes are anything else than "the same". It's like comparing a house and a booklet describing how to build a house. In the case of the four examples above <tt>Texture'Engine.DefaultTexture'</tt> would be an object of class 'Texture', <tt>Sound'WeaponSounds.ExplosionSounds.Boom123'</tt> is an object of class 'Sound', <tt>xPawn'CTF-SomeWeirdMap.xPawn9'</tt> is an object of class 'xPawn' and finally <tt>class'xGame.xPawn'</tt> is an object of class 'Class'. In UnrealScript classes can be used like objects, that might differ greatly in other languages. Deep down in the engine even functions, enums, structs and variables are objects, for enums this can be seen in the GetEnum function mentioned above, but I wouldn't worry about that too much. For now I'd suggest thinking of classes as templates for new objects. Classes define the methods and properties of objects instanciated from them and also specify default values for the properties.</p>
+<p><em class="em2">Sobiwan:</em> Let me see if I got this straight: if its not an operator (ie +-) or conditioner (shampoo, er, if then else), then its an object.  Is that right?</p>
+<p><em class="em2">Calavera:</em> Pretty much, though i think you're better off thinking of objects as instances of classes.  For example, with class 'Pizza', you don't actually have an object of class 'Pizza' until you create one with the spawn keyword.  Until you do that, all you have is a definition for a class, but you don't have an actual INSTANCE of that class in the form of an object.</p>
+<h2><a name="0.5"></a>Classes </h2>
+<p>Either just specify <code>class</code> as the type or use a special class like <code>class&lt;Actor&gt;</code>. You can also use every other class name instead of "Actor". For obvious reasons <code>class&lt;Object&gt;</code> has the same meaning as just <code>class</code>. Classes are just a special kind of Object reference, so their initial value also is <code>None</code>.</p>
+<p>If you wish to find out whether an object is of the same type as a class type then you can use the <em class="em1">Name</em> property of the Class object you have.</p>
+<pre class="uscript"><span class="uscript-keyword">var</span> <span class="uscript-keyword">class</span><span class="uscript-operator">&lt;</span>Weapon<span class="uscript-operator">&gt;</span> biggerGun<span class="uscript-operator">;</span>
+<span class="uscript-operator">.</span><span class="uscript-operator">.</span>
+<span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> someObject<span class="uscript-operator">.</span>IsA<span class="uscript-operator">(</span> biggerGun<span class="uscript-operator">.</span><span class="uscript-type">Name</span> <span class="uscript-operator">)</span> <span class="uscript-operator">)</span> <span class="uscript-operator">{</span>
+  <span class="uscript-comment">// Code here</span>
+<span class="uscript-operator">}</span>
+<span class="uscript-operator">.</span><span class="uscript-operator">.</span>
+<span class="uscript-keyword">default</span> properties <span class="uscript-operator">{</span>
+  biggerGun<span class="uscript-operator">=</span><span class="uscript-keyword">Class</span><span class="uscript-name">'Botpack.WarHeadLauncher'</span>
+<span class="uscript-operator">}</span></pre><p><em class="em2">Daid303:</em> IsA() doesn't seem to work with classes in UT2003. Atleast not for me. Anyone else having this problem?</p>
+<p><em class="em2">Foxpaw:</em> What exactly are you trying to do with it? If you are trying do something like SomeClassVariable.IsA( 'SomeOtherClass' ), that won't work. Reason being that class variables are all of type "class", and aren't derived from their superclass. Only instances of objects are derived from their superclass. The equivalent for class variables is to do:</p>
+<pre class="uscript">  <span class="uscript-keyword">if</span> <span class="uscript-operator">(</span> ClassVariable <span class="uscript-operator">==</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'SomeClass'</span> <span class="uscript-operator">||</span> ClassIsChildOf<span class="uscript-operator">(</span> ClassVariable<span class="uscript-operator">,</span> <span class="uscript-keyword">Class</span><span class="uscript-name">'SomeClass'</span> <span class="uscript-operator">)</span></pre><p><em class="em2">Daid303:</em> If you hear a loud banging then that's my forehead comming on contact with my table. I feel so stupid. It's so clear... Anyhow, thanks. Now I can finaly take out that ugly hack.</p>
+<p><em class="em2">Wormbo:</em> Of course "class'xPawn'" isn't a real "Pawn" but only "a description of a pawn". However, "a description of a pawn" is a description, so e.g. class'xPawn'.IsA('Class') will return true like it's supposed to.</p>
+<hr class="thin"><p><em class="em2">Guest:</em> I'd like to ask here is there a way to convert a class variable into an actor variable and vice versa?</p>
+<p><em class="em2">Mychaeel:</em> Well, the term "converting" is a bit misplaced in that context... just as you wouldn't talk about "converting" a recipe into a meal.  To get an Actor of a given class, spawn it.  To get the class of a given Actor, read its <code>Class</code> property.  Refer to <a href="object-oriented-programming.html">OOP</a> for general insights into object-oriented programming.</p>
+<h2><a name="0.6"></a>Related Topics</h2>
+<ul><li><a href="unrealscript.html">UnrealScript</a><ul><li><a href="variable-syntax.html">Variable Syntax</a></li>
+<li><a href="typecasting.html">Typecasting</a></li>
+</ul>
+</li>
+<li><a href="unrealscript-language-refe9.html">UnrealScript Language Reference/Variables</a></li>
+</ul>
+<script type="text/javascript"><!--
+ menuItemAdd("Simple Types", "#0.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>bool", "#0.1.1");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>int", "#0.1.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>byte", "#0.1.3");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>float", "#0.1.4");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>string", "#0.1.5");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>name", "#0.1.6");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Vector, rotator, etc", "#0.1.7");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Pointer", "#0.1.8");
+menuItemAdd("Structs", "#0.2");
+menuItemAdd("<tt>&nbsp;&nbsp;</tt>Extending structs", "#0.2.1");
+menuItemAdd("Enums ", "#0.3");
+menuItemAdd("Objects ", "#0.4");
+menuItemAdd("Classes ", "#0.5");
+menuItemAdd("Related Topics", "#0.6");
+ menuWrite() //--></script></div>
+</div>
+
+<div id="footer" class="bar">
+	<p><form method="post" action="http://wiki.beyondunreal.com/wiki" enctype="application/x-www-form-urlencoded">
+<a href="(start).html">Home Page</a> | <a href="recent-changes.html">Recent Changes</a> | <a href="http://wiki.beyondunreal.com/wiki?action=editprefs">Preferences</a><br>
+<a href="http://wiki.beyondunreal.com/wiki?action=edit&id=Variable_Type">Edit text of this page</a> | <a href="http://wiki.beyondunreal.com/wiki?action=history&id=Variable_Type">View other revisions</a><br>Last edited August 15, 2005 10:57 <a href="http://wiki.beyondunreal.com/wiki?action=browse&diff=1&id=Variable_Type">(diff)</a><br>Search: <input type="text" name="search"  size="20" /><input type="hidden" name="dosearch" value="1" /><br><br><small><a href="http://wiki.beyondunreal.com/wiki/Variable_Type">Original page</a> &#150; copy created Sat, Sep 24, 2005</small>
+</form>
+	</p>
+	<p>Once I get that upgrade to 36-hour days, I will tackle that. (Mychaeel)
+</p>
+</div>
+</div><!-- close of "scrolling" div -->
+
+<div id="quickbar">
+	<div id="logo"><a href="http://wiki.beyondunreal.com/"><img src="shared/wikilogo.jpg" width="143" height="100" border="0"></a>
+		</div>
+	<div class="qbsitename">
+		<p>The Unreal Engine Documentation Site</p>
+	</div>
+	<div class="qbsection">
+<p><a href="metatopics.html">Wiki Community</a></p>
+<p><a href="category-category.html">Topic Categories</a></p>
+<p><a href="/cgi-bin/imageupload.cgi/wiki-ext/imageupload.htt" target="_blank ">Image Uploads</a></p>
+<p><a href="http://wiki.beyondunreal.com/wiki?action=random">Random Page</a></p>
+<p><a href="recent-changes.html">Recent Changes</a></p>
+<p><a href="offline-wiki.html">Offline Wiki</a></p>
+</div><div class="qbsection">
+<p><a href="unreal-engine.html">Unreal Engine</a></p>
+<p><a href="console-commands.html">Console Commands</a></p>
+<p><a href="terminology.html">Terminology</a></p>
+<p><a href="category-faq.html">FAQs</a></p>
+<p><a href="help-desk.html">Help Desk</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-mapping.html">Mapping Topics</a></p>
+<p><a href="mapping-lessons.html">Mapping Lessons</a></p>
+<p><a href="unrealed-interface.html">UnrealEd Interface</a></p>
+</div><div class="qbsection">
+<p><a href="unrealscript.html">UnrealScript Topics</a></p>
+<p><a href="unrealscript-lessons.html">UnrealScript Lessons</a></p>
+<p><a href="making-mods.html">Making Mods</a></p>
+<p><a href="class-tree.html">Class Tree</a></p>
+</div><div class="qbsection">
+<p><a href="topics-on-modeling.html">Modeling Topics</a></p>
+</div><div class="qbsection">
+<p><a href="chongqing-page.html">Chongqing Page</a></p>
+<p><a href="log-in.html">Log In</a></p></div>
+</div>
+
+</body></html>

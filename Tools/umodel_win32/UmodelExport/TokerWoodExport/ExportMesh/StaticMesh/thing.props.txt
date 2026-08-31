@@ -1,0 +1,9 @@
+Materials[1] =
+{
+    Materials[0] = { Material=None, EnableCollision=true }
+}
+UseSimpleLineCollision = false
+UseSimpleBoxCollision = false
+UseSimpleKarmaCollision = false
+UseVertexColor = false
+InternalVersion = 0
