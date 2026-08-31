@@ -1,0 +1,97 @@
+class SFXPainful extends Emitter
+placeable;
+
+var() int                    ActiveEmitterNumb;   
+var() float                  TimerFrequency;      
+var() int                    DamageToPawn;        
+var() int                    DamageToVec;         
+var() int                    DamageToMonster;     
+var() float                  ScanSize;            
+var() class<DamageType>      TheDamageType;       
+var() class<Emitter>         MonsterCollisionFx;
+var() class<Emitter>         VecCollisionFx;
+var() class<Emitter>         PawnCollisionFx;
+var() sound                  PawnCollisionSound;
+var() sound                  VecCollisionSound;
+var() sound                  MonsterCollisionSound;
+
+simulated function PostBeginPlay()
+{
+    super.PostBeginPlay();
+    
+    // Safety checks
+    if (ActiveEmitterNumb >= Emitters.Length)
+        ActiveEmitterNumb = 0;
+        
+    if (ScanSize < 32) ScanSize = 32;
+    if (TimerFrequency < 0.1) TimerFrequency = 0.1;
+    
+    SetTimer(TimerFrequency, true);
+}
+
+simulated function Timer()
+{
+    local Pawn FoundPawn;
+    local int i;
+
+    // Check if the emitter exists and has particles
+    if (Emitters.Length > 0 && Emitters[ActiveEmitterNumb] != None)
+    {
+        for (i = 0; i < Emitters[ActiveEmitterNumb].Particles.Length; i++)
+        {
+            // Scan around EACH particle location
+            foreach VisibleCollidingActors(class'Pawn', FoundPawn, ScanSize, Emitters[ActiveEmitterNumb].Particles[i].Location)
+            {
+                if (FoundPawn != None && FoundPawn.Health > 0)
+                {
+                    ProcessCollision(FoundPawn, Emitters[ActiveEmitterNumb].Particles[i].Velocity * 500);
+                }
+            }
+        }
+    }
+}
+
+simulated function ProcessCollision(Pawn CollidedWith, vector ParticleMomentum)
+{
+    local int ThePain;
+    local class<Emitter> SpawnFXClass;
+    local sound PlaySoundEffect;
+
+    if (CollidedWith.IsA('Vehicle'))
+    {
+        ThePain = DamageToVec;
+        PlaySoundEffect = VecCollisionSound;
+        SpawnFXClass = VecCollisionFx;
+    }
+    else if (CollidedWith.IsA('Monster'))
+    {
+        ThePain = DamageToMonster;
+        PlaySoundEffect = MonsterCollisionSound;
+        SpawnFXClass = MonsterCollisionFx;
+    }
+    else // Default to Pawn
+    {
+        ThePain = DamageToPawn;
+        PlaySoundEffect = PawnCollisionSound;
+        SpawnFXClass = PawnCollisionFx;
+    }
+
+    if (ThePain > 0)
+    {
+        if (PlaySoundEffect != None) CollidedWith.PlaySound(PlaySoundEffect);
+        if (SpawnFXClass != None) Spawn(SpawnFXClass, , , CollidedWith.Location, CollidedWith.Rotation);
+        
+        CollidedWith.TakeDamage(ThePain, Instigator, CollidedWith.Location, ParticleMomentum, TheDamageType);
+    }
+}
+
+defaultproperties
+{
+    DamageToPawn=5
+    DamageToVec=10
+    DamageToMonster=5
+    ScanSize=64.0
+    TimerFrequency=0.2
+    bNoDelete=false
+    RemoteRole=ROLE_SimulatedProxy
+}
