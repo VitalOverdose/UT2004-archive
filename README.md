@@ -25,6 +25,15 @@ the salvage, published so it can't be lost — or claimed by anyone else — aga
   distributes them to the leg movers, which decode on the fly. A declarative
   animation DSL with its own wire format, written in UnrealScript in 2005.
 
+- **The Dolls House Effect** *(kept secret 2005-2026)* — `Maps_2026/DM-DollsHouseEffect2026.ut2`.
+  A recursive multi-scale deathmatch: the arena is a diorama, the diorama's tiny
+  house leads to a "full-size" house where you arrive mouse-sized, and the loop
+  closes back at the start room. The player never changes scale - the world does.
+  The colossal live "gods" overhead are not built geometry and not a projection:
+  the arena's SkyZoneInfo camera sits inside the playable start room, so ordinary
+  players render as full-resolution titans in the sky. No engine tricks were
+  harmed: brushwork, teleporters, and one repurposed skybox.
+
 ## What's in here
 
 | Folder | What it is |
