@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head><script src="https://web-static.archive.org/_static/js/athena.js" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app218.us.archive.org';v.server_ms=225;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=o9P2E1FK" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster","20201023122132","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1603455692");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<meta charset="UTF-8"/><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"82aceec827",applicationID:"67467948"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,y=["click","keydown","mousedown","pointerdown","touchstart"];y.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?f(e,c,o):o()}function n(n,r,i,o){if(!p.aborted||o){e&&e(n,r,i);for(var a=t(i),c=v(n),f=c.length,u=0;u<f;u++)c[u].apply(a,r);var d=s[w[n]];return d&&d.push([b,n,r,a]),a}}function l(e,t){h[e]=v(e).concat(t)}function m(e,t){var n=h[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return h[e]||[]}function g(e){return d[e]=d[e]||i(n)}function y(e,t){u(e,function(e,n){t=t||"feature",w[n]=t,t in s||(s[t]=[])})}var h={},w={},b={on:l,addEventListener:l,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:y,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(p.aborted=!0,s=p.backlog={})}var c="nr@context",f=e("gos"),u=e(6),s={},d={},p=t.exports=i();p.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1184.min.js"},w=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:w,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0},{}],"wrap-function":[function(e,t,n){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(7),a="nr@original",c=Object.prototype.hasOwnProperty,f=!1;t.exports=function(e,t){function n(e,t,n,i){function nrWrapper(){var r,a,c,f;try{a=this,r=o(arguments),c="function"==typeof n?n(r,a):n||{}}catch(u){p([u,"",[r,a,i],c])}s(t+"start",[r,a,i],c);try{return f=e.apply(a,r)}catch(d){throw s(t+"err",[r,a,d],c),d}finally{s(t+"end",[r,a,f],c)}}return r(e)?e:(t||(t=""),nrWrapper[a]=e,d(e,nrWrapper),nrWrapper)}function u(e,t,i,o){i||(i="");var a,c,f,u="-"===i.charAt(0);for(f=0;f<t.length;f++)c=t[f],a=e[c],r(a)||(e[c]=n(a,u?c+i:i,o,c))}function s(n,r,i){if(!f||t){var o=f;f=!0;try{e.emit(n,r,i,t)}catch(a){p([a,n,r,i])}f=o}}function d(e,t){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(e);return n.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(r){p([r])}for(var i in e)c.call(e,i)&&(t[i]=e[i]);return t}function p(t){try{e.emit("internal-error",t)}catch(n){}}return e||(e=i),n.inPlace=u,n.flag=a,n}},{}]},{},["loader"]);</script>
+<title>Legacy:VitalOverdose/ONSVehicleBooster - Unreal Wiki</title>
+<meta name="generator" content="MediaWiki 1.25.1"/>
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster"/>
+<link rel="edit" title="Edit" href="/edit/Legacy:VitalOverdose/ONSVehicleBooster"/>
+<link rel="shortcut icon" href="/web/20201023122132im_/https://wiki.beyondunreal.com/w/uewiki-favicon.png"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/web/20201023122132/https://wiki.beyondunreal.com/w/opensearch_desc.php" title="Unreal Wiki"/>
+<link rel="EditURI" type="application/rsd+xml" href="https://wiki.beyondunreal.com/w/api.php?action=rsd"/>
+<link rel="alternate" hreflang="x-default" href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster"/>
+<link rel="copyright" href="/web/20201023122132/https://wiki.beyondunreal.com/Unreal_Wiki:Copyrights"/>
+<link rel="alternate" type="application/atom+xml" title="Unreal Wiki Atom feed" href="/web/20201023122132/https://wiki.beyondunreal.com/Special:RecentChanges?feed=atom"/>
+<link rel="stylesheet" href="https://web.archive.org/web/20201023122132cs_/https://wiki.beyondunreal.com/w/load.php?debug=false&amp;lang=en&amp;modules=ext.geshi.language.uscript%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.content.externallinks%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.monobook.styles&amp;only=styles&amp;skin=monobook&amp;*"/>
+<!--[if IE 6]><link rel="stylesheet" href="/w/skins/MonoBook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/w/skins/MonoBook/IE70Fixes.css?303" media="screen" /><![endif]--><meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="https://web.archive.org/web/20201023122132cs_/https://wiki.beyondunreal.com/w/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=monobook&amp;*"/>
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: wiki:resourceloader:filter:minify-css:7:29b70323345a439ab9ed7007e0c178a6 */</style>
+<script src="https://web.archive.org/web/20201023122132js_/https://wiki.beyondunreal.com/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=monobook&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"Legacy","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":100,"wgPageName":"Legacy:VitalOverdose/ONSVehicleBooster","wgTitle":"VitalOverdose/ONSVehicleBooster","wgCurRevisionId":44630,"wgRevisionId":44630,"wgArticleId":3642,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Legacy Custom Class (UT2004)"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Legacy:VitalOverdose/ONSVehicleBooster","wgRelevantArticleId":3642,"wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});
+/* cache key: wiki:resourceloader:filter:minify-js:7:a5c52c063dc436c1ca7c9f456936a5e9 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-100 ns-subject page-Legacy_VitalOverdose_ONSVehicleBooster skin-monobook action-view"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;" toolbar-mode="auto">
+<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+<div id="donato" style="position:relative;width:100%;height:0;">
+  <div id="donato-base">
+    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20201023122132/https%3A//wiki.beyondunreal.com/Legacy%3AVitalOverdose/ONSVehicleBooster"
+	    scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><div id="wm-ipp-inside">
+  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;" nav="async">
+    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+      <a href="/web/" title="Wayback Machine home page"><img src="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0" /></a>
+    </div>
+    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster" onfocus="this.focus();this.select();" style="flex:1;"/><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20201023122132" /><input type="submit" value="Go" />
+      </form>
+      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+                <div class="s" id="wm-nav-captures" style="flex:1;">
+                    <a class="t" href="/web/20201023122132*/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster" title="See a list of every capture for this URL">2 captures</a>
+          <div class="r" title="Timespan for captures of this URL">23 Oct 2020 - 18 Aug 2022</div>
+          </div>
+        <div class="k">
+          <a href="" id="wm-graph-anchor">
+            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+              <canvas id="wm-sparkline-canvas" width="775" height="27" border="0"></canvas>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="n">
+      <table>
+        <tbody>
+          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+          <tr class="m">
+            <td class="b" nowrap="nowrap">Sep</td>
+            <td class="c" id="displayMonthEl" title="You are here: 12:21:32 Oct 23, 2020">OCT</td>
+            <td class="f" nowrap="nowrap">Nov</td>
+          </tr>
+          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+          <tr class="d">
+            <td class="b" nowrap="nowrap"><span class="ta"></span></td>
+            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 12:21:32 Oct 23, 2020">23</td>
+            <td class="f" nowrap="nowrap"><span class="ta"></span></td>
+          </tr>
+          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+          <tr class="y">
+            <td class="b" nowrap="nowrap">2019</td>
+            <td class="c" id="displayYearEl" title="You are here: 12:21:32 Oct 23, 2020">2020</td>
+            <td class="f" nowrap="nowrap">2021</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+      <div id="wm-btns" style="text-align:right;height:23px;">
+                <span class="xxs">
+          <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive" >
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
+        </span>
+                <a class="xxs" href="https://help.archive.org/help/category/the-wayback-machine/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
+        <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share" class="xxs">
+        <a href="/web/20201023122132/http://web.archive.org/screenshot/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster"
+           id="wm-screenshot"
+           title="screenshot">
+          <span class="wm-icon-screen-shot"></span>
+        </a>
+        <a href="#" id="wm-video" title="video">
+          <span class="iconochive-movies"></span>
+        </a>
+        <a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+        <a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+        <a id="wm-expand" class="wm-btn wm-closed" href="#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
+      </div>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+        <div id="wm-capinfo-notice" source="api"></div>
+                <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+            <div style="display:inline-block;vertical-align:top;width:50%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/archiveteam);"></span>
+		Organization: <a style="color:#33f;" href="https://archive.org/details/archiveteam" target="_new"><span class="wm-title">Archive Team</span></a>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  <img align="right" src="https://wiki.archiveteam.org/images/e/e6/Archiveteam.jpg" width="200"> Formed in 2009, the Archive Team (not to be confused with the archive.org Archive-It Team) is a rogue archivist collective dedicated to saving copies of rapidly dying or deleted websites for the sake of history and digital heritage. The group is 100% composed of volunteers and interested parties, and has expanded into a large amount of related projects for saving online and digital history.
+<p>
+History is littered with hundreds of conflicts over the future of a community, group, location or business that were "resolved" when one of the parties stepped ahead and destroyed what was there. With the original point of contention destroyed, the debates would fall to the wayside. Archive Team believes that by duplicated condemned data, the conversation and debate can continue, as well as the richness and insight gained by keeping the materials. Our projects have ranged in size from a single volunteer downloading the data to a small-but-critical site, to over 100 volunteers stepping forward to acquire terabytes of user-created data to save for future generations.
+</p><p>
+The main site for Archive Team is at <a href="https://wiki.archiveteam.org/">archiveteam.org</a> and contains up to the date information on various projects, manifestos, plans and walkthroughs.
+</p><p>
+This collection contains the output of many Archive Team projects, both ongoing and completed. Thanks to the generous providing of disk space by the Internet Archive, multi-terabyte datasets can be made available, as well as in use by the <a href="https://web.archive.org">Wayback Machine</a>, providing a path back to lost websites and work. 
+</p><p>
+Our collection has grown to the point of having sub-collections for the type of data we acquire. If you are seeking to browse the contents of these collections, the Wayback Machine is the best first stop. Otherwise, you are free to dig into the stacks to see what you may find.
+</p><p>
+<b>The Archive Team Panic Downloads</b> are full pulldowns of currently extant websites, meant to serve as emergency backups for needed sites that are in danger of closing, or which will be missed dearly if suddenly lost due to hard drive crashes or server failures. 
+</p><p></p>
+	</div>
+	      </div>
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/archivebot)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/archivebot" target="_new"><span class="wm-title">ArchiveBot: The Archive Team Crowdsourced Crawler</span></a></div>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  ArchiveBot is an IRC bot designed to automate the archival of smaller websites (e.g. up to a few hundred thousand URLs). You give it a URL to start at, and it grabs all content under that URL, records it in a WARC, and then uploads that WARC to ArchiveTeam servers for eventual injection into the Internet Archive (or other archive sites).
+<p>
+To use ArchiveBot, drop by #archivebot on EFNet. To interact with ArchiveBot, you issue commands by typing it into the channel. Note you will need channel operator permissions in order to issue archiving jobs. The dashboard shows the sites being downloaded currently.
+<p>
+There is a dashboard running for the archivebot process at <a href="http://www.archivebot.com">http://www.archivebot.com</a>.
+<p>
+ArchiveBot's source code can be found at <a href="https://github.com/ArchiveTeam/ArchiveBot">https://github.com/ArchiveTeam/ArchiveBot</a>.
+	</div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web-static.archive.org/_static/images/loading.gif" alt="loading" /></div>
+    </div>
+    </div>
+  </div></div></div></div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(775,27,25,2,"web","https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster","20201023122132",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+									<div id="siteNotice"><div id="localNotice" lang="en" dir="ltr"><p>Always snap to grid
+</p></div></div>
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="en">Legacy:VitalOverdose/ONSVehicleBooster</h1>
+
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">From Unreal Wiki, The Unreal Engine Documentation Site</div>
+					<div id="contentSub"><span class="subpages">&lt; <a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose" title="Legacy:VitalOverdose">Legacy:VitalOverdose</a></span></div>
+										<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="infobox infobox-class infobox-legacy"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:UT2004" title="Legacy:UT2004" class="mw-redirect">UT2004</a>&#160;:: <a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:Actor" title="Legacy:Actor">Actor</a> &gt;&gt; <a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:Trigger" title="Legacy:Trigger">Trigger</a> &gt;&gt; ONSVehicleBooster (Package: custom )</div>
+<p>by <a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose" title="Legacy:VitalOverdose">VitalOverdose</a> - Updated Oct 2007</p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Concept"><span class="tocnumber">1</span> <span class="toctext">Concept</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#User_Properties."><span class="tocnumber">2</span> <span class="toctext">User Properties.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Globals"><span class="tocnumber">2.1</span> <span class="toctext">Globals</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Boost_Direction"><span class="tocnumber">2.2</span> <span class="toctext">Boost Direction</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#BotLock"><span class="tocnumber">2.3</span> <span class="toctext">BotLock</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Boosting_backwards"><span class="tocnumber">2.4</span> <span class="toctext">Boosting backwards</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Re-Boosting"><span class="tocnumber">2.5</span> <span class="toctext">Re-Boosting</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Change_the_Weight_of_the_vehicles"><span class="tocnumber">2.6</span> <span class="toctext">Change the Weight of the vehicles</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Boost_Empty_vehicles"><span class="tocnumber">2.7</span> <span class="toctext">Boost Empty vehicles</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Change_the_Size_of_the_vehicles"><span class="tocnumber">2.8</span> <span class="toctext">Change the Size of the vehicles</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Optional_Spin"><span class="tocnumber">2.9</span> <span class="toctext">Optional Spin</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Note"><span class="tocnumber">2.10</span> <span class="toctext">Note</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="#The_Script"><span class="tocnumber">3</span> <span class="toctext">The Script</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Related_Topics"><span class="tocnumber">4</span> <span class="toctext">Related Topics</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#Discussion"><span class="tocnumber">5</span> <span class="toctext">Discussion</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="Concept">Concept</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=1" title="Edit section: Concept">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li>The ONSVehicleBooster launches a vehicle when touched by using the KAddImpulse() function.</li>
+<li>The Boost will not directly hurt the vehicle in any way unless it collides with something at high speed.</li>
+</ul>
+<h2><span class="mw-headline" id="User_Properties.">User Properties.</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=2" title="Edit section: User Properties.">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Globals">Globals</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=3" title="Edit section: Globals">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li>Default properties will be used to boost a vehicle but the mapper can also set individual properties for a specific vehicle type.</li>
+<li>To stop the ONSVehicleBooster from boosting a specific vehicle type/types just create a VehicleSpecific set of values for the vehicle/vehicles(in the actor properties in unrealed) and leave the 'AppliedBoostForce' values at (x=0,y=0,z=0).</li>
+</ul>
+<h3><span class="mw-headline" id="Boost_Direction">Boost Direction</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=4" title="Edit section: Boost Direction">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The applied boost force is a vector. Thats a point in space with direction and force.</p>
+<p>(x=1.0,y=0.0,z=0.0) = Tiny push forward.</p>
+<p>(x=-1,y=0.0,z=0.0) = tiny push backwards.</p>
+<p>(x=0.0,y=1.0,z=0.0) = tiny push to the left.</p>
+<p>(x=0.0,y=-1.0,z=0.0) = tiny push to the right.</p>
+<p>(x=0.0,y=0.0,z=1.0) = tiny push Upwards.</p>
+<p>(x=0.0,y=0.0,z=-1.0) = tiny push Downwards.</p>
+<p>Note: 1 is way to small to move a vehicle , 1000000 is closer to the kind of values you will need.</p>
+<p>Option to apply the boost force in relation to either;</p>
+<ul>
+<li>The direction the vehicle is facing when it touches the Booster (Bdirectional = false)</li>
+<li>The direction the Booster actor is facing (Bdirectional = true)</li>
+</ul>
+<h3><span class="mw-headline" id="BotLock">BotLock</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=5" title="Edit section: BotLock">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>If a bot is driving when a vehicle is boosted it will instantly try to jump out. To stop this from happening any bot driven vehicle that gets boosted is locked until the vehicle has landed and is traveling under a speed that wont panic non-human players .</p>
+<ul>
+<li>The vehicle will get locked until 2 conditions have been met:-
+<ul>
+<li>1 - The vehicle is not airborne</li>
+<li>2 - The vehicle is traveling &lt; a certain speed ( ReleaseVelocity&#160;: default = 800.000000)</li>
+</ul>
+</li>
+<li>Option to lock human players the same as bots ( bLockHumanPlayers = true ).</li>
+</ul>
+<p>More info on how the BotLock works can be found here: <a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/BotLock" title="Legacy:VitalOverdose/BotLock">BotLock Info</a></p>
+<h3><span class="mw-headline" id="Boosting_backwards">Boosting backwards</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=6" title="Edit section: Boosting backwards">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Var bCanBoostBackwards&#160;: Option to let vehicles be boosted backwards if they reverse into the booster.</p>
+<h3><span class="mw-headline" id="Re-Boosting">Re-Boosting</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=7" title="Edit section: Re-Boosting">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Var bReBoosts&#160;: Is an option to NOT boost a vehicle if its already in flight from another booster. This is very handy for having 2 boosters facing each other over an obstacle.</p>
+<h3><span class="mw-headline" id="Change_the_Weight_of_the_vehicles">Change the Weight of the vehicles</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=8" title="Edit section: Change the Weight of the vehicles">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Option to be able to alter the Gravity scale of a vehicle for the duration of the boost. The same rules apply here as with the BotLock system, the weight will be altered on the boosting vehicle until The vehicle is not airborne &amp;&amp; the vehicle is traveling &lt; a specified speed (default 900). The default for this property is -1 this disables the weight altering system. This is only designed to alter the gravity scale of a vehicle very slightly so that all vehicles can be made to travel the same distance before landing.</p>
+<h3><span class="mw-headline" id="Boost_Empty_vehicles">Boost Empty vehicles</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=9" title="Edit section: Boost Empty vehicles">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The default for this property is bBoosts_emptyVechicles = false.</p>
+<h3><span class="mw-headline" id="Change_the_Size_of_the_vehicles">Change the Size of the vehicles</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=10" title="Edit section: Change the Size of the vehicles">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>This could be used to boost a vehicle though a small opening. Its original size will be returned when then vehicle has safely landed.</p>
+<h3><span class="mw-headline" id="Optional_Spin">Optional Spin</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=11" title="Edit section: Optional Spin">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>This is for making the vehicle spin during the flight. This works exactly the same way as a boost, you have to specify a direction for the kick and a point on the vehicle to apply the that kick to.</p>
+<p>Example;</p>
+<p>The center of the vehicle has a vector of (x=0.0,y=0.0,z=0.0).</p>
+<p>If a vehicle was 150uu long&#160;;</p>
+<ul>
+<li>The front center of the vehicle would be at (x=75.0,y=0.0,z=0.0)</li>
+<li>The back center of the vehicle would be at (x=-75.0,y=0.0,z=0.0)</li>
+</ul>
+<p>If a vehicle was 100uu wide&#160;;</p>
+<ul>
+<li>The Left center of the vehicle would be at (x=0.0,y=-50.0,z=0.0)</li>
+<li>The right center of the vehicle would be at (x=0.0,y=50.0,z=0.0)</li>
+</ul>
+<p>So if you wanted to flip an ONSRV completely over backwards during a boost you would need a big upwards push and you need to apply the upwards push to the front of the vehicle.</p>
+<ul>
+<li>Spin_AppliedBoostForce = (x=0,y=50,z=1000000.000000);</li>
+<li>Spin_PointOfBoostForce = (x=0.0,y=75.0,z=0.0);</li>
+</ul>
+<p>The vehicles property bEjectPassengersWhenFlipped is set to false for the duration of the jump is spin is used.Used together with the weight changing features in this class you can come up with some awesome looking stunts.</p>
+<h3><span class="mw-headline" id="Note">Note</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=12" title="Edit section: Note">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li>Some special care has to be taken when boosting near thin static meshes like lampposts and trees etc .The static meshe default collision mesh should be reinforced by adding a blocking volume to avoid vehicles getting stuck inside static meshes.</li>
+<li>Using to much boost force can cause a vehicle to vanish when boosted and may cause replication errors during an online game, if you want to boost a long distance try altering the weight of the vehicle to help reduce the amount of boost force needed for the jump.</li>
+</ul>
+<h2><span class="mw-headline" id="The_Script">The Script</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=13" title="Edit section: The Script">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Last Updated&#160;: Oct 2007</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="uscript source-uscript">
+<pre class="de1"><span class="kw1">class</span> ONSVehicleBooster <span class="kw1">extends</span> triggers
+<span class="kw1">placeable</span>;
+ 
+<span class="co1">// Default values: if a valid vehicle touches the booster and doesn't</span>
+<span class="co1">// have any specific properties set for that vehicle type set by the mapper</span>
+<span class="co1">// then these values will be used for the boost</span>
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">bool</span>   bLockHumanPlayers;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">bool</span>   bDirectionalBoost;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">bool</span>   bCanBoostBackwards;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">bool</span>   bReBoosts;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">float</span>  VehicleDrawscale;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">bool</span>   bBoosts_emptyVechicles;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">float</span>  ReleaseVelocity;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">sound</span>  VOC_Boost;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">int</span>    Actor_gravScale;
+ 
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">vector</span> AppliedBoostForce;
+<span class="kw1">var</span>                     <span class="kw5">vector</span> PointOfBoostForce;
+ 
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">vector</span> Spin_AppliedBoostForce;
+<span class="kw1">var</span> <span class="br0">(</span>BoostGlobalValues<span class="br0">)</span> <span class="kw5">vector</span> Spin_PointOfBoostForce;
+ 
+<span class="co1">//var(test) class&lt;emitter&gt;   testfx;</span>
+<span class="co1">//var emitter                emittedtestfx;</span>
+ 
+<span class="co1">// Creating a custom variable type to hold the values for each boost that the mapper sets</span>
+<span class="co1">// on a specific vehicle.</span>
+<span class="kw1">struct</span> VecSpec
+<span class="br0">{</span>
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw1">class</span> <span class="sy0">&lt;</span>OnsVehicle<span class="sy0">&gt;</span>  VecType;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">bool</span>                bLockHumanPlayers;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">bool</span>                bDirectionalBoost;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">bool</span>                bCanBoostBackwards;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">bool</span>                bBoosts_emptyVechicles;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">bool</span>                bReBoosts;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">float</span>               ReleaseVelocity;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">float</span>               Actor_gravScale;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">float</span>               VehicleDrawscale;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">vector</span>              Spin_AppliedBoostForce;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">vector</span>              Spin_PointOfBoostForce;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">vector</span>              AppliedBoostForce;
+<span class="kw1">var</span>    <span class="kw5">vector</span>              PointOfBoostForce;
+<span class="kw1">var</span> <span class="br0">(</span><span class="br0">)</span> <span class="kw5">sound</span>               VOC_Boost;
+<span class="br0">}</span>;
+<span class="co1">// the dynamic array containing the new variable type. this is available to the mapper in</span>
+<span class="co1">// Unrealed in the actor properties for this class</span>
+<span class="kw1">var</span> <span class="br0">(</span>BotVecBooster<span class="br0">)</span> array<span class="sy0">&lt;</span>VecSpec<span class="sy0">&gt;</span>      VehicleSpecific;
+ 
+<span class="kw1">var</span> <span class="kw5">string</span> BoosterID;
+ 
+<span class="co1">//The rate at which the timer will check the status of any vehicles it may be tracking</span>
+<span class="kw1">var</span> <span class="br0">(</span>BotVecBooster<span class="br0">)</span> <span class="kw5">float</span> ScanRate;
+ 
+<span class="co1">// Creating a custom variable type to store some details about each vehicle we are tracking</span>
+<span class="kw1">struct</span> VRefArray
+<span class="br0">{</span>
+<span class="kw1">var</span> <span class="kw9">OnsVehicle</span>            AVecRef;
+<span class="kw1">var</span> <span class="kw5">int</span>                   VecSpecRecNo;
+<span class="kw1">var</span> <span class="kw5">float</span>                 OrigActorGravScale;
+<span class="kw1">var</span> <span class="kw5">float</span>                 OrigVehicleDrawScale;
+<span class="br0">}</span>;
+<span class="co1">// the dynamic array of the custom VRefArray variable type.</span>
+<span class="co1">// This will be a list of all vecs being tracked by the booster</span>
+<span class="kw1">var</span> array<span class="sy0">&lt;</span>VRefArray<span class="sy0">&gt;</span>      VecRef<span class="re1">Array</span>&lt; SEMI &gt;
+ 
+<span class="co1">// Generic function -Overwriting</span>
+<span class="kw1">simulated</span> <span class="kw1">function</span> <span class="kw4">PostBeginPlay</span><span class="br0">(</span><span class="br0">)</span> <span class="co1">// called just after start of game play :takes the default values from the</span>
+<span class="br0">{</span>                        <span class="co1">// previous class and adds then to the vecspecific array in position 0</span>
+VehicleSpecific.<span class="me0">insert</span><span class="br0">(</span><span class="nu0">0</span>,<span class="nu0">1</span><span class="br0">)</span>;
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">AppliedBoostForce</span>      <span class="sy0">=</span> AppliedBoostForce;  <span class="co1">//</span>
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">PointOfBoostForce</span>      <span class="sy0">=</span> PointOfBoostForce;  <span class="co1">// this now frees up the variables</span>
+ 
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">Spin_AppliedBoostForce</span> <span class="sy0">=</span> Spin_AppliedBoostForce;
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">Spin_PointOfBoostForce</span> <span class="sy0">=</span> Spin_PointOfBoostForce;
+ 
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">bDirectionalBoost</span>      <span class="sy0">=</span> bDirectionalBoost;  <span class="co1">// so we can use the genericvecboost</span>
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">bBoosts_emptyVechicles</span> <span class="sy0">=</span> bBoosts_emptyVechicles;
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">bCanBoostBackwards</span>     <span class="sy0">=</span> bCanBoostBackwards;
+ 
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">bLockHumanPlayers</span>      <span class="sy0">=</span> bLockHumanPlayers;  <span class="co1">// without having to change the code</span>
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">ReleaseVelocity</span>        <span class="sy0">=</span> ReleaseVelocity;
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">Actor_gravScale</span>        <span class="sy0">=</span> Actor_gravScale;
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">VehicleDrawscale</span>       <span class="sy0">=</span> VehicleDrawscale;
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">VOC_Boost</span>              <span class="sy0">=</span> VOC_Boost;
+VehicleSpecific<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">bReBoosts</span>              <span class="sy0">=</span> bReBoosts;
+<span class="kw6">super</span>.<span class="kw4">PostBeginPlay</span><span class="br0">(</span><span class="br0">)</span>;
+<span class="br0">}</span>
+ 
+<span class="co1">// Generic function -Overwriting</span>
+<span class="kw1">simulated</span> <span class="kw1">function</span> <span class="kw4">Touch</span><span class="br0">(</span> <span class="kw9">Actor</span> Other <span class="br0">)</span>
+<span class="br0">{</span>
+<span class="kw6">super</span>.<span class="kw4">Touch</span><span class="br0">(</span>Other<span class="br0">)</span>;                    <span class="co1">// adds all the contained code from the parent function to this point.</span>
+<span class="kw2">if</span> <span class="br0">(</span> Other.<span class="kw3">isa</span><span class="br0">(</span><span class="st0">'ONSVehicle'</span><span class="br0">)</span> <span class="sy0">&amp;&amp;</span> <span class="br0">(</span><span class="br0">(</span><span class="kw9">ONSVehicle</span><span class="br0">(</span>other<span class="br0">)</span>.<span class="me0">Driver</span> <span class="sy0">!=</span> <span class="kw5">none</span> <span class="br0">)</span> <span class="sy0">||</span> <span class="br0">(</span>bBoosts_emptyVechicles<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span>         <span class="co1">// first checks if its been touched by an onsvehicle</span>
+   <span class="br0">{</span>
+    <span class="co1">//log ("--------------touched by a vec with tag "$Other.tag);</span>
+    BoostVec<span class="br0">(</span> <span class="kw9">ONSVehicle</span><span class="br0">(</span> Other <span class="br0">)</span> <span class="br0">)</span>;  <span class="co1">// calls BoostVec() and passes the actor ref of what touched</span>
+   <span class="br0">}</span>
+<span class="br0">}</span>                                      <span class="co1">// us to the function by 'typecasting' it to onsvehicle</span>
+ 
+<span class="co1">// New custom function</span>
+<span class="kw1">function</span> <span class="kw5">int</span> Match_2_VehicleSpecificRec<span class="br0">(</span> <span class="kw9">ONSVehicle</span> A_Vec <span class="br0">)</span>
+<span class="br0">{</span>
+<span class="kw1">local</span> <span class="kw5">int</span> I;
+<span class="kw2">for</span> <span class="br0">(</span> i <span class="sy0">=</span> <span class="nu0">1</span> ; i <span class="sy0">&lt;</span> VehicleSpecific.<span class="me0">length</span> ; I<span class="sy0">++</span> <span class="br0">)</span>       <span class="co1">// cycles though all the vehicle refs in the array</span>
+     <span class="kw2">if</span> <span class="br0">(</span> VehicleSpecific<span class="br0">[</span>i<span class="br0">]</span>.<span class="me0">VecType</span> <span class="sy0">==</span> A_Vec.<span class="kw1">class</span> <span class="br0">)</span>  <span class="co1">// if the passed vehicle type matches the one in the current record</span>
+          <span class="kw2">return</span> I;                                    <span class="co1">// returns the value stored in I</span>
+<span class="kw2">return</span> <span class="nu0">0</span>;            <span class="co1">// if no match is found the default values are used by return in a 0</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// New custom function</span>
+<span class="kw1">function</span> <span class="kw5">int</span> Already_Tracking<span class="br0">(</span> <span class="kw9">ONSVehicle</span> A_Vec <span class="br0">)</span>  <span class="co1">// checks to see if we are already tracking a vehicle</span>
+<span class="br0">{</span>                                                  <span class="co1">// by checking all the records of the vehicle currently being tracked</span>
+<span class="kw1">local</span> <span class="kw5">int</span> I;                                       <span class="co1">// for a match in the valid vehicle ref</span>
+<span class="kw2">for</span> <span class="br0">(</span> i <span class="sy0">=</span> <span class="nu0">0</span> ; i <span class="sy0">&lt;</span> VecRefArray.<span class="me0">length</span> ; I<span class="sy0">++</span> <span class="br0">)</span>       <span class="co1">// cycles though all the vehicle refs in the array</span>
+      <span class="kw2">if</span> <span class="br0">(</span> VecRefArray<span class="br0">[</span>i<span class="br0">]</span>.<span class="me0">AVecRef</span> <span class="sy0">==</span> A_Vec <span class="br0">)</span>
+           <span class="kw2">return</span> i;
+<span class="kw2">return</span> <span class="sy0">-</span><span class="nu0">1</span>;          <span class="co1">// if no match is found a flag of 01 is returned</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// New custom function</span>
+<span class="kw1">simulated</span> <span class="kw1">function</span> BoostVec<span class="br0">(</span><span class="kw9">ONSVehicle</span> AVec<span class="br0">)</span>  <span class="co1">// this function qualifies any actor that touches us</span>
+<span class="br0">{</span>                                   <span class="co1">// + files them into an array of vehicles being tracked</span>
+<span class="kw1">local</span> <span class="kw5">int</span> VecTypeRecNumb;           <span class="co1">// then retrieves any Specific vehicle type data if needed</span>
+<span class="co1">//log ("--------------function BoostVec(ONSVehicle AVec)");                                    // checks if botlock is needed</span>
+ 
+<span class="kw2">if</span> <span class="br0">(</span> Already_Tracking<span class="br0">(</span>Avec<span class="br0">)</span> <span class="sy0">&gt;</span> <span class="sy0">-</span><span class="nu0">1</span> <span class="br0">)</span>  <span class="co1">// then finally calls the boost function to kick the vehicle</span>
+    <span class="br0">{</span>
+     <span class="co1">//log ("--------------( Already_Tracking(Avec) &gt; -1 )");</span>
+     <span class="kw2">return</span>;
+    <span class="br0">}</span>
+ 
+VecTypeRecNumb     <span class="sy0">=</span> Match_2_VehicleSpecificRec<span class="br0">(</span>Avec<span class="br0">)</span>;
+ 
+<span class="co1">// log ("--------------VecTypeRecNumb = "$VecTypeRecNumb);</span>
+ 
+AppliedBoostForce      <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">AppliedBoostForce</span>; <span class="co1">// re-using the old values that contained the defaults</span>
+PointOfBoostForce      <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">PointOfBoostForce</span>; <span class="co1">// as these values are now being stored in position 0</span>
+bDirectionalBoost      <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">bDirectionalBoost</span>; <span class="co1">// of the VecSpecArray.</span>
+bCanBoostBackwards     <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">bCanBoostBackwards</span>;
+Spin_AppliedBoostForce <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">Spin_AppliedBoostForce</span>;
+Spin_PointOfBoostForce <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">Spin_PointOfBoostForce</span>;
+VehicleDrawscale       <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">VehicleDrawscale</span>;
+bLockHumanPlayers      <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">bLockHumanPlayers</span>;
+ReleaseVelocity        <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">ReleaseVelocity</span>;
+VOC_Boost              <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">VOC_Boost</span>;
+Actor_gravScale        <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">Actor_gravScale</span>;
+VehicleDrawscale       <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">VehicleDrawscale</span>;
+bReBoosts              <span class="sy0">=</span> VehicleSpecific<span class="br0">[</span>VecTypeRecNumb<span class="br0">]</span>.<span class="me0">bReBoosts</span>;
+ 
+        <span class="kw2">if</span> <span class="br0">(</span> Avec.<span class="kw7">tag</span> <span class="sy0">==</span> <span class="st0">'Boosting'</span><span class="br0">)</span>
+           <span class="br0">{</span>
+            <span class="kw2">if</span> <span class="br0">(</span> bReBoosts <span class="br0">)</span>
+               <span class="br0">{</span>
+                <span class="co1">//log ("-------------- ( Avec.tag == 'Boosting')");</span>
+                Avec.<span class="kw7">tag</span> <span class="sy0">=</span><span class="st0">'Stolen'</span>;          <span class="co1">// log (" -------------- bReBoosts Avec.tag ='Stolen'");</span>
+               <span class="br0">}</span>
+            <span class="kw2">else</span>
+               <span class="kw2">return</span>;
+            <span class="br0">}</span>
+       <span class="kw2">else</span>
+         Avec.<span class="kw7">tag</span> <span class="sy0">=</span> <span class="st0">'Boosting'</span>;
+ 
+    <span class="co1">////log ("--------------Actor_gravScale"$Actor_gravScale);</span>
+ 
+    VecRefArray.<span class="me0">insert</span><span class="br0">(</span><span class="nu0">0</span>,<span class="nu0">1</span><span class="br0">)</span>;                             <span class="co1">// Inserts a new blank slot into the array.</span>
+    VecRefArray<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">AVecRef</span>            <span class="sy0">=</span> Avec;            <span class="co1">// assigns the valid onsvehicle ref to the array</span>
+    VecRefArray<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">VecSpecRecNo</span>       <span class="sy0">=</span> VecTypeRecNumb;
+ 
+ <span class="kw2">if</span> <span class="br0">(</span><span class="sy0">!</span>Avec.<span class="me0">isplayerpawn</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+    <span class="br0">{</span>
+     AVec.<span class="me0">bDriverCannotLeaveVehicle</span>    <span class="sy0">=</span> <span class="kw6">true</span>;            <span class="co1">// lock the vec</span>
+     <span class="co1">//log ("-------------- (!Avec.isplayerpawn())....locking the vec ");</span>
+    <span class="br0">}</span>
+ 
+ <span class="kw2">if</span> <span class="br0">(</span>VehicleDrawscale <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">)</span>
+    <span class="br0">{</span>
+     VecRefArray<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">OrigVehicleDrawScale</span> <span class="sy0">=</span> Avec.<span class="kw7">Drawscale</span>;
+     Avec.<span class="kw4">SetDrawscale</span><span class="br0">(</span>VehicleDrawscale<span class="br0">)</span>;
+     <span class="co1">//log ("-------------- (VehicleDrawscale &gt; 0) setting actor VehicleDrawscale to "$VehicleDrawscale);</span>
+    <span class="br0">}</span>
+ 
+ <span class="kw2">if</span> <span class="br0">(</span>Actor_gravScale <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">)</span>
+    <span class="br0">{</span>
+     VecRefArray<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me0">OrigActorGravScale</span> <span class="sy0">=</span> Avec.<span class="me0">kGetActorGravScale</span><span class="br0">(</span><span class="br0">)</span>;
+     Avec.<span class="me0">kSetActorGravScale</span><span class="br0">(</span>Actor_gravScale<span class="br0">)</span>;
+     <span class="co1">//log ("-------------- (Actor_gravScale &gt; 0) setting actor grav scale to "$Actor_gravScale);</span>
+    <span class="br0">}</span>
+ 
+ <span class="kw2">if</span> <span class="br0">(</span> VecRefArray.<span class="me0">length</span> <span class="sy0">==</span> <span class="nu0">1</span> <span class="br0">)</span>                    <span class="co1">// if this is the only record call the timer() function</span>
+    <span class="br0">{</span>
+     <span class="kw4">SetTimer</span><span class="br0">(</span> ScanRate , <span class="kw6">true</span> <span class="br0">)</span>;                 <span class="co1">// call the timer() function in 'timerfrequncy'seconds</span>
+    <span class="co1">//log ("-------------- ( VecRefArray.length == 1 ) ");</span>
+    <span class="br0">}</span>
+ 
+GenericVehicleBoost<span class="br0">(</span>AVec<span class="br0">)</span>; <span class="co1">// calls the boost fuction</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// New custom function                         -+</span>
+<span class="kw1">function</span>  GenericVehicleBoost<span class="br0">(</span><span class="kw9">onsvehicle</span> TheTargetVec<span class="br0">)</span>
+<span class="br0">{</span>
+<span class="kw1">local</span> <span class="kw5">float</span> VecThrottle;
+ 
+<span class="co1">//log ("--------------GenericVehicleBoost(onsvehicle "$TheTargetVec$")");</span>
+ 
+<span class="kw2">if</span> <span class="br0">(</span> VOC_Boost<span class="sy0">!=</span> <span class="kw5">None</span> <span class="br0">)</span>
+     <span class="kw4">Playsound</span> <span class="br0">(</span> VOC_Boost <span class="br0">)</span> ;                                  <span class="co1">// plays the boost sound fx</span>
+ 
+VecThrottle <span class="sy0">=</span> TheTargetVec.<span class="me0">Throttle</span>;
+ 
+<span class="kw2">if</span> <span class="br0">(</span> <span class="br0">(</span> VecThrottle <span class="sy0">&lt;</span> <span class="nu0">0</span> <span class="br0">)</span> <span class="sy0">&amp;&amp;</span> <span class="br0">(</span>bCanBoostBackwards<span class="br0">)</span><span class="br0">)</span>
+     AppliedBoostForce.<span class="me0">X</span> <span class="sy0">=</span> AppliedBoostForce.<span class="me0">X</span> <span class="sy0">*</span><span class="br0">(</span><span class="sy0">-</span><span class="nu0">1</span><span class="br0">)</span>;
+ 
+<span class="kw2">if</span> <span class="br0">(</span> bDirectionalBoost <span class="sy0">==</span> <span class="kw6">True</span><span class="br0">)</span>
+     TheTargetVec.<span class="kw4">KAddImpulse</span><span class="br0">(</span> AppliedBoostForce <span class="sy0">&gt;&gt;</span> <span class="kw6">self</span>.<span class="kw7">Rotation</span>, PointOfBoostForce <span class="sy0">&gt;&gt;</span> <span class="kw6">self</span>.<span class="kw7">Rotation</span> <span class="br0">)</span> ;   <span class="co1">// boosts in the direction the boosters facing</span>
+<span class="kw2">else</span>
+     TheTargetVec.<span class="kw4">KAddImpulse</span><span class="br0">(</span> AppliedBoostForce <span class="sy0">&gt;&gt;</span> TheTargetVec.<span class="kw7">Rotation</span> , PointOfBoostForce <span class="sy0">&gt;&gt;</span> TheTargetVec.<span class="kw7">Rotation</span> <span class="br0">)</span> ;  <span class="co1">// boosts in the direction the vehicles facing</span>
+ 
+<span class="kw2">if</span> <span class="br0">(</span> Spin_AppliedBoostForce <span class="sy0">==</span> <span class="kw3">vect</span><span class="br0">(</span><span class="nu0">0</span>,<span class="nu0">0</span>,<span class="nu0">0</span><span class="br0">)</span> <span class="br0">)</span>
+     <span class="kw2">return</span>;
+ 
+TheTargetVec.<span class="kw4">KAddImpulse</span><span class="br0">(</span> Spin_AppliedBoostForce <span class="sy0">&gt;&gt;</span> TheTargetVec.<span class="kw7">Rotation</span> , Spin_PointOfBoostForce <span class="sy0">&gt;&gt;</span> TheTargetVec.<span class="kw7">Rotation</span> <span class="br0">)</span> ;  <span class="co1">// boosts in the direction the vehicles facing</span>
+TheTargetVec.<span class="me0">bEjectPassengersWhenFlipped</span> <span class="sy0">=</span> <span class="kw6">False</span>;
+<span class="br0">}</span>
+ 
+<span class="co1">// The Timer function</span>
+<span class="co1">// ==================</span>
+<span class="co1">// the timer function here is used rather like a radar.</span>
+<span class="co1">// The scan rate is the amount of sweeps it does a second.</span>
+<span class="co1">//</span>
+<span class="co1">// It only gets called if there are vehicles being tracked. Otherwise it shuts down</span>
+<span class="co1">//</span>
+<span class="co1">// On each sweep it;-</span>
+<span class="co1">//                  checks all the vehicles being tracked to see if they are;</span>
+<span class="co1">//                    dead : if so the record is removed from the array</span>
+<span class="co1">//       On the ground yet : if so</span>
+<span class="co1">//                           are they &lt; the (mapper)set velocity</span>
+<span class="co1">//                                      if they are &lt; (mapper)set Vellocity</span>
+<span class="co1">//                                                    remove from the array</span>
+<span class="co1">//                                                    Unlock the vehicle</span>
+<span class="co1">// Generic function - Overwriting</span>
+<span class="kw1">simulated</span> <span class="kw1">function</span> <span class="kw4">Timer</span><span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+ <span class="kw1">local</span> <span class="kw5">int</span>             VecSpecRecNo;
+ <span class="kw1">local</span> <span class="kw5">bool</span>            bVehicleDead;
+ <span class="kw1">local</span> <span class="kw5">bool</span>            bVecGrounded;
+ <span class="kw1">local</span> <span class="kw5">float</span>           VehicleVel;
+ <span class="kw1">local</span> <span class="kw5">float</span>           VehicleDScale;
+ <span class="kw1">local</span> <span class="kw5">float</span>           ReleaseVel;
+ <span class="kw1">local</span> <span class="kw9">ONSVehicle</span>      VehicleRef;
+ <span class="kw1">local</span> <span class="kw5">int</span>             I;
+ 
+ <span class="co1">//log ("--------------Timer(): Tracking "$VecRefArray.length$" Vehicles).");</span>
+ 
+ <span class="kw2">for</span> <span class="br0">(</span>I <span class="sy0">=</span> <span class="nu0">0</span> ; I <span class="sy0">&lt;</span> VecRefArray.<span class="me0">length</span> ; I<span class="sy0">++</span> <span class="br0">)</span>
+     <span class="br0">{</span>
+     VehicleRef    <span class="sy0">=</span>  VecRefArray<span class="br0">[</span>I<span class="br0">]</span>.<span class="me0">AVecRef</span>;                         <span class="co1">// retrieves the Vehicle ref</span>
+ 
+     <span class="co1">//log ("--------------Timer(): Checking status of ":$VecRefArray[I].AVecRef);</span>
+ 
+     VecSpecRecNo  <span class="sy0">=</span>  VecRefArray<span class="br0">[</span>I<span class="br0">]</span>.<span class="me0">VecSpecRecNo</span>;                    <span class="co1">// matches vecspecific rec to the Vehicle ref</span>
+     bVecGrounded  <span class="sy0">=</span>  VehicleRef.<span class="me0">bVehicleOnGround</span>;                    <span class="co1">// retrieves  ir the vec is airborn or not</span>
+     bVehicleDead  <span class="sy0">=</span>  VehicleRef.<span class="me0">bVehicleDestroyed</span>;                   <span class="co1">// Assigns status of the vec to bDead</span>
+     VehicleVel    <span class="sy0">=</span>  <span class="kw3">Vsize</span><span class="br0">(</span>VehicleRef.<span class="kw7">Velocity</span><span class="br0">)</span>;                     <span class="co1">// Gets the Vehicle Velocity</span>
+     ReleaseVel    <span class="sy0">=</span>  VehicleSpecific<span class="br0">[</span>VecSpecRecNo<span class="br0">]</span>.<span class="me0">ReleaseVelocity</span>;
+     VehicleDScale <span class="sy0">=</span>  VehicleSpecific<span class="br0">[</span>VecSpecRecNo<span class="br0">]</span>.<span class="me0">VehicleDrawscale</span>;
+ 
+     <span class="co1">// assigning the values to variables in this way makes the decision making in the rest of this</span>
+     <span class="co1">// function easier to understand and modify at a later date.</span>
+ 
+     <span class="kw2">if</span> <span class="br0">(</span>VehicleRef <span class="sy0">==</span> <span class="kw5">None</span> <span class="sy0">||</span> bVehicleDead <span class="br0">)</span>      <span class="co1">// removes any invalid records (records with no VecRef)</span>
+        <span class="br0">{</span>
+         <span class="co1">//log ("-------------- (VehicleRef == none || bVehicleDead ). removing"$I$" from the array");</span>
+         VecRefArray.<span class="me0">remove</span><span class="br0">(</span>I , <span class="nu0">1</span><span class="br0">)</span>;                <span class="co1">// removes the record from the array</span>
+         I <span class="sy0">-=</span> <span class="nu0">1</span>;                                   <span class="co1">// adjusts the counter to move back 1 place</span>
+        <span class="br0">}</span>
+   <span class="kw2">else</span>
+      <span class="kw2">if</span> <span class="br0">(</span> VehicleRef.<span class="kw7">Tag</span><span class="sy0">==</span><span class="st0">'Stolen'</span><span class="br0">)</span>
+         <span class="br0">{</span>
+          <span class="co1">// log ("-------------- ( VehicleRef.Tag=='Stolen')..removing from the array and setting its tag to BOOSTING ");</span>
+          VehicleRef.<span class="kw7">Tag</span> <span class="sy0">=</span> <span class="st0">'Boosting'</span>;
+          VecRefArray.<span class="me0">remove</span><span class="br0">(</span>I , <span class="nu0">1</span><span class="br0">)</span>;                <span class="co1">// removes the record from the array</span>
+          I <span class="sy0">-=</span> <span class="nu0">1</span>;                                   <span class="co1">// adjusts the counter to move back 1 place</span>
+         <span class="br0">}</span>
+  <span class="kw2">else</span>
+     <span class="kw2">if</span> <span class="br0">(</span><span class="br0">(</span> bVecGrounded <span class="sy0">==</span> <span class="kw6">true</span> <span class="br0">)</span> <span class="sy0">&amp;&amp;</span> <span class="br0">(</span> VehicleVel <span class="sy0">&lt;</span> ReleaseVel <span class="br0">)</span> <span class="br0">)</span> <span class="co1">// checks if its on the ground and under the</span>
+        <span class="br0">{</span>                                                          <span class="co1">// release velocity</span>
+         <span class="co1">//log ("-------------- (( bVecGrounded == true ) &amp;&amp; ( VehicleVel &lt; ReleaseVel ) )..RETURNING orig properties to the vehicle ");</span>
+ 
+         <span class="kw2">if</span> <span class="br0">(</span>VehicleRef.<span class="me0">KGetActorGravScale</span><span class="br0">(</span><span class="br0">)</span> ~<span class="sy0">=</span> VecRefArray<span class="br0">[</span>I<span class="br0">]</span>.<span class="me0">OrigActorGravScale</span><span class="br0">)</span>
+             VehicleRef.<span class="me0">kSetActorGravScale</span><span class="br0">(</span>VecRefArray<span class="br0">[</span>I<span class="br0">]</span>.<span class="me0">OrigActorGravScale</span><span class="br0">)</span>;
+ 
+         <span class="kw2">if</span> <span class="br0">(</span>VehicleDScale <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">)</span>
+             VehicleRef.<span class="kw4">SetDrawScale</span> <span class="br0">(</span> VecRefArray<span class="br0">[</span>I<span class="br0">]</span>.<span class="me0">OrigVehicleDrawScale</span> <span class="br0">)</span>;
+ 
+         VehicleRef.<span class="me0">bEjectPassengersWhenFlipped</span> <span class="sy0">=</span> <span class="kw6">true</span>;
+         VehicleRef.<span class="me0">bDriverCannotLeaveVehicle</span>   <span class="sy0">=</span> <span class="kw6">false</span>; <span class="co1">// unlocks the vec</span>
+         VehicleRef.<span class="kw7">Tag</span>                         <span class="sy0">=</span> <span class="st0">'tag'</span>;
+         VecRefArray.<span class="me0">remove</span><span class="br0">(</span>I , <span class="nu0">1</span><span class="br0">)</span>;                                <span class="co1">// removes the record from the array</span>
+         I <span class="sy0">-=</span> <span class="nu0">1</span>;                                                   <span class="co1">// adjusts the counter to move back 1 place</span>
+        <span class="br0">}</span>
+      <span class="br0">}</span>
+ 
+<span class="kw2">if</span> <span class="br0">(</span> VecRefArray.<span class="me0">length</span> <span class="sy0">&gt;</span> <span class="nu0">0</span> <span class="br0">)</span>
+   <span class="br0">{</span>
+   <span class="kw4">SetTimer</span><span class="br0">(</span> ScanRate , <span class="kw6">false</span> <span class="br0">)</span>;           <span class="co1">// will only call the timer() once ,if its tracking</span>
+   <span class="co1">//log("end of timer function and the vecref array was &gt; 0 so im setting timer again");</span>
+   <span class="br0">}</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">defaultproperties</span>
+<span class="br0">{</span>
+     bBoosts_emptyVechicles<span class="sy0">=</span><span class="kw6">false</span> 
+     bCanBoostBackwards<span class="sy0">=</span><span class="kw6">True</span>
+     VehicleDrawscale<span class="sy0">=-</span><span class="nu0">1.000000</span>
+     ReleaseVelocity<span class="sy0">=</span><span class="nu0">800.000000</span>
+     VOC_Boost<span class="sy0">=</span><span class="kw5">Sound</span><span class="st0">'AnnouncerEvil.Booster'</span>
+     Actor_gravScale<span class="sy0">=-</span><span class="nu0">1</span>
+     AppliedBoostForce<span class="sy0">=</span><span class="br0">(</span>X<span class="sy0">=</span><span class="nu0">9000000.000000</span>,Z<span class="sy0">=</span><span class="nu0">2000000.000000</span><span class="br0">)</span>
+     ScanRate<span class="sy0">=</span><span class="nu0">0.500000</span>
+     <span class="kw5">Texture</span><span class="sy0">=</span><span class="kw5">Texture</span><span class="st0">'XEffectMat.Shock.Shock_ring_a'</span>
+     <span class="kw7">CollisionRadius</span><span class="sy0">=</span><span class="nu0">150.000000</span>
+     <span class="kw7">CollisionHeight</span><span class="sy0">=</span><span class="nu0">150.000000</span>
+     bUseCylinderCollision<span class="sy0">=</span><span class="kw6">True</span>
+<span class="br0">}</span></pre></div>
+</div>
+<h2><span class="mw-headline" id="Related_Topics">Related Topics</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=14" title="Edit section: Related Topics">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:Vehicles" title="Legacy:Vehicles">Vehicles</a></li>
+<li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:ONSVehicle" title="Legacy:ONSVehicle">ONSVehicle</a></li>
+<li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/AllMapVehicleFactory" title="Legacy:VitalOverdose/AllMapVehicleFactory">AllMapVehicleFactory</a></li>
+<li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/QuickVehicleSpawner" title="Legacy:VitalOverdose/QuickVehicleSpawner">QuickVehicleSpawner</a></li>
+<li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleTeleporter" title="Legacy:VitalOverdose/ONSVehicleTeleporter">ONSVehicleTeleporter</a></li>
+<li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleEjectionTrigger" title="Legacy:VitalOverdose/ONSVehicleEjectionTrigger">ONSVehicleEjectionTrigger</a></li>
+<li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleSpeedTrap" title="Legacy:VitalOverdose/ONSVehicleSpeedTrap">ONSVehicleSpeedTrap</a></li>
+<li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleFXTagger" title="Legacy:VitalOverdose/ONSVehicleFXTagger">ONSVehicleFXTagger</a></li>
+</ul>
+<hr/>
+<h2><span class="mw-headline" id="Discussion">Discussion</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster?section=15" title="Edit section: Discussion">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.073 seconds
+Real time usage: 0.074 seconds
+Preprocessor visited node count: 79/1000000
+Preprocessor generated node count: 145/1000000
+Post‐expand include size: 391/2097152 bytes
+Template argument size: 121/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    1.623      1 - -total
+100.00%    1.623      1 - Template:Classbox
+-->
+
+<!-- Saved in parser cache with key wiki:pcache:idhash:3642-0!*!0!!en!*!* and timestamp 20201023122132 and revision id 44630
+ -->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="https://web.archive.org/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster?oldid=44630">https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster?oldid=44630</a>"</div>
+					<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/web/20201023122132/https://wiki.beyondunreal.com/Category:Legacy_Custom_Class_(UT2004)" title="Category:Legacy Custom Class (UT2004)">Legacy Custom Class (UT2004)</a></li></ul></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="column-one">
+			<h2>Navigation menu</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Views</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-legacy" class="selected"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster">Legacy</a></li>
+				<li id="ca-talk" class="new"><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy_talk:VitalOverdose/ONSVehicleBooster?redlink=1" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				<li id="ca-edit"><a href="/web/20201023122132/https://wiki.beyondunreal.com/edit/Legacy:VitalOverdose/ONSVehicleBooster" title="You can edit this page. Please use the preview button before saving [e]" accesskey="e">Edit</a></li>
+				<li id="ca-history"><a href="/web/20201023122132/https://wiki.beyondunreal.com/history/Legacy:VitalOverdose/ONSVehicleBooster" title="Past revisions of this page [h]" accesskey="h">History</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Personal tools</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-anonuserpage"><a href="/web/20201023122132/https://wiki.beyondunreal.com/User:198.27.81.59" class="new" title="The user page for the IP address you are editing as [.]" accesskey=".">198.27.81.59</a></li>
+													<li id="pt-anontalk"><a href="/web/20201023122132/https://wiki.beyondunreal.com/User_talk:198.27.81.59" class="new" title="Discussion about edits from this IP address [n]" accesskey="n">Talk for this IP address</a></li>
+													<li id="pt-createaccount"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Special:UserLogin?returnto=Legacy%3AVitalOverdose%2FONSVehicleBooster&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li>
+													<li id="pt-login"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Special:UserLogin?returnto=Legacy%3AVitalOverdose%2FONSVehicleBooster" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="/web/20201023122132/https://wiki.beyondunreal.com/" class="mw-wiki-logo" title="Visit the main page"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+							<ul>
+											<li id="n-mainpage"><a href="/web/20201023122132/https://wiki.beyondunreal.com/" title="Visit the main page [z]" accesskey="z">Main Page</a></li>
+											<li id="n-portal"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Unreal_Wiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+											<li id="n-recentchanges"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+											<li id="n-randompage"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
+											<li id="n-help"><a href="https://web.archive.org/web/20201023122132/https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li>
+											<li id="n-Forums-.28General.29"><a href="https://web.archive.org/web/20201023122132/https://forums.beyondunreal.com/forums/wiki-general.250/" rel="nofollow">Forums (General)</a></li>
+											<li id="n-Forums-.28Technical.29"><a href="https://web.archive.org/web/20201023122132/https://forums.beyondunreal.com/forums/wiki-technical.251/" rel="nofollow">Forums (Technical)</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Search</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="/web/20201023122132/https://wiki.beyondunreal.com/" id="searchform">
+					<input type="hidden" name="title" value="Special:Search"/>
+					<input type="search" name="search" placeholder="Search" title="Search Unreal Wiki [f]" accesskey="f" id="searchInput"/>
+					<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton"/>&#160;
+						<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton"/>
+				</form>
+
+							</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Tools</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Special:WhatLinksHere/Legacy:VitalOverdose/ONSVehicleBooster" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+											<li id="t-recentchangeslinked"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Special:RecentChangesLinked/Legacy:VitalOverdose/ONSVehicleBooster" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+											<li id="t-specialpages"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+											<li id="t-print"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster?printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+											<li id="t-permalink"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Legacy:VitalOverdose/ONSVehicleBooster?oldid=44630" title="Permanent link to this revision of the page">Permanent link</a></li>
+											<li id="t-info"><a href="/web/20201023122132/https://wiki.beyondunreal.com/info/Legacy:VitalOverdose/ONSVehicleBooster" title="More information about this page">Page information</a></li>
+									</ul>
+							</div>
+		</div>
+			</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<div id="f-copyrightico">
+									<a href="https://web.archive.org/web/20201023122132/https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="https://web.archive.org/web/20201023122132im_/https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Attribution-Noncommercial-Share Alike 3.0" width="88" height="31"/></a>
+							</div>
+					<div id="f-poweredbyico">
+									<script async src="//web.archive.org/web/20201023122132js_/https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Home Page -->
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9605963037553244" data-ad-slot="9528541415"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+							</div>
+					<ul id="f-list">
+									<li id="lastmod"> Last modified at 09:18, 14 September 2011.</li>
+									<li id="copyright">Licensed as <a href="/web/20201023122132/https://wiki.beyondunreal.com/Unreal_Wiki:Copyrights" title="Unreal Wiki:Copyrights">Attribution-Noncommercial-Share Alike 3.0</a>.</li>
+									<li id="privacy"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Unreal_Wiki:Privacy_policy" title="Unreal Wiki:Privacy policy">Privacy policy</a></li>
+									<li id="about"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Unreal_Wiki:About" title="Unreal Wiki:About">About Unreal Wiki</a></li>
+									<li id="disclaimer"><a href="/web/20201023122132/https://wiki.beyondunreal.com/Unreal_Wiki:General_disclaimer" title="Unreal Wiki:General disclaimer">Disclaimers</a></li>
+							</ul>
+		</div>
+		</div>
+		<script>if(window.jQuery)jQuery.ready();</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"],null,true);
+}</script>
+<script>if(window.mw){
+document.write("\u003Cscript src=\"https://wiki.beyondunreal.com/w/load.php?debug=false\u0026amp;lang=en\u0026amp;modules=site\u0026amp;only=scripts\u0026amp;skin=monobook\u0026amp;*\"\u003E\u003C/script\u003E");
+}</script>
+<script>if(window.mw){
+mw.config.set({"wgBackendResponseTime":153});
+}</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"82aceec827","applicationID":"67467948","transactionName":"bwADZkIDVkRUAhBeC1ZKIFFEC1dZGgAHQw1XC05EWQdP","queueTime":0,"applicationTime":159,"atts":"Q0cAEAoZRUo=","errorBeacon":"bam.nr-data.net","agent":""}</script></body></html>
+<!--
+     FILE ARCHIVED ON 12:21:32 Oct 23, 2020 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 01:35:58 Aug 31, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.351
+  exclusion.robots: 0.044
+  exclusion.robots.policy: 0.037
+  esindex: 0.005
+  cdx.remote: 8.07
+  LoadShardBlock: 65.968 (3)
+  PetaboxLoader3.resolve: 138.706 (3)
+  PetaboxLoader3.datanode: 47.612 (4)
+  load_resource: 129.655
+  nav: 0.118 (6)
+-->
